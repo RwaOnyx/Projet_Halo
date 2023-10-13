@@ -1,0 +1,20 @@
+<header>
+        <div class="entete">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/jeux">Histoire</a></li>
+                <li><a href="/news">News</a></li>
+                <li><a href="/forum">Forum</a></li>
+                <li><a href="/shop">Boutique</a></li>
+                <%  if (locals.isLogged !== true){ %>
+                       <li><a href="/login">Connexion</a></li>
+                <% } %>
+                <%  if (locals.isLogged === true){ %>
+                    <li><a href="/profil">Mon Profil</a></li>
+                <% } %>
+
+            </ul>
+        </nav> 
+    </header>

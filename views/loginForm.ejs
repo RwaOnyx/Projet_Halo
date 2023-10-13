@@ -1,0 +1,66 @@
+<%- include('head') -%>
+<%- include('header') -%>
+<main>
+    <h1>Connexion</h1>
+    
+    <% if (locals.message) { %>
+        <p><%= message %></p>
+    <% } %>
+    
+    <form method="post" action="/login">
+        <div>
+            <label for="identifiant">Pseudo ou adresse mail :</label>
+            <input type="text" name="identifiant" id="identifiant">     
+        </div>
+        <div>
+            <label for="password">Mot de passe :</label>
+            <input type="password" name="password" id="password">   
+        </div>
+        <div>
+            <button type="submit">Connexion</button>
+        </div>
+    </form>
+    
+    <div class=inscriptionQuestion>
+        <p>Vous n'avez pas encore de compte ?</p>
+        <button class="showInscriptionForm">Inscrivez-vous !</button></p>
+    </div>
+    
+    <form method="post" class="inscriptionForm" enctype="multipart/form-data" action="/register" style="display: none;">
+        <div>
+            <label for="pseudo">Pseudo :</label>
+            <input type="text" name="pseudo" id="pseudo">     
+        </div>
+        <div>
+            <label for="email">Email :</label>
+            <input type="email" name="email" id="email">     
+        </div>
+        <div>
+            <label for="password">Mot de passe :</label>
+            <input type="password" name="password" id="password">   
+        </div>
+        <div>
+            <label for="image">Image de profil (max 5 Mo) :</label>
+            <input type="file" name="image" id="image" accept="image/*" maxSize="5MB">
+        </div>
+        <div>
+            <button type="submit">Inscription</button>
+        </div>
+    </form>
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const showInscriptionFormButton = document.querySelector(".showInscriptionForm");
+        const inscriptionForm = document.querySelector(".inscriptionForm");
+        const inscriptionQuestion = document.querySelector(".inscriptionQuestion");
+
+        // Ajoutez un gestionnaire d'événement au bouton pour afficher le formulaire
+        showInscriptionFormButton.addEventListener("click", function() {
+            inscriptionForm.style.display = "block";
+            inscriptionQuestion.style.display = "none";
+        });
+    });
+</script>
+
+<%- include('footer') -%>

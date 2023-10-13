@@ -1,0 +1,16 @@
+<%- include('head') -%>
+<%- include('header') -%>
+<main>
+    <h1>Forum</h1><%=console.log(forum)%>
+    <%for (const salon of forum){%>
+        <div>
+            <a href=forum/<%= salon.id %> class=salonForum>
+                <h3><%=salon.intitule%></h3>
+                <p>Créer par <%= salon.login %></p>
+                <p><%= salon.date %></p>
+                    
+            </a>
+        </div>
+    <% } %>
+</main>
+<%- include('footer') -%>

@@ -1,0 +1,151 @@
+<%- include('head') -%>
+<%- include('header') -%>
+
+<main>
+    <% if (locals.message) { %>
+        <p><%= message %></p>
+    <% } %>
+    
+    <h1>Liste des membres</h1>
+
+    <h2>Il y en a <%=listUsers.length%>.</h2>
+    <form action="/deleteUsersList" method="post">
+    <table>
+        <thead>
+            <tr>
+                
+                <th></th>
+                <th>Login</th>
+                <th>Email</th>
+                <th>Date de création</th>
+                <th>Image de profil</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <%for (const user of listUsers){%>
+                <tr>
+                    <td><input type="checkbox" value="<%= user.login %>" name="usersToDelete"/></td>
+                    
+                    <td class="user-login"><%= user.login %></td>
+                    <td class="user-email"><%= user.email %></td>
+                    <td class="user-date"><%= user.date %></td>
+                    <td class="user-image"><img src='images/profil/<%=user.image%>' style='width: 50px;'></td>
+                    
+                    
+                    <td><button class="edit-button" type="button" value="<%= user.login %>">Modifier</button>
+                        <button class="save-button" type="button" style="display: none;">Valider</button></td>
+                    
+                </tr>
+            <% } %>
+                </tbody>
+                </table>
+                <button type="submit">Supprimer les lignes selectionnées</button>
+                </form>        
+        
+    
+    <h2>Ajouter un nouveau membre manuellement</h2>
+        <form method="post" action="/register" enctype="multipart/form-data">
+            <div>
+                <label for="pseudo">Login : </label>
+                <input type="text" name="pseudo" id="pseudo">
+            </div>
+            <div>
+                <label for="email">Email : </label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div>            
+                <label for="password">Mot de passe : </label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div>
+            <label for="image">Image de profil (max 5 Mo) :</label>
+            <input type="file" name="image" id="image" accept="image/*" maxSize="5MB">
+        </div>
+            <div>        
+                <button type="submit">Ajouter</button>
+            </div>
+        </form>
+                    
+                 <script>
+    const editButtons = document.querySelectorAll('.edit-button');
+    const saveButtons = document.querySelectorAll('.save-button');
+
+    editButtons.forEach((editButton) => {
+        editButton.addEventListener('click', () => {
+            const row = editButton.closest('tr');
+            const login = row.querySelector('.user-login');
+            const email = row.querySelector('.user-email');
+            const date = row.querySelector('.user-date');
+            const image = row.querySelector('.user-image');
+
+            const loginInput = document.createElement('input');
+            loginInput.type = 'text';
+            loginInput.value = login.textContent;
+            login.textContent = '';
+            login.appendChild(loginInput);
+
+            const emailInput = document.createElement('input');
+            emailInput.type = 'text';
+            emailInput.value = email.textContent;
+            email.textContent = '';
+            email.appendChild(emailInput);
+
+            // Créez un champ de texte désactivé pour la date
+            const dateInput = document.createElement('input');
+            dateInput.type = 'text';
+            dateInput.value = date.textContent;
+            dateInput.setAttribute('readonly', true); // Rend le champ non modifiable
+            date.textContent = '';
+            date.appendChild(dateInput);
+
+            const imageInput = document.createElement('input');
+            imageInput.type = 'text';
+            imageInput.value = image.textContent;
+            image.textContent = '';
+            image.appendChild(imageInput);
+
+            editButton.style.display = 'none';
+            row.querySelector('.save-button').style.display = 'block';
+        });
+    });
+
+    saveButtons.forEach((saveButton) => {
+        saveButton.addEventListener('click', () => {
+            // Récupérez les données modifiées depuis les champs de texte
+            const row = saveButton.closest('tr');
+            const loginInput = row.querySelector('.user-login input');
+            const emailInput = row.querySelector('.user-email input');
+            const imageInput = row.querySelector('.user-image input');
+
+            const updatedUserData = {
+                login: loginInput.value,
+                email: emailInput.value,
+                image: imageInput.value,
+            };
+
+            // Envoyez les données au serveur (vous devez implémenter la logique côté serveur pour cela)
+
+            // Mettez à jour l'affichage avec les nouvelles données
+            const login = row.querySelector('.user-login');
+            const email = row.querySelector('.user-email');
+            const image = row.querySelector('.user-image');
+
+            login.textContent = updatedUserData.login;
+            email.textContent = updatedUserData.email;
+            image.textContent = updatedUserData.image;
+
+            // Réinitialisez les champs de texte et affichez à nouveau le bouton "Modifier"
+            loginInput.remove();
+            emailInput.remove();
+            row.querySelector('.user-date input').remove(); // Supprimez également le champ de date
+            imageInput.remove();
+            saveButton.style.display = 'none';
+            row.querySelector('.edit-button').style.display = 'block';
+        });
+    });
+</script>
+  
+    
+</main>
+<%- include('footer') -%>

@@ -1,0 +1,14 @@
+<%- include('head') -%>
+<%- include('header') -%>
+<main>
+    <% if (locals.isLogged) { %>
+        <p><%(locals.grade)%></p>
+    <% } %>
+    <h1>Projet Halo</h1>
+    <section>Video + HUD</section> 
+    <section>shop</section>
+    <section>news</section>
+    <section>forum</section>
+    <section>article</section>
+</main>
+<%- include('footer') -%>

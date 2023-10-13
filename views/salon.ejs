@@ -1,0 +1,13 @@
+<%- include('head') -%>
+<%- include('header') -%>
+<main><%=console.log(messages)%>
+    <h1><%=messages[0].titreSalon%></h1>
+    <%for (const message of messages){%>
+        <div>
+            <p><%=message.login%></p>
+            <p><%=message.date%></p>
+            <p><%=message.message%></p>
+        </div>
+    <% } %>
+</main>
+<%- include('footer') -%>
