@@ -45,7 +45,7 @@ export function login(req, res) {
                     return;
                 }
 
-                req.session.pseudo = resultSQL[0].login;
+                req.session.login = resultSQL[0].login;
                 req.session.isLogged = true;
 
                 switch (resultSQL[0].role) {

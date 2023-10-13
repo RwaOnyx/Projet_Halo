@@ -3,13 +3,13 @@ import { DateTime } from "luxon";
 
 export default (req, res) => {
     
-    query(`SELECT email, date, role, image FROM Users WHERE login = ?`, req.session.pseudo , (error, profil) => {
+    query(`SELECT email, date, role, image FROM Users WHERE login = ?`, req.session.login , (error, profil) => {
     if (error) {
         console.error(`Erreur lors de l'exécution de la requête ${error}`);
         res.status(500).send('Erreur serveur');
         return;
     }
-    profil.push(req.session.pseudo)
+    profil.push(req.session.login)
     const dateISO = (profil[0].date).toISOString();
     const dateLuxon = DateTime.fromISO(dateISO);
     profil[0].date = dateLuxon.toFormat('dd/LL/yyyy');

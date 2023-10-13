@@ -9,7 +9,6 @@ export default (req, res) => {
         res.status(500).send('Erreur serveur');
         return;
     }
-    console.log(listUsers)
     for (const user of listUsers){
         const dateISO = (user.date).toISOString();
         const dateLuxon = DateTime.fromISO(dateISO);
