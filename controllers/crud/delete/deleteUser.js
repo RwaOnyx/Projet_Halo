@@ -10,20 +10,30 @@ export function deleteUsersList(req, res) {
     }
 
     const incrementation = [];
-    for (const user of usersToDelete) {
+    let totalUsers = usersToDelete.length;
+
+    usersToDelete.forEach((user) => {
         incrementation.push('?');
-        deleteImage(user)
-    }
-    deleteUsers(incrementation, usersToDelete, res, req);
+        deleteImage(user, () => {
+            // Cette fonction de rappel sera appelée une fois que l'image est supprimée.
+            totalUsers--;
+
+            if (totalUsers === 0) {
+                // Toutes les images ont été supprimées, on peut maintenant supprimer les utilisateurs.
+                deleteUsers(incrementation, usersToDelete, res, req);
+            }
+        });
+    });
 }
 
 export function deleteUser(req, res) {
     const login = req.session.login;
     console.log("login = ", login, " alors que ", req.session.login)
 
-    deleteImage(login)
-    deleteUsers('?', login, res, req);
-
+    deleteImage(login, () => {
+        // Cette fonction de rappel sera appelée une fois que l'image est supprimée.
+        deleteUsers('?', login, res, req);
+    });
 }
 
 function deleteUsers(incrementation, usersToDelete, res, req) {
@@ -31,7 +41,7 @@ function deleteUsers(incrementation, usersToDelete, res, req) {
     console.log(incrementation)
     query(`SELECT role FROM Users WHERE login IN(${incrementation}) LIMIT 1;`, usersToDelete, (error, role) => {
         if (error) {
-            console.error(`Erreur lors de la récuperation du role ${error}`);
+            console.error(`Erreur lors de la récuperation du rôle ${error}`);
             console.log('Erreur serveur');
         }
         query(`DELETE FROM Users WHERE login IN(${incrementation});`, usersToDelete, (error) => {
@@ -40,54 +50,51 @@ function deleteUsers(incrementation, usersToDelete, res, req) {
                 console.log('Erreur serveur');
             }
             console.log(role)
-            redirection(role, usersToDelete, res, req)
+            redirection(role, usersToDelete, res, req);
         });
 
     });
 }
 
-function deleteImage(login) {
-    query(`SELECT image
-            FROM Users
-            WHERE image = (
-                    SELECT image FROM Users WHERE login = ?);`, [login, login], (error, result) => {
+export function deleteImage(login, callback) {
+    query(`SELECT image FROM Users WHERE login = ?;`, [login], (error, result) => {
         if (error) {
             console.error(`Erreur lors de la récuperation de l'image ${error}`);
             console.log('Erreur serveur');
         }
         if (result.length === 1) {
             const chemin = path.join('public/images/profil/', result[0].image); // Chemin complet du fichier à supprimer
-            console.log(chemin)
             fs.unlink(chemin, (error) => {
                 if (error) {
                     console.error(`Erreur lors de la suppression de l'image : ${error}`);
                     // Gérez l'erreur, par exemple, en renvoyant une réponse d'erreur au client.
-                }
-                else {
+                } else {
                     console.log('Image supprimée avec succès.');
                     // Fournissez une réponse indiquant que l'image a été supprimée avec succès.
                 }
+
+                if (callback) {
+                    callback();
+                }
             });
-            return
-        }
-        else {
+        } else {
             console.log('Image en double.');
-            return
+
+            if (callback) {
+                callback();
+            }
         }
     });
 }
-
 
 function redirection(role, login, res, req) {
     if (login === req.session.login) {
         req.session.destroy(() => {
             res.redirect("/" /*, { message : "Votre compte a été supprimé"}*/ );
-        })
-    }
-    else if (role[0].role !== "utilisateur") {
+        });
+    } else if (role[0].role !== "utilisateur") {
         res.redirect("/listUsersRole" /*, { message : "Responsable(s) supprimé(s)"} */ );
-    }
-    else {
+    } else {
         res.redirect("/listUsers" /*, { message : "Utilisateur(s) supprimé(s)"} */ );
     }
 }

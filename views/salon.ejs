@@ -1,13 +1,41 @@
 <%- include('head') -%>
 <%- include('header') -%>
-<main><%=console.log(messages)%>
-    <h1><%=messages[0].titreSalon%></h1>
-    <%for (const message of messages){%>
+<main>
+    
+    <h1><%= salon[0].intitule %></h1>
+    
+    <%  if (locals.isLogged === true){ %>
         <div>
-            <p><%=message.login%></p>
-            <p><%=message.date%></p>
-            <p><%=message.message%></p>
+            <form method="post" action="/addMessage">
+                <% if (!messages.length) {%>
+                    <p>Soyez le premier à mettre un message</p>
+                <% } else { %>
+                    <p>Ajouter une réponse</p>
+                <% } %>
+                <textarea id="message" name="message"></textarea>
+                <button>Envoyer le message.</button></p>
+            </form>
         </div>
+        <% } else { %>
+            <p>Vous devez vous connecter pour écrire un message.</p>
+            <a href=/login>Se connecter !</a>
+        <% } %>
+    
+    
+    <%for (const message of messages){%>
+        <form>
+            <div data-id='<%message.id%>'>
+                <p><%=message.login%></p>
+                <p><%=message.date%></p>
+                <p><%=message.message%></p>
+            </div>
+            <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
+                <button type=submit>Supprimer le message</button>        
+            <% } %>
+        </form>
+        <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
+                <button type=submit>Modifier le message</button>        
+        <% } %>
     <% } %>
 </main>
 <%- include('footer') -%>

@@ -1,8 +1,29 @@
 <header>
-        <div class="entete">
-        </div>
+    <div class=for-mobile>
         <nav>
             <ul>
+                <div><%  if (locals.isLogged !== true){ %>
+                       <li><a href="/login">Connexion</a></li>
+                <% } %>
+                <%  if (locals.isLogged === true){ %>
+                    <li><a href="/profil">Mon Profil</a></li>
+                <% } %></div>
+                <div><li><a href="/">Accueil</a></li></div>
+                <div class="burger-icon">
+                    <!-- Icône du burger (3 lignes par exemple) -->
+                </div>
+                <div>
+                    <li><a href="/jeux">Histoire</a></li>
+                    <li><a href="/news">News</a></li>
+                    <li><a href="/forum">Forum</a></li>
+                    <li><a href="/shop">Boutique</a></li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+    <div class=for-PC>
+        <ul>
+                <!-- Menu horizontal pour PC -->
                 <li><a href="/">Accueil</a></li>
                 <li><a href="/jeux">Histoire</a></li>
                 <li><a href="/news">News</a></li>
@@ -14,7 +35,7 @@
                 <%  if (locals.isLogged === true){ %>
                     <li><a href="/profil">Mon Profil</a></li>
                 <% } %>
-
             </ul>
-        </nav> 
-    </header>
+    </div>
+    
+</header>

@@ -1,76 +1,63 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-}
-form label{
-    display: inline-block;
-    width:150px;
-}
-
-header{
-    background-color: #84B222;
-    text-align:center;
+/* Vos styles CSS d'origine */
+h1 {
+    color: white;
+    margin: 0;
+    text-align: center;
 }
 
-.entete{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding:20px;
+h2, h3 {
+    color: rgb(7, 8, 13);
 }
-nav ul{
+
+h2 {
+    text-align: center;
+}
+
+header {
+    background: rgb(7, 8, 13);
+}
+
+header li {
     list-style-type: none;
-    display: flex;
-    justify-content: center;
-    padding-bottom:20px;
+    text-decoration: none;
 }
 
-nav a {
-    color:#fff;
-    font-size:2em;
-    padding:10px;
-    display: block;
+header ul {
+    margin: 0;
+    padding: 0;
 }
 
-h1{
-    margin-left:30px;
-    text-transform: uppercase;
-    color:#fff;
+header a {
+    color: white;
 }
 
-main{
-    max-width:600px;
-    width:100%;
-    margin:0 auto;
+body {
+    padding: 0;
+    margin: 0;
 }
 
-form button{
-    background-color: #621eab;
-    color:#fff;
-    border:none;
-    padding:10px 15px;
-    /*font-weight:bold;*/
-    font-size: 1.2em;;
-}
-main ul{
-    list-style-type: none;
-    
+/* PAGE ACCUEIL */
+
+.index-main {
+    background: rgb(7, 8, 13);
+    background: linear-gradient(180deg, rgba(7, 8, 13, 1) 0%, rgba(44, 46, 69, 1) 57%);
 }
 
-main ul li{
-    margin:10px 0;
-    
+section {
+    background: rgb(74, 150, 214);
+    background: radial-gradient(circle, rgba(74, 150, 214, 1) 0%, rgba(78, 152, 215, 1) 19%, rgba(83, 155, 216, 1) 41%, rgba(91, 160, 218, 1) 67%, rgba(98, 164, 220, 1) 76%, rgba(107, 169, 222, 1) 81%, rgba(112, 172, 223, 1) 87%, rgba(207, 224, 243, 1) 100%);
+    width: 80%;
+    padding: 20px;
+    margin: 50px auto;
 }
 
-.contact{
-    min-width:230px;
-    display:inline-block;
+section a {
+    color: white;
+    text-decoration: none;
+    color: #2C2E45;
 }
 
-main ul li a{
-    color:#621eab;
-}
-
-.salonForum {
-    display: flex;
-    flex-direction: row;
+section img {
+    width: 80%;
+    margin: auto;
 }

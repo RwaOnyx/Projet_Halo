@@ -3,22 +3,18 @@ import formidable from 'formidable';
 import bcrypt from 'bcrypt';
 import path from 'path';
 import fs from 'fs';
-import query from '../../database.js';
+import query from '../../../database.js';
 import xss from 'xss';
 
 export function register(req, res) {
-    const formData = formidable({ allowEmptyFiles: true, minFileSize: 0 });
-    formData.parse(req, (error, fields, files) => {
-        if (error) {
-            console.error(`Erreur lors de la récupération de la photo : ${error}`);
-            res.status(500).send('Erreur serveur');
-            return;
-        }
-        addUsers(fields, files, true, req, res);
-    });
+    processForm(req, res, true, "/listUsers");
 }
 
 export function registerRole(req, res) {
+    processForm(req, res, false, "/listUsersRole");
+}
+
+function processForm(req, res, role, redirectPath) {
     const formData = formidable({ allowEmptyFiles: true, minFileSize: 0 });
     formData.parse(req, (error, fields, files) => {
         if (error) {
@@ -26,14 +22,15 @@ export function registerRole(req, res) {
             res.status(500).send('Erreur serveur');
             return;
         }
-        
-        // Ajoutez ici la logique spécifique pour l'ajout d'administrateur (par exemple, gérer le rôle)
-        addUsers(fields, files, false, req, res);
+
+        addUsers(fields, files, role, res, () => {
+            res.redirect(redirectPath);
+        });
     });
 }
 
 // Fonction générique pour le traitement commun des données
-function addUsers(fields, files, isUser = true, req, res) {
+function addUsers(fields, files, role, res, callback) {
     const id = v4();
     const login = xss(fields.pseudo[0]);
     const email = xss(fields.email[0]);
@@ -46,27 +43,13 @@ function addUsers(fields, files, isUser = true, req, res) {
             console.log('Mot de passe haché :', hash);
         }
 
-        const interrogation = ["?", "?", "?", "?"];
-        const colonne = ["id", "login", "email", "password"];
+        const interrogation = ["?", "?", "?", "?", "?"];
+        const colonne = ["id", "login", "email", "password", "image"];
         const value = [id, login, email, hash];
-        
-        if (!isUser){
-            colonne.push("role");
-            const role = xss(fields.role[0]);
-            value.push(role);
-            interrogation.push("?");
-        }
-        
 
-        if (files.image[0].originalFilename !== false || files.image[0].originalFilename !== '') {
-            console.log(files.image[0]);
-            const extension = path.extname(files.image[0]._writeStream.path);
-            const nomComplet = id + "." + extension;
-            const chemin = 'public/images/profil/' + nomComplet;
-
-            colonne.push("image");
-            value.push(nomComplet);
-            interrogation.push("?");
+        if (files.image && files.image[0].originalFilename) {
+            const chemin = 'public/images/profil/' + id + ".";
+            value.push(id + ".");
 
             fs.copyFile(files.image[0]._writeStream.path, chemin, (error) => {
                 if (error) {
@@ -77,25 +60,31 @@ function addUsers(fields, files, isUser = true, req, res) {
 
                 console.log('Fichier copié avec succès.');
             });
+        } else {
+            const imageRandom = Math.floor(Math.random() * 2);
+            value.push(imageRandom + ".");
         }
 
+        if (!role) {
+            colonne.push("role");
+            value.push(xss(fields.role[0]));
+            interrogation.push("?");
+        }
+        
+        console.log(colonne, interrogation, value);
+        
         query(
-            `INSERT INTO Users (${colonne}) VALUES (${interrogation});`, value,
+            `INSERT INTO Users (${colonne}) VALUES (${interrogation});`,
+            value,
             (error, resultSQL) => {
                 if (error) {
                     console.error(`Erreur lors de l'exécution de la requête ${error}`);
                     res.status(500).send('Erreur serveur');
                     return;
                 }
-                // Redirection en fonction du scénario
-                if (isUser && req.session.isLogged === true) {
-                    res.redirect("/listUsers" /*, { message : "Utilisateur créé"}*/ )
-                } else if (!isUser && req.session.isLogged === true){
-                    res.redirect("/listUsersRole" /*, { message : "Utilisateur créé"}*/ )
-                } else {
-                    res.redirect("/login" /*, { message : "Votre compte a été créé"}*/ )
-                }
+                // Appel de la fonction de rappel une fois que l'ajout est terminé
+                callback();
             }
         );
-    });
+    })
 }

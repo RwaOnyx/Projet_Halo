@@ -1,14 +1,64 @@
 <%- include('head') -%>
 <%- include('header') -%>
-<main>
+<main class=index-main>
     <% if (locals.isLogged) { %>
         <p><%(locals.grade)%></p>
     <% } %>
     <h1>Projet Halo</h1>
     <section>Video + HUD</section> 
-    <section>shop</section>
-    <section>news</section>
-    <section>forum</section>
-    <section>article</section>
+    
+    <section class=section-shop>
+        <a href="/shop">
+            <h2>Dernier article de la boutique</h2>
+            <div class=section-gauche-div>
+                <div>
+                    <img src="/images/boutique/haloBoutiqueTest.png" alt="" />
+                </div>
+                <div>
+                    <h3>Super nouveau produit</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales mi id ante maximus, id faucibus libero congue. Pellentesque id augue sit amet nulla rhoncus commodo quis vitae metus. Integer at dui tellus. Nulla molestie, mauris vitae pretium commodo, turpis nisi cursus purus, sit amet ultrices nibh urna ut odio. Nulla eget purus lacus. In tempor augue in ipsum molestie egestas. Donec consectetur faucibus pellentesque. Vivamus et lobortis mauris, vitae luctus lectus.</p>
+                </div>
+            </div>
+        </a>
+    </section>
+    
+    <section class=section-news>
+        <a href="/news">
+            <h2>Dernière news</h2>
+            <div class=section-droite-div>
+                <div>
+                    <img src="/images/boutique/haloBoutiqueTest.png" alt="" />
+                </div>
+                <div>
+                    <h3>Super dernière nouvelle</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales mi id ante maximus, id faucibus libero congue. Pellentesque id augue sit amet nulla rhoncus commodo quis vitae metus. Integer at dui tellus. Nulla molestie, mauris vitae pretium commodo, turpis nisi cursus purus, sit amet ultrices nibh urna ut odio. Nulla eget purus lacus. In tempor augue in ipsum molestie egestas. Donec consectetur faucibus pellentesque. Vivamus et lobortis mauris, vitae luctus lectus.</p>
+                </div>
+            </div>
+        </a>
+    </section>
+    
+    <section class=section-forum>
+        <a href="/forum">
+            <h2>Forum du jour</h2>
+            <h3>Nom du forum</h3>
+            <p>Dernier message.Dernier message.Dernier message.Dernier message.Dernier message.Dernier message.Dernier message.Dernier message.Dernier message.</p>
+        </a>
+    </section>
+    
+    <section class=section-jeux>
+        <a href="/jeux">
+            <h2>Histoire</h2>
+            <div class=section-gauche-div>
+                <div>
+                    <img src="/images/boutique/haloBoutiqueTest.png" alt="" />
+                </div>
+                <div>
+                    <h3>Découvrir l'histoire</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales mi id ante maximus, id faucibus libero congue. Pellentesque id augue sit amet nulla rhoncus commodo quis vitae metus. Integer at dui tellus. Nulla molestie, mauris vitae pretium commodo, turpis nisi cursus purus, sit amet ultrices nibh urna ut odio. Nulla eget purus lacus. In tempor augue in ipsum molestie egestas. Donec consectetur faucibus pellentesque. Vivamus et lobortis mauris, vitae luctus lectus.</p>
+                </div>
+            </div>
+        </a>
+    </section>
+    
 </main>
 <%- include('footer') -%>

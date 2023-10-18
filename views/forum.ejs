@@ -2,15 +2,61 @@
 <%- include('header') -%>
 <main>
     <h1>Forum</h1><%=console.log(forum)%>
-    <%for (const salon of forum){%>
-        <div>
-            <a href=forum/<%= salon.id %> class=salonForum>
-                <h3><%=salon.intitule%></h3>
-                <p>Créer par <%= salon.login %></p>
-                <p><%= salon.date %></p>
-                    
-            </a>
+    
+    
+    <%  if (locals.isLogged === true){ %>     
+        <div class=addForum>
+            <p>Vous ne trouvez pas votre bonheur ?</p>
+            <button class="showAddForumForm">Créer un salon !</button></p>
         </div>
+        
+        
+        <form method="post" class="salonForm" action="/addSalon" style="display: none;">
+            <div>
+                <label for="intitule">De quoi voulez vous parlez ?</label>
+                <input type="text" name="intitule" id="intitule">     
+            </div>
+            <div>
+                <button type="submit">Créer le salon !</button>
+            </div>
+        </form>
+    <% } else { %>
+        <p>Vous devez vous connecter pour créer un salon.</p>
+        <a href=/login>Se connecter !</a>
     <% } %>
+    
+    <%for (const salon of forum){%>
+        <form>
+            <div data-id="<%= salon.id %>">
+                <a href=forum/<%= salon.id %> class=salonForum>
+                    <h3><%=salon.intitule%></h3>
+                    <p>Créer par <%= salon.login %></p>
+                    <p><%= salon.date %></p>
+                   
+                </a>
+                <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
+                    <button type=submit>Supprimer le salon</button>
+                <% } %>
+            </div>
+        </form> 
+        <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
+            <button>Modifier le nom du salon</button>        
+        <% } %>
+    <% } %>
+    
+    <script>
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        const showAddForumForm = document.querySelector(".showAddForumForm");
+        const salonForm = document.querySelector(".salonForm");
+        const addForum = document.querySelector(".addForum");
+
+        // Ajoutez un gestionnaire d'événement au bouton pour afficher le formulaire
+        showAddForumForm.addEventListener("click", function() {
+            salonForm.style.display = "block";
+            addForum.style.display = "none";
+        });
+    });
+</script>
 </main>
 <%- include('footer') -%>

@@ -3,6 +3,8 @@ dotenv.config();
 import express from 'express';
 import router from './router.js';
 import session from 'express-session';
+import fileUpload from 'express-fileupload';
+import bodyParser from 'body-parser';
 
 const PORT = process.env.PORT;
 const app = express();
@@ -17,6 +19,7 @@ app.use(session({
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(express.static('public')); // gestion fichiers statiques
+//app.use(fileUpload());
 
 app.use('/', router);
 
@@ -24,3 +27,8 @@ app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
+
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());

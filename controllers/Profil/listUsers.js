@@ -3,7 +3,7 @@ import { DateTime } from "luxon";
 
 export default (req, res) => {
     
-    query(`SELECT login, email, date, role, image FROM Users WHERE role = ?`, "utilisateur" , (error, listUsers) => {
+    query(`SELECT id, login, email, date, role, image FROM Users WHERE role = ?`, "utilisateur" , (error, listUsers) => {
     if (error) {
         console.error(`Erreur lors de l'exécution de la requête ${error}`);
         res.status(500).send('Erreur serveur');

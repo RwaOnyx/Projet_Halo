@@ -1,17 +1,11 @@
 import express from "express";
-import formidable from 'formidable';
-import bcrypt from 'bcrypt';
-import xss from 'xss';
-import path from 'path';
-import fs from 'fs';
-import query from './database.js'
 
 const router = express.Router();
 
 //CRUD
 import { register, registerRole } from "./controllers/crud/add/addUser.js";
 import { deleteUsersList, deleteUser } from "./controllers/crud/delete/deleteUser.js";
-import { updateUser } from "./controllers/crud/add/updateUser.js";
+import { updateUser } from "./controllers/crud/update/updateUser.js";
 
 //Pages
 //Accueil
@@ -68,39 +62,55 @@ const checkAdmin = (req, res, next) => {
 
 router.use((req, res, next) => {
     res.locals.isLogged = req.session.isLogged;
-    next();
-});
-
-router.use((req, res, next) => {
     res.locals.role = req.session.role;
     next();
 });
 
-router.get('/', Accueil);
-router.get('/login', loginForm);
-router.post('/login', login);
+
+//CRUD
+// Ajout
+router.post('/registerRole', checkAdmin, registerRole);
 router.post('/register', register);
-router.post('/registerRole', registerRole);
-router.get('/profil', checkIsLogged, Profil);
-router.get('/listUsersRole', checkAdmin, ListUsersRole);
-router.post('/listUsersRole', checkAdmin);
-router.get('/listUsers', checkAdmin, ListUsers);
-router.post('/deleteUsersList', deleteUsersList);
+
+// Connexion
+router.post('/login', login);
+
+// Delete
+router.post('/deleteUsersList',checkAdmin, deleteUsersList);
 router.get('/deleteUser', deleteUser);
-router.get('/logout', Deconnexion);
 
+// Update
+router.post('/updateUser',checkAdmin, updateUser);
 
+//PAGES
+// Accueil
+router.get('/', Accueil);
+
+// Connexion
+router.get('/login', loginForm);
+router.get('/logout', checkIsLogged, Deconnexion);
+
+// Profil
+router.get('/profil', checkIsLogged, Profil);
+router.get('/listUsersRole', ListUsersRole);
+router.get('/listUsers', checkAdmin, ListUsers);
+
+// Jeux
 router.get('/jeux', Jeux);
 /* router.get('/jeux/:id', Jeu); */
+
+// Forum
 router.get('/forum', Forum);
 router.get('/forum/:id', Salon);
+
+// News
 router.get('/news', News);
 /* router.get('/news/:id', Article);  */
+
+// Shop
 router.get('/shop', Shop);
 /* router.get('/shop/:id', Produit); */
 
 
-// Route pour mettre à jour les données du membre
-router.post('/updateUser', updateUser);
 
 export default router;
