@@ -1,7 +1,7 @@
 <%- include('head') -%>
 <%- include('header') -%>
 
-<main>
+<main class=listUsers-main>
     <% if (locals.message) { %>
         <p><%= message %></p>
     <% } %>
@@ -10,26 +10,34 @@
 
     <h2>Il y en a <%= listUsers.length %>.</h2>
     <form action="/deleteUsersList" method="post">
-        <table>
+        <table class=table-list-users>
             <thead>
                 <tr>
-                    <th></th>
-                    <th>Login</th>
-                    <th>Email</th>
-                    <th>Date de création</th>
-                    <th>Image de profil</th>
-                    <th>Role</th>
-                    <th>Mot de passe</th>
+                    <th class=table-list-checkbox></th>
+                    <th class=table-list-login>Login</th>
+                    <th class='for-PC table-list-email'>Email</th>
+                    <th class='for-PC table-list-date'>Date de création</th>
+                    <th class='for-PC table-list-image'>Image de profil</th>
+                    <th class=table-list-role>Role</th>
+                    <th class=table-list-password>Mot de passe</th>
+                    <th class='for-mobile-button table-list-button'></th>
                 </tr>
             </thead>
             <tbody>
                 <% for (const user of listUsers) { %>
                     <tr class="user-id" data-id="<%= user.id %>" data-login="<%= user.login %>">
-                        <td><input type="checkbox" value="<%= user.login %>" name="usersToDelete" /></td>
+                      <%  if (locals.role !== 'superadmin' && (user.role === 'superadmin' || user.role === 'admin')){ %>
+                        <td class='user-checkbox'></td>
+                    <% } else { %>
+                    <td><input class='user-checkbox' type="checkbox" value="<%= user.id %>" name="usersToDelete" /></td>
+                    <% } %>  
+                    
+                    
+                        
                         <td class="user-login"><%= user.login %></td>
-                        <td class="user-email"><%= user.email %></td>
-                        <td class="user-date"><%= user.date %></td>
-                        <td class="user-image">
+                        <td class="user-email for-PC" ><%= user.email %></td>
+                        <td class="user-date for-PC"><%= user.date %></td>
+                        <td class="user-image for-PC">
                             <img class='user-image-update' src='images/profil/<%= user.image %>' style='width: 50px;'>
                             <input type="file" name="image" accept="image/*" maxSize="5MB" style="display: none;">
                         </td>
@@ -38,19 +46,31 @@
                             <span class="password-masked">••••••••</span>
                             <input type="password" class="password-input" style="display: none;">
                         </td>
-                        <td>
-                            <button class="edit-button" type="button" value="<%= user.login %>">Modifier</button>
+                        
+                            <%  if (locals.role !== 'superadmin' && (user.role === 'superadmin' || user.role === 'admin')){ %>
+                        <td></td>
+                    <% } else { %>
+                    <td><button class="edit-button" type="button" value="<%= user.id %>">Modifier</button>
                             <button class="save-button" type="button" style="display: none;">Valider</button>
                         </td>
+                    <% } %>
+                            
+                            
                     </tr>
                 <% } %>
             </tbody>
         </table>
-        <button type="submit">Supprimer les lignes sélectionnées</button>
+        <button type="submit" class=deleteUsers>Supprimer les lignes sélectionnées</button>
     </form>
 
     <h2>Ajouter un nouveau membre manuellement</h2>
-    <form method="post" action="/register" enctype="multipart/form-data">
+    <form class=form-addUser method="post" enctype="multipart/form-data"
+    
+    <%  if (rolebool===false){ %>
+        action="/register" >
+    <% } else { %>
+        action="/registerRole" >
+    <% } %>
         <div>
             <label for="pseudo">Login : </label>
             <input type="text" name="pseudo" id="pseudo">
@@ -67,8 +87,25 @@
             <label for="image">Image de profil (max 5 Mo) :</label>
             <input type="file" name="image" id="image" accept="image/*" maxSize="5MB">
         </div>
+        
+       <%  if (rolebool===true) { %>
+                        
+                    
+        <div>            
+                <label for="role">Role : </label>
+                <select name="role" id="role">
+                    <option value="moderateur">Modérateur</option>
+                    <option value="admin">Admin</option>
+                    <option value="productmanager">Product Manager</option>
+                    <option value="redacteur">Redacteur</option>
+                        <%  if (locals.role === 'superadmin' ){ %>
+                            <option value="superadmin">SuperAdmin</option>
+                        <% } %>
+                </select>
+            </div>
+            <% } %>
         <div>
-            <button type="submit">Ajouter</button>
+            <button class="buttonAddUsers" type="submit">Ajouter</button>
         </div>
     </form>
 
@@ -111,7 +148,7 @@
                 imageUpdate.style.display = 'none';
                 
                 role.innerHTML = `<select name="role">
-                    <option value="modo">Modérateur</option>
+                    <option value="moderateur">Modérateur</option>
                     <option value="admin">Administrateur</option>
                     <%  if (locals.role === 'superadmin' ){ %>
                             <option value="superadmin">SuperAdmin</option>
@@ -136,7 +173,6 @@
                 // Récupérez les données modifiées depuis les champs de texte
                 const row = saveButton.closest('tr');
                 const id = row.getAttribute('data-id');
-                const lastLogin = row.getAttribute('data-login');
                 const loginInput = row.querySelector('.user-login input');
                 const emailInput = row.querySelector('.user-email input');
                 const imageInput = row.querySelector('.user-image input');
@@ -147,7 +183,6 @@
                 
                 formData.append('image', imageInput.files[0]);
                 formData.append('id', id);
-                formData.append('lastLogin', lastLogin);
                 formData.append('login', loginInput.value);
                 formData.append('email', emailInput.value);
                 formData.append('role', roleSelect.value);

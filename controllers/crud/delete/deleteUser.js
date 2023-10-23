@@ -27,24 +27,23 @@ export function deleteUsersList(req, res) {
 }
 
 export function deleteUser(req, res) {
-    const login = req.session.login;
-    console.log("login = ", login, " alors que ", req.session.login)
+    const id = req.session.idUser;
 
-    deleteImage(login, () => {
+    deleteImage(id, () => {
         // Cette fonction de rappel sera appelée une fois que l'image est supprimée.
-        deleteUsers('?', login, res, req);
+        deleteUsers('?', id, res, req);
     });
 }
 
 function deleteUsers(incrementation, usersToDelete, res, req) {
     console.log(usersToDelete)
     console.log(incrementation)
-    query(`SELECT role FROM Users WHERE login IN(${incrementation}) LIMIT 1;`, usersToDelete, (error, role) => {
+    query(`SELECT role FROM Users WHERE id IN(${incrementation}) LIMIT 1;`, usersToDelete, (error, role) => {
         if (error) {
             console.error(`Erreur lors de la récuperation du rôle ${error}`);
             console.log('Erreur serveur');
         }
-        query(`DELETE FROM Users WHERE login IN(${incrementation});`, usersToDelete, (error) => {
+        query(`DELETE FROM Users WHERE id IN(${incrementation});`, usersToDelete, (error) => {
             if (error) {
                 console.error(`Erreur lors de la suppression ${error}`);
                 console.log('Erreur serveur');
@@ -56,8 +55,8 @@ function deleteUsers(incrementation, usersToDelete, res, req) {
     });
 }
 
-export function deleteImage(login, callback) {
-    query(`SELECT image FROM Users WHERE login = ?;`, [login], (error, result) => {
+export function deleteImage(id, callback) {
+    query(`SELECT image FROM Users WHERE id = ?;`, [id], (error, result) => {
         if (error) {
             console.error(`Erreur lors de la récuperation de l'image ${error}`);
             console.log('Erreur serveur');
@@ -68,7 +67,8 @@ export function deleteImage(login, callback) {
                 if (error) {
                     console.error(`Erreur lors de la suppression de l'image : ${error}`);
                     // Gérez l'erreur, par exemple, en renvoyant une réponse d'erreur au client.
-                } else {
+                }
+                else {
                     console.log('Image supprimée avec succès.');
                     // Fournissez une réponse indiquant que l'image a été supprimée avec succès.
                 }
@@ -77,7 +77,8 @@ export function deleteImage(login, callback) {
                     callback();
                 }
             });
-        } else {
+        }
+        else {
             console.log('Image en double.');
 
             if (callback) {
@@ -87,14 +88,17 @@ export function deleteImage(login, callback) {
     });
 }
 
-function redirection(role, login, res, req) {
-    if (login === req.session.login) {
+function redirection(role, id, res, req) {
+    console.log(role)
+    if (id === req.session.id) {
         req.session.destroy(() => {
             res.redirect("/" /*, { message : "Votre compte a été supprimé"}*/ );
         });
-    } else if (role[0].role !== "utilisateur") {
+    }
+    else if (role[0].role !== "utilisateur") {
         res.redirect("/listUsersRole" /*, { message : "Responsable(s) supprimé(s)"} */ );
-    } else {
+    }
+    else {
         res.redirect("/listUsers" /*, { message : "Utilisateur(s) supprimé(s)"} */ );
     }
 }

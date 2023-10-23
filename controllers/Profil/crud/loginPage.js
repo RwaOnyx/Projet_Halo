@@ -9,7 +9,7 @@ import path from 'path'
 /* ================= Redirection vers formulaire ================= */
 
 export function loginForm(req, res) {
-    res.render('loginForm.ejs');
+    res.render('login.ejs');
 };
 
 /* ================= Gestion de la connexion ================= */
@@ -30,7 +30,7 @@ export function login(req, res) {
 
             if (!resultSQL.length) {
                 res.render(
-                    'loginForm.ejs', { message: 'Identifiant ou mot de passe incorrect' }
+                    'login.ejs', { message: 'Identifiant ou mot de passe incorrect' }
                 );
                 return;
             }
@@ -40,12 +40,13 @@ export function login(req, res) {
                 if (resultPassword === false) {
                     console.log("passage mdp !")
                     res.render(
-                        'loginForm.ejs', { message: 'Identifiant ou mot de passe incorrect' }
+                        'login.ejs', { message: 'Identifiant ou mot de passe incorrect' }
                     );
                     return;
                 }
 
                 req.session.login = resultSQL[0].login;
+                req.session.idUser = resultSQL[0].id;
                 req.session.isLogged = true;
 
                 switch (resultSQL[0].role) {

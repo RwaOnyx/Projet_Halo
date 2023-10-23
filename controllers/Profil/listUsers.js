@@ -15,6 +15,7 @@ export default (req, res) => {
         user.date = dateLuxon.toFormat('dd/LL/yyyy');
     }
     req.session.page="users"
-    res.render('listUsers.ejs', { listUsers });
+    const rolebool=false
+    res.render('listUsers.ejs', { listUsers , rolebool });
 });
 }

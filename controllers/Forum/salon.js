@@ -17,7 +17,7 @@ export default (req, res) => {
             const dateISO = (message.date).toISOString();
             const dateLuxon = DateTime.fromISO(dateISO);
             message.date = dateLuxon.toFormat('dd/LL/yyyy HH:mm');
-        }
+        }  
 
         query(`SELECT intitule
         FROM ForumSalon 

@@ -63,6 +63,7 @@ const checkAdmin = (req, res, next) => {
 router.use((req, res, next) => {
     res.locals.isLogged = req.session.isLogged;
     res.locals.role = req.session.role;
+    res.locals.idUser = req.session.idUser;
     next();
 });
 
@@ -80,7 +81,7 @@ router.post('/deleteUsersList',checkAdmin, deleteUsersList);
 router.get('/deleteUser', deleteUser);
 
 // Update
-router.post('/updateUser',checkAdmin, updateUser);
+router.post('/updateUser', checkIsLogged,updateUser);
 
 //PAGES
 // Accueil

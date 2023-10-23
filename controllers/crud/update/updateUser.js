@@ -1,67 +1,85 @@
 import query from '../../../database.js';
 import bcrypt from 'bcrypt';
 import xss from 'xss';
-import { deleteImage } from '../delete/deleteUser.js'
+import formidable from 'formidable';
+import fs from 'fs';
+import { deleteImage } from '../delete/deleteUser.js';
 
 export function updateUser(req, res) {
-    let data = {
-        id: req.body.id,
-        login: xss(req.body.login),
-        email: xss(req.body.email),
-        role: xss(req.body.role)
-    }
+    const formData = formidable({ allowEmptyFiles: true, minFileSize: 0 });
 
-    console.log(req.body);
+    formData.parse(req, (err, fields, files) => {
+        if (err) {
+            console.error('Error parsing form data:', err);
+            return res.status(500).json({ message: 'Internal Server Error' });
+        }
 
-    // Gestion du mot de passe
-    checkPassword(req.body.password, data, (dataWithPassword) => {
-        // Gestion de l'image
-        checkImage(req.files, req.body.lastLogin, dataWithPassword, (dataWithImage) => {
+        const data = {
+            id: fields.id[0],
+            login: xss(fields.login),
+            email: xss(fields.email),
+            role: xss(fields.role),
+        };
 
-            // Exécution de la requête SQL
-            requeteSQL(dataWithImage, () => {
-                res.json({ message: "Mise à jour réussie" });
+        // Handle password
+        if (fields.password && fields.password !== '') {
+            console.log(fields.password)
+            bcrypt.hash(fields.password[0], 10, (hashErr, hash) => {
+                if (hashErr) {
+                    console.error('Hashing error:', hashErr);
+                }
+                else {
+                    console.log('Password hashed:', hash);
+                    data.password = hash;
+                }
+
+                // Handle image after password is hashed
+                gestionImage(files.image, fields.id[0], data, res);
             });
-        });
+        }
+        else {
+            // Handle image without password change
+            gestionImage(files.image, fields.id[0], data, res);
+        }
     });
 }
 
-function checkPassword(password, data, callback) {
-    if (password !== undefined && password !== "") {
-        bcrypt.hash(password, 10, (err, hash) => {
-            if (err) {
-                console.error('Erreur de hachage :', err);
-            } else {
-                console.log('Mot de passe haché :', hash);
-                data.password = hash;
-            }
-            callback(data);
-        });
-    } else {
-        callback(data);
-    }
-}
-
-function checkImage(image, lastLogin, data, callback) {
+function gestionImage(image, id, data, res) {
+    console.log('toto')
+    console.log(image, id, data)
     if (image) {
-        console.log("passage id : " + data.id);
-        deleteImage(lastLogin);
-        console.log("id : " + data.id);
-        const chemin = 'public/images/profil/' + data.id + ".";
-        console.log(chemin);
-        image.image.mv(chemin, (err) => {
-            if (err) {
-                console.log('Erreur' + err);
-            } else {
-                console.log("test : " + data);
-                data.image = data.id + ".";
-                console.log('Fichier téléchargé et valeurs mises à jour !');
-                console.log(data);
-            }
-            callback(data);
+        deleteImage(id, () => {
+            console.log(data.id)
+
+            const chemin = 'public/images/profil/' + data.id + '.';
+
+            fs.copyFile(image[0].filepath, chemin, (error) => {
+                console.log(image[0].filepath, chemin, error)
+
+                if (error) {
+                    console.error(`Erreur lors de la copie du fichier : ${error}`);
+                    res.status(500).send('Erreur serveur');
+                    return;
+                }
+
+                console.log(image[0].filepath)
+                console.log(image[0]._writeStream.path)
+                // Update data with the image file name
+                data.image = data.id + '.';
+                // Perform the SQL query
+                requeteSQL(data, () => {
+                    res.json({ message: 'Mise à jour réussie' });
+                });
+            });
         });
-    } else {
-        callback(data);
+
+
+    }
+    else {
+        // No image provided, just update data and perform the SQL query
+        requeteSQL(data, () => {
+            res.json({ message: 'Mise à jour réussie' });
+        });
     }
 }
 
@@ -70,6 +88,7 @@ function requeteSQL(data, callback) {
         if (error) {
             console.error(`Erreur lors de la modification ${error}`);
             console.log('Erreur serveur');
+            return;
         }
         callback();
     });

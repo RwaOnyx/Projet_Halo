@@ -7,11 +7,11 @@ import query from '../../../database.js';
 import xss from 'xss';
 
 export function register(req, res) {
-    processForm(req, res, true, "/listUsers");
+    processForm(req, res, false, "/listUsers");
 }
 
 export function registerRole(req, res) {
-    processForm(req, res, false, "/listUsersRole");
+    processForm(req, res, true, "/listUsersRole");
 }
 
 function processForm(req, res, role, redirectPath) {
@@ -64,9 +64,10 @@ function addUsers(fields, files, role, res, callback) {
             const imageRandom = Math.floor(Math.random() * 2);
             value.push(imageRandom + ".");
         }
-
-        if (!role) {
+        
+        if (role) {
             colonne.push("role");
+            console.log(fields)
             value.push(xss(fields.role[0]));
             interrogation.push("?");
         }
