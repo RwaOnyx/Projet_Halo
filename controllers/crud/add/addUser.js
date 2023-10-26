@@ -1,7 +1,6 @@
 import { v4 } from 'uuid';
 import formidable from 'formidable';
 import bcrypt from 'bcrypt';
-import path from 'path';
 import fs from 'fs';
 import query from '../../../database.js';
 import xss from 'xss';
@@ -62,7 +61,12 @@ function addUsers(fields, files, role, res, callback) {
             });
         } else {
             const imageRandom = Math.floor(Math.random() * 2);
-            value.push(imageRandom + ".");
+            if (imageRandom){
+                value.push("logo_bleu.");
+            } else {
+                value.push("logo_rouge.");
+            }
+            
         }
         
         if (role) {

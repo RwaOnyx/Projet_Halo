@@ -27,31 +27,37 @@
                 <% for (const user of listUsers) { %>
                     <tr class="user-id" data-id="<%= user.id %>" data-login="<%= user.login %>">
                       <%  if (locals.role !== 'superadmin' && (user.role === 'superadmin' || user.role === 'admin')){ %>
-                        <td class='user-checkbox'></td>
+                        
+                        <td class='user-checkbox'>
+                            <input class='checkbox' type="checkbox" value="<%= user.id %>" name="usersToDelete" disabled="disabled"/>
+                        </td>
+                    
                     <% } else { %>
-                    <td><input class='user-checkbox' type="checkbox" value="<%= user.id %>" name="usersToDelete" /></td>
-                    <% } %>  
                     
-                    
+                    <td class='user-checkbox'>
+                        <input class='checkbox' type="checkbox" value="<%= user.id %>" name="usersToDelete" />
+                    </td>
+                    <% } %>
                         
                         <td class="user-login"><%= user.login %></td>
                         <td class="user-email for-PC" ><%= user.email %></td>
                         <td class="user-date for-PC"><%= user.date %></td>
                         <td class="user-image for-PC">
                             <img class='user-image-update' src='images/profil/<%= user.image %>' style='width: 50px;'>
-                            <input type="file" name="image" accept="image/*" maxSize="5MB" style="display: none;">
+                            <input class="input display-none" type="file" name="image" accept="image/*" maxSize="5MB">
                         </td>
                         <td class="user-role"><%= user.role %></td>
                         <td class="user-password">
                             <span class="password-masked">••••••••</span>
-                            <input type="password" class="password-input" style="display: none;">
+                            <input class="password-input display-none" type="password" class="password-input display-none">
                         </td>
                         
                             <%  if (locals.role !== 'superadmin' && (user.role === 'superadmin' || user.role === 'admin')){ %>
                         <td></td>
                     <% } else { %>
-                    <td><button class="edit-button" type="button" value="<%= user.id %>">Modifier</button>
-                            <button class="save-button" type="button" style="display: none;">Valider</button>
+                        <td>
+                            <button class="edit-button" type="button" value="<%= user.id %>">Modifier</button>
+                            <button class="save-button display-none" type="button">Valider</button>
                         </td>
                     <% } %>
                             
@@ -69,7 +75,7 @@
     <%  if (rolebool===false){ %>
         action="/register" >
     <% } else { %>
-        action="/registerRole" >
+        action="/registerRole">
     <% } %>
         <div>
             <label for="pseudo">Login : </label>
@@ -91,8 +97,8 @@
        <%  if (rolebool===true) { %>
                         
                     
-        <div>            
-                <label for="role">Role : </label>
+        <div class="row">            
+                <label for="role">Role :</label>
                 <select name="role" id="role">
                     <option value="moderateur">Modérateur</option>
                     <option value="admin">Admin</option>
@@ -144,8 +150,10 @@
 
                 // Rendre le champ d'image visible
                 const imageInput = row.querySelector('.user-image input');
-                imageInput.style.display = 'block';
-                imageUpdate.style.display = 'none';
+                imageInput.classList.add('display-block');
+                imageInput.classList.remove('display-none');
+                imageUpdate.classList.add('display-none');
+                imageUpdate.classList.remove('display-block');
                 
                 role.innerHTML = `<select name="role">
                     <option value="moderateur">Modérateur</option>
@@ -160,11 +168,15 @@
                 role.querySelector('select').value = roleValue;
 
                 // Afficher le champ de mot de passe en mode édition
-                passwordSpan.style.display = 'none';
-                password.style.display = 'block';
+                passwordSpan.classList.add('display-none');
+                passwordSpan.classList.remove('display-block');
+                password.classList.add('display-block');
+                password.classList.remove('display-none');
 
-                editButton.style.display = 'none';
-                row.querySelector('.save-button').style.display = 'block';
+                editButton.classList.add('display-none');
+                editButton.classList.remove('display-block');
+                row.querySelector('.save-button').classList.add('display-block');
+                row.querySelector('.save-button').classList.remove('display-none');
             });
         });
 

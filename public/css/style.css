@@ -1,17 +1,15 @@
 @font-face {
     font-family: 'Halo';
-    src: url('/public/police/Halo.woff2') format('woff2'), /* Format WOFF2 */
-    url('/public/police/Halo.woff') format('woff');
-    /* Format WOFF */
+    src: url('/police/Halo.woff2') format('woff2'), /* Format WOFF2 */
+    url('/police/Halo.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Halo2';
-    src: url('public/police/Halo-Outline.woff2') format('woff2'), /* Format WOFF2 */
-    url('public/police/Halo-Outline.woff') format('woff');
-    /* Format WOFF */
+    src: url('/police/Halo-Outline.woff2') format('woff2'), /* Format WOFF2 */
+    url('/police/Halo-Outline.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -25,440 +23,17 @@ body {
     font-size: 20px;
 }
 
-h1 {
-    color: white;
-    margin: 0;
-    text-align: center;
-    font-size: 3em
-}
-
-h2,
-h3 {
-    color: rgb(7, 8, 13);
-}
-
-h2 {
-    text-align: center;
-}
-
-header {
-    background: rgb(44, 46, 69);
-    position: sticky;
-    top: 0;
-    border-bottom: 1px #CFE0F3 solid;
-    font-size: 2.3em
-}
-
-header li {
-    list-style-type: none;
-    text-decoration: none;
-}
-
-header ul {
-    margin: 0;
-    padding: 0;
-}
-
-header a {
-    color: white;
-}
-
-body {
-    padding: 0;
-    margin: 0;
-}
-
-main {
-    background: rgb(44, 46, 69);
-    background: -webkit-gradient(linear, 100% 0, 0 0, from(rgba(44, 46, 69, 1)), color-stop(0.13, rgba(48, 50, 73, 1)), color-stop(0.35, rgba(67, 69, 93, 1)), color-stop(0.57, rgba(90, 92, 117, 1)), color-stop(0.68, rgba(109, 110, 136, 1)), to(rgba(207, 207, 237, 1)));
-    background: -webkit-linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
-    background: -moz-linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
-    background: -o-linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
-    background: linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
-}
-
-/* PAGE ACCUEIL */
-
-.index-main h1 {
-    font-family: Halo, sans-serif;
-    padding-top: 50%;
-}
-
-section {
-    background: rgb(207, 224, 243);
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(207, 224, 243, 1)), color-stop(0.08, rgba(149, 192, 230, 1)), color-stop(0.3, rgba(90, 159, 217, 1)), color-stop(0.5, rgba(74, 150, 214, 1)), color-stop(0.7, rgba(90, 159, 217, 1)), color-stop(0.95, rgba(149, 192, 230, 1)), to(rgba(207, 224, 243, 1)));
-    background: -webkit-linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
-    background: -moz-linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
-    background: -o-linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
-    background: linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
-
-    padding: 30px 60px;
-    margin: 100% auto;
-}
-
-section a {
-    color: white;
-    text-decoration: none;
-    color: #2C2E45;
-}
-
-section img {
-    width: 80%;
-    margin: auto;
-}
-
-/* PAGE LOGIN */
-
-.login-main form {
-    width: 70%;
-    margin: 50px auto;
-    padding: 20px;
-    border: 2px solid white;
-    text-align: center;
-
-}
-
-.login-main form div,
-.listUsers-main form div {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-main form input,
-.listUsers-main .form-addUser input {
-    width: 80%;
-    margin: 10px auto;
-    font-size: 1em;
-}
-
-.listUsers-main select,
-.listUsers-main .form-addUser select {
-    font-size: 1em;
-}
-
-.login-main button,
-.btn-gestion-users,
-.listUsers-main .form-addUser button {
-    width: 35%;
-    margin: 25px auto 10px auto;
-    font-size: 1em;
-    padding: 15px;
-}
-
-.login-main {
-    height: 100%;
-    color: white;
-    font-size: 2.2em;
-}
-
-.inscriptionQuestion {
-    text-align: center;
-}
-
-.login-main header {
-    background: rgb(44, 46, 69);
-}
-
-/* PAGE PROFIL */
-
-.profil-main {
-    height: 100%;
-    color: white;
-    font-size: 2.2em;
-}
-
-.profil-main h2 {
-    color: white;
-}
-
-.profil-info-ext {
-    border: 2px solid white;
-    margin: 10px auto;
-    width: 85%;
-}
-
-.profil-info-int {
-    padding: 5px;
-    border: 2px solid white;
-    margin: 10px auto;
-}
-
-.profil-info-int input {
-    width: 70%;
-    font-size: 1em;
-}
-
-.profil-info-ext .edit-button,
-.save-button {
-    display: block;
-    font-size: 1em;
-    padding: 10px;
-    margin: 10px auto;
-    width: 25%;
-    text-align: center;
-}
-
-/* Style pour le conteneur principal */
-
-.gestion-users {
-    margin: 15px auto;
-    text-align: center;
-    /* Ajout de cette propriété */
-}
-
-
-
-.choix-gestion-users {
+html body .display-none {
     display: none;
-    flex-direction: column;
-    z-index: 1;
-    text-align: left;
-    /* Rétablir l'alignement à gauche si nécessaire */
-    background-color: white;
-    margin: auto;
-    width: 30%;
 }
 
-.choix-gestion-users a {
-    border: 1px solid black;
-    padding: 5px;
-    text-decoration: none;
-    color: black;
-    text-align: center;
+html body .display-block {
+    display: block;
 }
 
-.gestion-users:hover .choix-gestion-users {
-    display: flex;
+html body .image-profil {
+    width:150px;
 }
-
-.profil-main .gestion-compte {
-    display: flex;
-    justify-content: space-around;
-}
-
-.profil-main .gestion-compte a {
-    width: 35%;
-    padding: 10px;
-    background: rgb(44, 46, 69);
-    text-decoration: none;
-    color: white;
-    text-align: center;
-}
-
-.profil-main .put-bottom {
-    position: fixed;
-    bottom: 15px;
-    width: 100%;
-}
-
-
-
-
-/* Tableau */
-
-.table-list-users {
-    border: 1px solid #FFFFFF;
-    background-color: #FFFFFF;
-    width: 100%;
-    text-align: center;
-}
-
-.table-list-users td,
-table.table-list-users th {
-    border: 1px solid #FFFFFF;
-    padding: 3px 2px;
-}
-
-.table-list-users tbody td {
-    font-size: 1.7em;
-}
-
-.table-list-users tbody .user-role {
-    width: 35px;
-}
-
-.table-list-users tr:nth-child(even) {
-    background: #D0E4F5;
-}
-
-.table-list-users thead {
-    background: #0B6FA4;
-    border-bottom: 4px solid #FFFFFF;
-}
-
-.table-list-users thead th {
-    font-size: 2em;
-    font-weight: bold;
-    color: #FFFFFF;
-    text-align: center;
-    border-left: 2px solid #FFFFFF;
-}
-
-.table-list-users thead th:first-child {
-    border-left: none;
-}
-
-.table-list-users button {
-    padding: 10px;
-    font-size: 0.8em;
-}
-
-.table-list-users td input[type="checkbox"] {
-    width: 30px;
-    height: 30px;
-}
-
-.table-list-users td select {
-    font-size: 1em;
-    width: 200px;
-}
-
-.table-list-users .user-login input {
-    font-size: 1em;
-    width: 250px;
-}
-
-.table-list-users .user-role select option {
-    font-size: 0.5em;
-}
-
-.table-list-users .user-password input {
-    font-size: 1em;
-    width: 170px;
-}
-
-.table-list-users tr .table-list-checkbox {
-    width: 8%;
-}
-
-.table-list-users tr .table-list-login,
-.user-login {
-    width: 30%;
-}
-
-.table-list-users tr .table-list-role,
-.user-role {
-    width: 25%;
-}
-
-.table-list-users tr .table-list-password,
-.user-password {
-    width: 20%;
-}
-
-.table-list-users tr .table-list-button {
-    width: 17%;
-}
-
-.save-button {
-    width: 76%;
-}
-
-/* dcdqsc */
-
-.listUsers-main .deleteUsers {
-    font-size: 1.5em;
-    padding: 10px;
-}
-
-.listUsers-main .form-addUser div {
-    align-items: center;
-    font-size: 2em;
-}
-
-.listUsers-main .form-addUser .buttonAddUsers,
-.listUsers-main .form-addUser input {
-    padding: 10px;
-}
-
-
-.listUsers-main h2 {
-    align-items: center;
-    font-size: 2.4em;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* MENU BURGER */
 
@@ -512,8 +87,8 @@ header input[type="checkbox"] {
     margin-top: 474px;
     transform: translateX(-300px);
     transition: transform 250ms ease-in-out;
-    background: rgb(101,69,97);
-background: linear-gradient(180deg, rgba(101,69,97,1) 0%, rgba(174,109,171,1) 100%);
+    background: rgb(101, 69, 97);
+    background: linear-gradient(180deg, rgba(101, 69, 97, 1) 0%, rgba(174, 109, 171, 1) 100%);
 }
 
 .sidebarMenuInner {
@@ -622,11 +197,570 @@ header input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
 }
 
 
+h1 {
+    color: white;
+    margin: 0;
+    text-align: center;
+    font-size: 3em;
+    font-family: Halo, sans-serif;
+    font-weight: normal;
+}
+
+h2,
+h3 {
+    color: rgb(7, 8, 13);
+}
+
+h2 {
+    text-align: center;
+}
+
+header {
+    background: rgb(44, 46, 69);
+    position: sticky;
+    top: 0;
+    border-bottom: 1px #CFE0F3 solid;
+    font-size: 2.3em
+}
+
+header li {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+header ul {
+    margin: 0;
+    padding: 0;
+}
+
+header a {
+    color: white;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    background: rgb(44, 46, 69);
+    background: -webkit-gradient(linear, 100% 0, 0 0, from(rgba(44, 46, 69, 1)), color-stop(0.13, rgba(48, 50, 73, 1)), color-stop(0.35, rgba(67, 69, 93, 1)), color-stop(0.57, rgba(90, 92, 117, 1)), color-stop(0.68, rgba(109, 110, 136, 1)), to(rgba(207, 207, 237, 1)));
+    background: -webkit-linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
+    background: -moz-linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
+    background: -o-linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
+    background: linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
+}
+
+/* Gestion bouton */
+
+.login-main button,
+.profil-main button,
+.profil-main .gestion-compte a,
+.listUsers-main button,
+.listUsers-main button {
+    color: #ffffff;
+    background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
+    padding: 15px;
+    border: solid #4a96d6 5px;
+    border-radius: 50px;
+    transition: all 830ms;
+    /* Utilisation de "all" pour gérer toutes les propriétés de transition */
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.login-main button:hover,
+.profil-main button:hover,
+.profil-main .gestion-compte a:hover {
+    font-size: 1.1em;
+    padding: 20px;
+    background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
+    color: #2C2E45;
+    border: solid 5px #4a96d6;
+    -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+}
+
+.listUsers-main button:hover {
+    background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
+    color: #2C2E45;
+    border: solid 5px #4a96d6;
+    -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+}
+
+.listUsers-main .buttonAddUsers:hover,
+.listUsers-main .deleteUsers:hover {
+    padding: 20px;
+}
+
+/* Fin Gestion bouton */
+
+/* Gestion input */
+
+.login-main input,
+.profil-main input,
+.listUsers-main .input,
+.listUsers-main form-addUser input {
+    border-width: 2px;
+    border-color: #747570;
+    background-color: #cfe0f3;
+    color: #07080D;
+    border-style: solid;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px rgba(116, 117, 112, .75);
+}
+
+.login-main input:focus,
+.profil-main input:focus,
+.listUsers-main .input:focus,
+.listUsers-main form-addUser input:focus {
+    outline: none;
+}
+
+/* Fin Gestion input */
+
+/* PAGE ACCUEIL */
+
+.index-main h1 {
+    padding-top: 50%;
+    font-size: 10em;
+    font-family: Halo, sans-serif;
+}
+
+section {
+    background: rgb(207, 224, 243);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(207, 224, 243, 1)), color-stop(0.08, rgba(149, 192, 230, 1)), color-stop(0.3, rgba(90, 159, 217, 1)), color-stop(0.5, rgba(74, 150, 214, 1)), color-stop(0.7, rgba(90, 159, 217, 1)), color-stop(0.95, rgba(149, 192, 230, 1)), to(rgba(207, 224, 243, 1)));
+    background: -webkit-linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
+    background: -moz-linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
+    background: -o-linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
+    background: linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
+
+    padding: 30px 60px;
+    margin: 100% auto;
+}
+
+section a {
+    color: white;
+    text-decoration: none;
+    color: #2C2E45;
+}
+
+section img {
+    width: 80%;
+    margin: auto;
+}
+
+/* PAGE LOGIN */
+
+.login-main form, .listUsers-main .form-addUser {
+    width: 70%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid white;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.login-main form div,
+.listUsers-main form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.listUsers-main .form-addUser .row {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.login-main form input,
+.listUsers-main .form-addUser input, .listUsers-main input {
+    width: 80%;
+    margin: 10px auto;
+    font-size: 1em;
+}
+
+.listUsers-main select,
+.listUsers-main .form-addUser select {
+    font-size: 1em;
+}
+
+.login-main button,
+.btn-gestion-users,
+.listUsers-main .form-addUser button {
+    margin: 25px auto 10px auto;
+    font-size: 1em;
+    padding: 15px;
+}
+
+.login-main {
+    height: 100%;
+    color: white;
+    font-size: 2.2em;
+}
+
+.inscriptionQuestion {
+    text-align: center;
+}
+
+.login-main header {
+    background: rgb(44, 46, 69);
+}
+
+
+/* PAGE PROFIL */
+
+.profil-main {
+    height: 100%;
+    color: white;
+    font-size: 2.2em;
+}
+
+.profil-main h2 {
+    color: white;
+}
+
+.profil-info-ext {
+    border: 2px solid white;
+    margin: 10px auto;
+    width: 85%;
+    border-radius: 15px;
+}
+
+.profil-info-int {
+    padding: 5px;
+    border: 2px solid white;
+    margin: 10px auto;
+}
+
+.profil-info-int input {
+    width: 70%;
+    font-size: 1em;
+}
+
+.profil-info-ext .edit-button,
+.profil-info-ext .save-button {
+    font-size: 1em;
+    padding: 10px;
+    margin: 10px auto;
+    width: 25%;
+    text-align: center;
+}
+
+/* Style pour le conteneur principal */
+
+.gestion-users {
+    margin: 15px auto;
+    text-align: center;
+    /* Ajout de cette propriété */
+}
+
+
+
+.choix-gestion-users {
+    display: none;
+    flex-direction: column;
+    z-index: 1;
+    text-align: left;
+    margin: auto;
+    background: transparent;
+    align-items: center;
+}
+
+.choix-gestion-users a {
+    padding: 5px;
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
+    border: solid #4a96d6 5px;
+    border-radius: 50px;
+    transition: all 830ms;
+    /* Utilisation de "all" pour gérer toutes les propriétés de transition */
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.choix-gestion-users a:hover {
+    background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
+    color: #2C2E45;
+    border: solid 5px #4a96d6;
+    -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+}
+
+.gestion-users:hover .choix-gestion-users {
+    display: flex;
+}
+
+.profil-main .gestion-compte {
+    display: flex;
+    justify-content: space-around;
+}
+
+.profil-main .gestion-compte a {
+    text-decoration: none;
+}
+
+.profil-main .put-bottom {
+    position: fixed;
+    bottom: 15px;
+    width: 100%;
+}
+
+
+
+
+/* Tableau */
+
+.table-list-users {
+    border: 1px solid #FFFFFF;
+    background-color: #FFFFFF;
+    margin: auto 1rem;
+    text-align: center;
+}
+
+.table-list-users td,
+table.table-list-users th {
+    border: 1px solid #FFFFFF;
+    padding: 3px 2px;
+}
+
+.table-list-users tbody td {
+    font-size: 1.9em;
+}
+
+.table-list-users tbody .user-role {
+    width: 35px;
+}
+
+.table-list-users tr:nth-child(even) {
+    background: #D0E4F5;
+}
+
+.table-list-users thead {
+    background: #0B6FA4;
+    border-bottom: 4px solid #FFFFFF;
+}
+
+.table-list-users thead th {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    border-left: 2px solid #FFFFFF;
+}
+
+.table-list-users thead th:first-child {
+    border-left: none;
+}
+
+.table-list-users button {
+    padding: 10px;
+    font-size: 1em;
+}
+
+.table-list-users td input[type="checkbox"] {
+    width: 65px;
+    height: 65px;
+}
+
+.table-list-users td select {
+    font-size: 1em;
+    width: 200px;
+}
+
+.table-list-users .user-login input {
+    font-size: 1em;
+    width: 250px;
+}
+
+.table-list-users .user-role select option {
+    font-size: 0.5em;
+}
+
+.table-list-users .user-password input {
+    font-size: 1em;
+    width: 170px;
+}
+
+.table-list-users tr .table-list-checkbox {
+    width: 10%;
+}
+
+.table-list-users tr .table-list-login,
+.user-login {
+    width: 30%;
+}
+
+.table-list-users tr .table-list-role,
+.user-role {
+    width: 25%;
+}
+
+.table-list-users tr .table-list-password,
+.user-password {
+    width: 20%;
+}
+
+.table-list-users tr .table-list-button {
+    width: 17%;
+}
+
+.listUsers-main .table-list-users tr {
+    height: 130px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Page Gestion utilisateur */
+
+.listUsers-main .deleteUsers {
+    margin: 1rem;
+    font-size: 1.8em;
+}
+
+.listUsers-main .form-addUser div {
+    align-items: center;
+    font-size: 2em;
+}
+
+.listUsers-main .form-addUser .buttonAddUsers,
+.listUsers-main .form-addUser input {
+    padding: 10px;
+}
+
+
+.listUsers-main h2 {
+    align-items: center;
+    font-size: 2.4em;
+}
+
+
+
+
+
+
+
+
+/* Gestion checkbox */
+
+@keyframes click-wave {
+    0% {
+        width: 40px;
+        height: 40px;
+        opacity: 0.35;
+        position: relative;
+    }
+
+    100% {
+        width: 200px;
+        height: 200px;
+        margin-left: -78px;
+        margin-top: -78px;
+        opacity: 0;
+    }
+}
+
+.user-checkbox,
+.checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    transition: all 0.3s ease;
+    border: 1px solid #4A96D6;
+    border-radius: 7px;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    outline: none;
+    position: relative;
+    z-index: 1000;
+}
+
+.checkbox:hover {
+    background: #a6b2bb;
+}
+
+.user-checkbox:checked,
+.checkbox:checked {
+    background: #4A96D6;
+}
+
+.user-checkbox:checked::before,
+.checkbox:checked::before {
+    content: '';
+    width: 63px;
+    height: 63px;
+    position: absolute;
+    background-image: url(/images/site/cross.svg);
+    background-size: 12rem;
+    background-position: center center;
+    display: inline-block;
+    font-size: 0.5em;
+    text-align: center;
+    line-height: 40px;
+}
+
+.user-checkbox:checked::after,
+.checkbox:checked::after {
+    animation: click-wave 0.65s;
+    background: #4A96D6;
+    content: '';
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+
+
+/* Fin gestion checkbox */
+
+/* Page Forum */
+
+.forum-main .list-forum, .forum-main .list-forum .list-forum-infos .list-forum-infos-detail {
+    display:flex;
+    flex-direction:row;
+}
+
+.forum-main .list-forum .list-forum-infos, .forum-main .list-forum .list-forum-nbMessages {
+    display:flex;
+    flex-direction:column;
+}
+
+.forum-main .list-forum-infos-detail > * {
+    width:30%;
+}
+.forum-main {
+    font-size:2.4em;
+}
+.forum-main h3 {
+    font-size:1em;    
+}
+
+.forum-main  .list-forum-infos, .list-forum-infos-details{
+   width :100%;
+}
+
 @media (min-width: 540px) {
-    .for-mobile {
+    .for-mobile,#for-mobile  {
         display: block;
     }
-    .for-PC {
+    .for-PC,#for-PC  {
         display: none
     }
 }
@@ -636,7 +770,7 @@ header input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
         display: none;
     }
 
-    .for-PC {
+    .for-PC,#for-PC {
         display: block;
     }
 }

@@ -6,6 +6,12 @@ const router = express.Router();
 import { register, registerRole } from "./controllers/crud/add/addUser.js";
 import { deleteUsersList, deleteUser } from "./controllers/crud/delete/deleteUser.js";
 import { updateUser } from "./controllers/crud/update/updateUser.js";
+import { addSalon } from "./controllers/crud/add/addSalon.js";
+import { deleteSalon } from "./controllers/crud/delete/deleteSalon.js";
+import { updateSalon } from "./controllers/crud/update/updateSalon.js";
+import { addMessage } from "./controllers/crud/add/addMessage.js";
+import { deleteMessage } from "./controllers/crud/delete/deleteMessage.js";
+import { updateMessage } from "./controllers/crud/update/updateMessage.js";
 
 //Pages
 //Accueil
@@ -72,6 +78,8 @@ router.use((req, res, next) => {
 // Ajout
 router.post('/registerRole', checkAdmin, registerRole);
 router.post('/register', register);
+router.post('/addSalon', addSalon);
+router.post('/addMessage/:id', addMessage);
 
 // Connexion
 router.post('/login', login);
@@ -79,9 +87,13 @@ router.post('/login', login);
 // Delete
 router.post('/deleteUsersList',checkAdmin, deleteUsersList);
 router.get('/deleteUser', deleteUser);
+router.post('/deleteSalon', deleteSalon);
+router.post('/deleteMessage/:id', deleteMessage);
 
 // Update
 router.post('/updateUser', checkIsLogged,updateUser);
+router.post('/updateSalon', updateSalon);
+router.post('/updateMessage', updateMessage);
 
 //PAGES
 // Accueil

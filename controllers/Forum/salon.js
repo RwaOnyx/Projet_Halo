@@ -19,7 +19,7 @@ export default (req, res) => {
             message.date = dateLuxon.toFormat('dd/LL/yyyy HH:mm');
         }  
 
-        query(`SELECT intitule
+        query(`SELECT intitule, id
         FROM ForumSalon 
         WHERE id = ?;`, id, (error, salon) => {
             if (error) {
@@ -27,7 +27,9 @@ export default (req, res) => {
                 res.status(500).send('Erreur serveur');
                 return;
             }
-
+            console.log(salon)
+            salon=salon[0]
+            console.log(salon)
             res.render('salon.ejs', { messages, salon });
         });
     })

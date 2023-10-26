@@ -61,7 +61,7 @@ export function deleteImage(id, callback) {
             console.error(`Erreur lors de la récuperation de l'image ${error}`);
             console.log('Erreur serveur');
         }
-        if (result.length === 1) {
+        if (result.length === 1 && result[0].image !== "logo_bleu." && result[0].image !== "logo_rouge.") {
             const chemin = path.join('public/images/profil/', result[0].image); // Chemin complet du fichier à supprimer
             fs.unlink(chemin, (error) => {
                 if (error) {

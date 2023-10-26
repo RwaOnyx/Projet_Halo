@@ -12,6 +12,7 @@ export default (req, res) => {
                 return;
             }
             let profil=result[0]
+            console.log(profil)
             const dateISO = (profil.date).toISOString();
             const dateLuxon = DateTime.fromISO(dateISO);
             profil.date = dateLuxon.toFormat('dd/LL/yyyy');

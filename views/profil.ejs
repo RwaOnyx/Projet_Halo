@@ -11,12 +11,12 @@
             <p>Email : <span class="email"><%= profil.email %></span></p>
             <p>Date de création : <%= profil.date %></p>
             <p>Role : <span class="role" data-role="<%= profil.role %>"><%= profil.role %></span></p>
-            <p>Photo de profil : <span class="image"><img src="images/profil/<%=profil.image%>" style="width: 50px;"></span>
-            <input class="inputImage" type="file" name="image" accept="image/*" maxSize="5MB" style="display: none;">
+            <p>Photo de profil : <span class="image"><img src="images/profil/<%=profil.image%>"></span>
+            <input class="inputImage display-none" type="file" name="image" accept="image/*">
             </p>
         </div>
         <button class="edit-button" type="button" value="<%= profil.id %>">Modifier</button>
-        <button class="save-button" style="display: none;" type="button" data-id="<%= profil.id %>">Valider</button>
+        <button class="save-button display-none" type="button" data-id="<%= profil.id %>">Valider</button>
     </div>
     <%  if (locals.role === "superadmin" || locals.role === "admin"){ %>
         <div class="gestion-users">
@@ -59,13 +59,16 @@
         email.appendChild(emailInput);
 
         // Note: 'row' is not defined. You might need to select the appropriate element.
-
-        imageInput.style.display = 'block';
-        image.style.display = 'none';
+        imageInput.classList.add('display-block');
+        imageInput.classList.remove('display-none');
+        image.classList.add('display-none');
+        image.classList.remove('display-block');
 
         // Afficher le bouton "Valider" et masquer le bouton "Modifier"
-        editButton.style.display = 'none';
-        saveButton.style.display = 'block';
+        editButton.classList.add('display-none');
+        editButton.classList.remove('display-block');
+        saveButton.classList.add('display-block');
+        saveButton.classList.remove('display-none');
     });
 
     saveButton.addEventListener('click', () => {
@@ -73,7 +76,7 @@
         const emailInput = document.querySelector('.email input');
         const role = document.querySelector('.role');
         const imageInput = document.querySelector('.inputImage');
-        console.log(imageInput)
+        
         // Créer un objet FormData pour envoyer les données
         const formData = new FormData();
         
@@ -82,7 +85,7 @@
         formData.append('login', loginInput.value);
         formData.append('role', role.dataset.role);
         formData.append('image', imageInput.files[0]);
-        console.log(formData)
+        
         // Effectuer une requête fetch pour envoyer les données
         fetch('/updateUser', {
             method: 'POST',
