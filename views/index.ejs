@@ -1,9 +1,11 @@
 <%- include('head') -%>
 <%- include('header') -%>
 <main class="index-main">
+  <div class="iframe">
+      
+  <iframe class="for-mobile" src="https://www.youtube.com/embed/videoseries?si=suy5xyKZOgxDk-j3&amp;controls=0&amp;autoplay=0&amp;mute=1&amp;list=PLHXUP8gjVgR4Xn3xAFKOO9v-11DKGpK6D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   
- <iframe class="for-mobile" src="https://www.youtube.com/embed/videoseries?si=QvPVAszvDeVszfxU&amp;list=PLH-do-y953IiystRnbK49ot5y0lfBYxSd&autoplay=1&mute=1&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    
+    </div>
     <% if (locals.isLogged) { %>
         <p><%(locals.grade)%></p>
     <% } %>
@@ -77,4 +79,5 @@
     </section>
     
 </main>
+<script src="/js/script/script.js"></script>
 <%- include('footer') -%>

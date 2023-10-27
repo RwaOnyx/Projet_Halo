@@ -15,7 +15,7 @@ export default (req, res) => {
         const dateLuxon = DateTime.fromISO(dateISO);
         user.date = dateLuxon.toFormat('dd/LL/yyyy');
     }
-    
+    req.session.page = "listUsers";
     const rolebool=true
     res.render('listUsers.ejs', { listUsers,rolebool });
 });

@@ -70,6 +70,7 @@ router.use((req, res, next) => {
     res.locals.isLogged = req.session.isLogged;
     res.locals.role = req.session.role;
     res.locals.idUser = req.session.idUser;
+    res.locals.page = req.session.page;
     next();
 });
 

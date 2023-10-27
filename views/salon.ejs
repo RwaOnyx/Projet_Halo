@@ -35,69 +35,13 @@
             <% } %>
         </form>
         <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
-                <button class="edit-button" type=submit>Modifier le message</button>      
-                <button class="save-button display-none" type=submit data-id='<%= message.id %>'>Valider</button>
+                <button class="edit-button-salon" type=submit>Modifier le message</button>      
+                <button class="save-button-salon display-none" type=submit data-id='<%= message.id %>'>Valider</button>
         <% } %>
     <% } %>
 
 
-<script>
-    const editButton = document.querySelector('.edit-button');
-    const saveButton = document.querySelector('.save-button');
-    
-    editButton.addEventListener('click', () => {
-        const contenuMessage = document.querySelector('.message');
-        const contenuMessageInput = document.createElement('input');
-        contenuMessageInput.type = 'text';
-        contenuMessageInput.value = contenuMessage.textContent;
-        contenuMessage.textContent = '';
-        contenuMessage.appendChild(contenuMessageInput);
 
-        // Afficher le bouton "Valider" et masquer le bouton "Modifier"
-        editButton.classList.add('display-none');
-        editButton.classList.remove('display-block');
-        saveButton.classList.add('display-block');
-        saveButton.classList.remove('display-none');
-    });
-    
-    saveButton.addEventListener('click', () => {
-        
-        const contenuMessageResult = document.querySelector('.message input');
-        // Créer un objet FormData pour envoyer les données
-        console.log(contenuMessageResult)
-        const formData = new FormData();
-        
-        formData.append('id',saveButton.dataset.id);
-        formData.append('message', contenuMessageResult.value);
-        
-        // Effectuer une requête fetch pour envoyer les données
-        fetch('/updateMessage', {
-            method: 'POST',
-            body: formData
-        })
-        .then((response) => {
-            console.log(response)
-            if (response.redirected===true){
-               window.location.href = response.url
-            } else {
-                return response.json()
-                .then((data) => {
-                        // Traitez la réponse du serveur (par exemple, affichez un message de succès)
-                        console.log("Récupération réussie");
-                        window.location.reload()
-                    })
-            }
-        })
-                    
-                    .catch((error) => {
-                        // Gérez les erreurs (par exemple, affichez un message d'erreur)
-                        console.error('Erreur lors de la mise à jour :', error);
-                    });
-
-    });
-    
-    
-    
-</script>
 </main>
+<script src="/js/script/salon.js"></script>
 <%- include('footer') -%>

@@ -16,6 +16,7 @@ export default (req, res) => {
     }
     req.session.page="users"
     const rolebool=false
+    req.session.page = "listUsers";
     res.render('listUsers.ejs', { listUsers , rolebool });
 });
 }

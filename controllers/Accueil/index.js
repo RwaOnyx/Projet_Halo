@@ -46,6 +46,8 @@ LIMIT 1;`,salonJour.id,
             }
             salonJour.premierMessage = messageSalonJour[0].message
             
+            req.session.page = "accueil";
+            
             res.render('index.ejs', { salonJour });
         
             

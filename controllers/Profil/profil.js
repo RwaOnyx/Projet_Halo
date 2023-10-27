@@ -17,7 +17,8 @@ export default (req, res) => {
             const dateLuxon = DateTime.fromISO(dateISO);
             profil.date = dateLuxon.toFormat('dd/LL/yyyy');
 
-
+            req.session.page = "profil";
+            
             res.render('profil.ejs', { profil });
         });
 }

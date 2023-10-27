@@ -27,9 +27,9 @@ export default (req, res) => {
                 res.status(500).send('Erreur serveur');
                 return;
             }
-            console.log(salon)
+            
             salon=salon[0]
-            console.log(salon)
+            req.session.page = "salon";
             res.render('salon.ejs', { messages, salon });
         });
     })

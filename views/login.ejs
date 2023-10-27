@@ -26,7 +26,7 @@
         <button class="showInscriptionForm">Inscrivez-vous !</button></p>
     </div>
     
-    <form method="post" class="inscriptionForm" enctype="multipart/form-data" action="/register" style="display: none;">
+    <form method="post" class="inscriptionForm display-none" enctype="multipart/form-data" action="/register">
         <div>
             <label for="pseudo">Pseudo :</label>
             <input type="text" name="pseudo" id="pseudo">     
@@ -49,18 +49,6 @@
     </form>
 </main>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const showInscriptionFormButton = document.querySelector(".showInscriptionForm");
-        const inscriptionForm = document.querySelector(".inscriptionForm");
-        const inscriptionQuestion = document.querySelector(".inscriptionQuestion");
-
-        // Ajoutez un gestionnaire d'événement au bouton pour afficher le formulaire
-        showInscriptionFormButton.addEventListener("click", function() {
-            inscriptionForm.style.display = "block";
-            inscriptionQuestion.style.display = "none";
-        });
-    });
-</script>
+<script src="/js/script/login.js"></script>
 
 <%- include('footer') -%>

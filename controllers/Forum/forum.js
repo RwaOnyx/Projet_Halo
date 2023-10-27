@@ -24,7 +24,7 @@ export default (req, res) => {
             dateLuxon = DateTime.fromISO(dateISO);
             salon.derniereUpdate = dateLuxon.toFormat('dd/LL/yyyy HH:mm');
         }
-        
+        req.session.page = "forum";
     res.render('forum.ejs', { forum });
     });
 };
