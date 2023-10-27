@@ -14,13 +14,23 @@
     font-style: normal;
 }
 
-
+iframe {
+  position: absolute;
+    z-index: -2;
+   width:100% ;
+   height:100%;
+}
 
 html,
 body {
     overflow-x: hidden;
     height: 100%;
     font-size: 20px;
+    cursor: url('/images/cursor/normal.cur'), auto;
+}
+
+a, button,label {
+    cursor: url('/images/cursor/selector.cur'), auto;
 }
 
 html body .display-none {
@@ -222,6 +232,9 @@ header {
     border-bottom: 1px #CFE0F3 solid;
     font-size: 2.3em
 }
+header img {
+    width:100px;
+}
 
 header li {
     list-style-type: none;
@@ -242,7 +255,7 @@ body {
     margin: 0;
 }
 
-main {
+.main-background {
     background: rgb(44, 46, 69);
     background: -webkit-gradient(linear, 100% 0, 0 0, from(rgba(44, 46, 69, 1)), color-stop(0.13, rgba(48, 50, 73, 1)), color-stop(0.35, rgba(67, 69, 93, 1)), color-stop(0.57, rgba(90, 92, 117, 1)), color-stop(0.68, rgba(109, 110, 136, 1)), to(rgba(207, 207, 237, 1)));
     background: -webkit-linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
@@ -257,7 +270,7 @@ main {
 .profil-main button,
 .profil-main .gestion-compte a,
 .listUsers-main button,
-.listUsers-main button {
+.listUsers-main button, .index-main button {
     color: #ffffff;
     background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
     padding: 15px;
@@ -329,32 +342,58 @@ main {
 
 .index-main h1 {
     padding-top: 50%;
-    font-size: 10em;
+    font-size: 12em;
     font-family: Halo, sans-serif;
+        -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #000000;
 }
 
-section {
-    background: rgb(207, 224, 243);
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(207, 224, 243, 1)), color-stop(0.08, rgba(149, 192, 230, 1)), color-stop(0.3, rgba(90, 159, 217, 1)), color-stop(0.5, rgba(74, 150, 214, 1)), color-stop(0.7, rgba(90, 159, 217, 1)), color-stop(0.95, rgba(149, 192, 230, 1)), to(rgba(207, 224, 243, 1)));
-    background: -webkit-linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
-    background: -moz-linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
-    background: -o-linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
-    background: linear-gradient(rgba(207, 224, 243, 1) 0%, rgba(149, 192, 230, 1) 8%, rgba(90, 159, 217, 1) 30%, rgba(74, 150, 214, 1) 50%, rgba(90, 159, 217, 1) 70%, rgba(149, 192, 230, 1) 95%, rgba(207, 224, 243, 1) 100%);
-
+.index-main section {
+    background: rgb(195,195,227);
+background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(195,195,227,1)), color-stop(0.1, rgba(78,78,132,1)), color-stop(0.3, rgba(19,19,85,1)), color-stop(0.5, rgba(0,0,69,1)), color-stop(0.7, rgba(19,19,85,1)), color-stop(0.9, rgba(78,78,132,1)), to(rgba(195,195,227,1)));
+background: -webkit-linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(19,19,85,1) 30%, rgba(0,0,69,1) 50%, rgba(19,19,85,1) 70%, rgba(78,78,132,1) 90%, rgba(195,195,227,1) 100%);
+background: -moz-linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(19,19,85,1) 30%, rgba(0,0,69,1) 50%, rgba(19,19,85,1) 70%, rgba(78,78,132,1) 90%, rgba(195,195,227,1) 100%);
+background: -o-linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(19,19,85,1) 30%, rgba(0,0,69,1) 50%, rgba(19,19,85,1) 70%, rgba(78,78,132,1) 90%, rgba(195,195,227,1) 100%);
+background: linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(19,19,85,1) 30%, rgba(0,0,69,1) 50%, rgba(19,19,85,1) 70%, rgba(78,78,132,1) 90%, rgba(195,195,227,1) 100%);
     padding: 30px 60px;
     margin: 100% auto;
 }
 
-section a {
+
+.index-main section a, .index-main section h3 {
     color: white;
     text-decoration: none;
-    color: #2C2E45;
 }
 
-section img {
+.index-main section img {
     width: 80%;
     margin: auto;
 }
+
+.index-main button {
+    font-size:2.5em;
+    margin:50px auto;
+}
+
+.index-main button:hover {
+    font-size: 3em;
+    padding: 20px;
+    background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
+    color: #2C2E45;
+    border: solid 5px #4a96d6;
+    -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+}
+.index-main h2 {
+    font-size:3em;
+}
+
+.index-main h3 {
+    font-size: 3.5em;
+    text-align: center;
+}
+
 
 /* PAGE LOGIN */
 
@@ -416,7 +455,6 @@ section img {
 /* PAGE PROFIL */
 
 .profil-main {
-    height: 100%;
     color: white;
     font-size: 2.2em;
 }
@@ -505,6 +543,7 @@ section img {
 .profil-main .gestion-compte {
     display: flex;
     justify-content: space-around;
+    padding:40px
 }
 
 .profil-main .gestion-compte a {
@@ -512,7 +551,7 @@ section img {
 }
 
 .profil-main .put-bottom {
-    position: fixed;
+    
     bottom: 15px;
     width: 100%;
 }

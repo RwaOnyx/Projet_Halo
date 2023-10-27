@@ -1,7 +1,7 @@
 <%- include('head') -%>
 <%- include('header') -%>
 
-<main class=profil-main>
+<main class="profil-main main-background">
     <h1>Mon profil</h1>
     <div class=profil-info-ext>
         <h2>Mes informations :</h2>
@@ -11,7 +11,7 @@
             <p>Email : <span class="email"><%= profil.email %></span></p>
             <p>Date de création : <%= profil.date %></p>
             <p>Role : <span class="role" data-role="<%= profil.role %>"><%= profil.role %></span></p>
-            <p>Photo de profil : <span class="image"><img src="images/profil/<%=profil.image%>"></span>
+            <p>Photo de profil : <span class="image"><img class="image-profil" src="images/profil/<%=profil.image%>"></span>
             <input class="inputImage display-none" type="file" name="image" accept="image/*">
             </p>
         </div>
