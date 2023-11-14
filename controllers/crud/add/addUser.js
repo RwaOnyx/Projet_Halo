@@ -71,12 +71,9 @@ function addUsers(fields, files, role, res, callback) {
         
         if (role) {
             colonne.push("role");
-            console.log(fields)
             value.push(xss(fields.role[0]));
             interrogation.push("?");
         }
-        
-        console.log(colonne, interrogation, value);
         
         query(
             `INSERT INTO Users (${colonne}) VALUES (${interrogation});`,

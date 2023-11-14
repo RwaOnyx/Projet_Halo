@@ -2,7 +2,7 @@
 <%- include('header') -%>
 <main class="forum-main main-background">
     <h1>Forum</h1>
-    
+    <section class="create-salon">
     <%  if (locals.isLogged === true){ %>     
         <div class=addForum>
             <p>Vous ne trouvez pas votre bonheur ?</p>
@@ -13,21 +13,24 @@
         <form method="post" class="salonForm display-none" action="/addSalon">
             <div>
                 <label for="intitule">De quoi voulez vous parlez ?</label>
-                <input type="text" name="intitule" id="intitule">     
+                <input type="text" name="intitule" id="intitule" required>     
             </div>
             <div>
                 <button type="submit">Créer le salon !</button>
             </div>
         </form>
     <% } else { %>
-        <p>Vous devez vous connecter pour créer un salon.</p>
-        <a href=/login>Se connecter !</a>
+        <div class=notConnected>
+            <p>Vous devez vous connecter pour créer un salon.</p>
+            <a class="forumConnexion no-decoration" href=/login>Se connecter !</a>
+        </div>
     <% } %>
-    
+    </section>
+    <section class="section-forum">
     <%for (const salon of forum){%>
         <form method="post" action=/deleteSalon>
             <div>
-                <a class='list-forum salonForum' href=forum/<%= salon.id %>>
+                <a class='list-forum salonForum no-decoration' href=forum/<%= salon.id %>>
                     <div class="list-forum-image for-PC"><img class=image-profil src="images/profil/<%=salon.image%>"></div>
                     <div class="list-forum-infos">
                         <div class="list-forum-infos-detail">
@@ -35,7 +38,7 @@
                             <p>Créer par <%= salon.login %></p>
                         </div>
                         <div class="list-forum-infos-detail">
-                            <p>Créer le<%= salon.date %></p>
+                            <p>Créer le <%= salon.date %></p>
                             <p class="for-PC">Dernier message le <%= salon.derniereUpdate %></p>
                             <p class="for-mobile"><%= salon.nbMessages %> messages</p>
                         </div>
@@ -49,19 +52,22 @@
                     
                    
                 </a>
+                <div class=button-salon>
                 <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
+                    <button class="edit-button-forum">Modifier le nom du salon</button>
+                    <button class="save-button-forum display-none" data-id="<%= salon.id %>">Valider</button>
                     <button type=submit>Supprimer le salon</button>
                     <input type="hidden" class="display-none" name="id" value="<%= salon.id %>">
                 <% } %>
+            
+            </div>
+    
             </div>
         </form> 
-        <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
-            <button class="edit-button-forum">Modifier le nom du salon</button>
-            <button class="save-button-forum display-none" data-id="<%= salon.id %>">Valider</button>
-        <% } %>
+        
     <% } %>
-    
+    </section>
     
 </main>
-<script src="/js/script/forum.js"></script>
+<script src="/jsScript/forumScript.js"></script>
 <%- include('footer') -%>

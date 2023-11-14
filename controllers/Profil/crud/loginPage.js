@@ -1,10 +1,6 @@
 import query from '../../../database.js';
 import bcrypt from 'bcrypt';
 import xss from 'xss';
-import { v4 } from 'uuid';
-import formidable from 'formidable';
-import fs from 'fs';
-import path from 'path'
 
 /* ================= Redirection vers formulaire ================= */
 
@@ -20,7 +16,7 @@ export function login(req, res) {
 
 
     query(
-        `SELECT id,login,password,role FROM Users WHERE login = ? OR email = ?;`, [identifiant, identifiant],
+        `SELECT id,login,password,role,image FROM Users WHERE login = ? OR email = ?;`, [identifiant, identifiant],
         (error, resultSQL) => {
             if (error) {
                 console.error(`Erreur lors de l'exécution de la requête ${error}`);
@@ -48,6 +44,7 @@ export function login(req, res) {
                 req.session.login = resultSQL[0].login;
                 req.session.idUser = resultSQL[0].id;
                 req.session.isLogged = true;
+                req.session.imageProfil = resultSQL[0].image;
 
                 switch (resultSQL[0].role) {
                     case 'superadmin':

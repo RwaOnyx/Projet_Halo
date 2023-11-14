@@ -1,0 +1,61 @@
+<%- include('head') -%>
+<%- include('header') -%>
+<main class="news-main main-background">
+    <h1>News</h1>
+        <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "redacteur"){ %>     
+        <form method="post" action="/addArticle" enctype="multipart/form-data">
+            <div>
+                <label for="titre">De quoi voulez vous parlez ?</label>
+                <input type="text" name="titre" id="titre" required>  
+            </div>
+            <div>
+                <label for="image">Ajoutez une image pour votre article (max 5 Mo) :</label>
+                <input type="file" name="image" id="image" accept="image/*" maxSize="5MB" required>
+            </div>
+            <div>
+                <label for="intro">Ajoutez une intro à votre section</label>
+                <textarea id="intro" name="intro" required></textarea>
+            </div>
+            <div>
+                <button type="submit">Créer l'article !</button>
+            </div>
+        </form>
+        <% } %>
+    <section class="section-news">
+        <%for (const article of news){%>
+            <form method="post" action=/deleteArticle>
+                <div>
+                    <article class=article-news>
+                        <a class='no-decoration' href=/news/<%= article.id %>>
+                        <div class=news-image>
+                            <img src="/images/news/<%=article.image%>">
+                        </div>
+                        <div class=news-infos>
+        
+                            <h3><%=article.titre%></h3>
+                            <p><%=article.intro%></p>
+                            
+                            <div class=news-infos-plus>
+                                <p>Créer par <%= article.login %></p>
+                                <p>Créer le <%= article.date %></p>
+                            </div>
+                        </div>
+                        </a>
+                    </article>
+                    <div class=button-salon>
+                        <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "redacteur"){ %> 
+                            <button type=submit>Supprimer l'article</button>
+                            <input type="hidden" class="display-none" name="id" value="<%= article.id %>">
+                        <% } %>
+                    
+                    </div>
+                    
+                </div>
+            </form> 
+            
+        <% } %>
+    </section>
+    
+</main>
+<script src="/jsScript/newsScript.js"></script>
+<%- include('footer') -%>

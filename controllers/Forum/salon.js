@@ -3,7 +3,7 @@ import { DateTime } from "luxon";
 
 export default (req, res) => {
     const { id } = req.params;
-    query(`SELECT fm.date AS date, fm.id AS id, fm.message AS message, u.login AS login
+    query(`SELECT fm.date AS date, fm.id AS id, fm.message AS message, u.login AS login, u.role AS role, u.image AS image
         FROM ForumMessage fm
         LEFT JOIN Users u ON u.id = fm.idUtilisateur
         WHERE fm.idSalon = ?
@@ -29,7 +29,6 @@ export default (req, res) => {
             }
             
             salon=salon[0]
-            req.session.page = "salon";
             res.render('salon.ejs', { messages, salon });
         });
     })

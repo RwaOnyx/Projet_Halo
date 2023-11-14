@@ -1,10 +1,13 @@
 <%- include('head') -%>
 <%- include('header') -%>
 <main class="index-main">
-  <div class="iframe">
+  <div class="video">
       
-  <iframe class="for-mobile" src="https://www.youtube.com/embed/videoseries?si=suy5xyKZOgxDk-j3&amp;controls=0&amp;autoplay=0&amp;mute=1&amp;list=PLHXUP8gjVgR4Xn3xAFKOO9v-11DKGpK6D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  
+  <video autoplay loop muted disablepictureinpicture>
+        <source src="/video/bg-mobile.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture de vidéos.
+    </video>
+    
     </div>
     <% if (locals.isLogged) { %>
         <p><%(locals.grade)%></p>
@@ -12,72 +15,76 @@
     <h1>Projet Halo</h1>
     
     <section class=section-shop>
-        <a href="/shop">
+        
             <h2>Dernier article de la boutique</h2>
-            <div class=section-gauche-div>
+            <div>
                 <div>
                     <img src="/images/boutique/haloBoutiqueTest.png" alt="" />
                 </div>
                 <div>
-                    <h3>Super nouveau produit</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales mi id ante maximus, id faucibus libero congue. Pellentesque id augue sit amet nulla rhoncus commodo quis vitae metus. Integer at dui tellus. Nulla molestie, mauris vitae pretium commodo, turpis nisi cursus purus, sit amet ultrices nibh urna ut odio. Nulla eget purus lacus. In tempor augue in ipsum molestie egestas. Donec consectetur faucibus pellentesque. Vivamus et lobortis mauris, vitae luctus lectus.</p>
+                    <h3>Boutique à venir</h3>
+                    <p>Actuellement, notre boutique n'est pas encore opérationnelle, mais nous travaillons activement pour créer une expérience d'achat en ligne exceptionnelle. Nous nous efforçons de vous proposer bientôt une sélection de produits de qualité qui sauront répondre à vos attentes. Merci de votre compréhension et de votre patience pendant cette phase de développement.</p>
                 </div>
                 <div>
-                    <button>En savoir plus</button>
+                    <a href="/shop">En savoir plus</a>
                 </div>
             </div>
-        </a>
+        
     </section>
     
     <section class=section-news>
-        <a href="/news">
+        
             <h2>Dernière news</h2>
-            <div class=section-droite-div>
+            <div>
                 <div>
-                    <img src="/images/boutique/haloBoutiqueTest.png" alt="" />
+                    <img src="/images/news/<%=results[1].image%>" alt="" />
                 </div>
                 <div>
-                    <h3>Super dernière nouvelle</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales mi id ante maximus, id faucibus libero congue. Pellentesque id augue sit amet nulla rhoncus commodo quis vitae metus. Integer at dui tellus. Nulla molestie, mauris vitae pretium commodo, turpis nisi cursus purus, sit amet ultrices nibh urna ut odio. Nulla eget purus lacus. In tempor augue in ipsum molestie egestas. Donec consectetur faucibus pellentesque. Vivamus et lobortis mauris, vitae luctus lectus.</p>
+                    <h3><%=results[1].titre%></h3>
+                    <p><%=results[1].intro%></p>
                 </div>
                 <div>
-                    <button>En savoir plus</button>
+                    <a href="/news/<%=results[1].id%>">En savoir plus</a>
                 </div>
             </div>
-        </a>
+        
     </section>
     
     <section class=section-forum>
-        <a href="/forum/<%=salonJour.id%>">
+        
             <h2>Forum du jour</h2>
             <div>
-                <h3><%=salonJour.intitule%></h3>
-                <p>Créer par <%=salonJour.login%> le <%=salonJour.date%></p>
+                <h3><%=results[0].intitule%></h3>
+                <p>Créer par <%=results[0].login%> le <%=results[0].date%></p>
             </div>
-            <p><%=salonJour.premierMessage%></p>
+            <p><%=results[0].premierMessage%></p>
             
-            <button>Aller sur le forum</button>
-        </a>
+            <a href="/forum/<%=results[0].id%>">Aller sur le forum</a>
+        
     </section>
     
     <section class=section-jeux>
-        <a href="/jeux">
+        
             <h2>Histoire</h2>
-            <div class=section-gauche-div>
+            <div>
                 <div>
                     <img src="/images/boutique/haloBoutiqueTest.png" alt="" />
                 </div>
                 <div>
                     <h3>Découvrir l'histoire</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales mi id ante maximus, id faucibus libero congue. Pellentesque id augue sit amet nulla rhoncus commodo quis vitae metus. Integer at dui tellus. Nulla molestie, mauris vitae pretium commodo, turpis nisi cursus purus, sit amet ultrices nibh urna ut odio. Nulla eget purus lacus. In tempor augue in ipsum molestie egestas. Donec consectetur faucibus pellentesque. Vivamus et lobortis mauris, vitae luctus lectus.</p>
+                    <p>Explorez l'univers fascinant d'Halo, une saga de jeu vidéo débutée en 2001 par Bungie. Suivez le Master Chief, super-soldat Spartan, dans sa quête héroïque contre l'Alliance Covenante. Entre des mondes extraordinaires, des ennemis redoutables et les mystères d'un anneau extraterrestre, plongez dans une expérience de jeu qui marie habilement action frénétique et récit épique.</p>
                 </div>
                 <div>
-                    <button>En savoir plus</button>
+                    <a href="/jeux">En savoir plus</a>
                 </div>
             </div>
-        </a>
+        
     </section>
     
+    
+    <div class="divButtonRemonter">
+        <button class="buttonRemonter" id="scrollToTopButton">⇧</button>
+    </div>
 </main>
-<script src="/js/script/script.js"></script>
+<script src="/jsScript/script.js"></script>
 <%- include('footer') -%>

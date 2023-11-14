@@ -3,20 +3,31 @@
 
 <main class="profil-main main-background">
     <h1>Mon profil</h1>
+    <section>
     <div class=profil-info-ext>
-        <h2>Mes informations :</h2>
+        <h2>Mes informations</h2>
         <%= console.log(profil) %>
         <div class=profil-info-int>
+            <div>
+                <div class="image">
+                    <img class="image-profil" src="images/profil/<%=profil.image%>">
+                </div>
+                <input class="inputImage display-none" type="file" name="image" accept="image/*">
+                    
+            </div>
             <p>Pseudo : <span class="login"><%= profil.login %></span></p>
             <p>Email : <span class="email"><%= profil.email %></span></p>
             <p>Date de création : <%= profil.date %></p>
             <p>Role : <span class="role" data-role="<%= profil.role %>"><%= profil.role %></span></p>
-            <p>Photo de profil : <span class="image"><img class="image-profil" src="images/profil/<%=profil.image%>"></span>
-            <input class="inputImage display-none" type="file" name="image" accept="image/*">
-            </p>
+            
+                
+            
         </div>
-        <button class="edit-button-profil" type="button" value="<%= profil.id %>">Modifier</button>
-        <button class="save-button-profil display-none" type="button" data-id="<%= profil.id %>">Valider</button>
+        <div class="edit-button-div">
+            <button class="edit-button-profil" type="button" value="<%= profil.id %>">Modifier</button>
+            <button class="save-button-profil display-none" type="button" data-id="<%= profil.id %>">Valider</button>
+        </div>
+    
     </div>
     <%  if (locals.role === "superadmin" || locals.role === "admin"){ %>
         <div class="gestion-users">
@@ -27,14 +38,13 @@
             </div>
         </div>
     <% } %>
-    <div class=put-bottom>
         <div class=gestion-compte>
             <a href="/deleteUser">Supprimer mon compte</a>
             <a href="/logout">Déconnexion</a>
         </div>
-    </div>
+    </section>
 </main>
-<script src="/js/script/profil.js"></script>
+<script src="/jsScript/profilScript.js"></script>
 <%- include('footer') -%>
 
 

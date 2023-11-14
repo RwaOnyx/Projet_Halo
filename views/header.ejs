@@ -25,12 +25,18 @@
                 <div class="spinner horizontal"></div>
                 <div class="spinner diagonal part-2"></div>
             </label></div>
-            <div class=mobile-accueil-button><a href="/">Accueil</a></div>
-            <div class=mobile-login-button><%  if (locals.isLogged !== true){ %>
-                       <a href="/login"><img src="/images/site/logoConnexion.png" alt="" ></a>
+            <div class=mobile-accueil-button><a class=no-decoration href="/">
+                <p class="font-halo header-p-centre">Projet Halo</p>
+            </div>
+            <div class=mobile-login-button>
+                <%  if (locals.isLogged !== true){ %>
+                    <a class=no-decoration href="/login">
+                        <img src="/images/site/halo_logo_blanc.png" alt="" >
+                    </a>
+                       
                 <% } %>
                 <%  if (locals.isLogged === true){ %>
-                    <a href="/profil"><img src="/images/site/logoConnexion.png" alt="" ></a>
+                    <a href="/profil"><img src="/images/profil/<%=locals.imageProfil%>" alt="" class="header-imageProfil"></a>
                 <% } %></div>
             <div id="sidebarMenu">
                 <ul class="sidebarMenuInner">
@@ -38,6 +44,7 @@
                     <li><a href="/news">News</a></li>
                     <li><a href="/forum">Forum</a></li>
                     <li><a href="/shop">Boutique</a></li>
+                    <li><a href="/search">Rechercher</a></li>
                 </ul>
             </div>
         </div>

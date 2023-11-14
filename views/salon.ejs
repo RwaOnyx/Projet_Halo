@@ -1,6 +1,6 @@
 <%- include('head') -%>
 <%- include('header') -%>
-<main class= "main-background">
+<main class= "salon-main main-background">
     
     <h1><%= salon.intitule %></h1>
     
@@ -12,7 +12,7 @@
                 <% } else { %>
                     <p>Ajouter une réponse</p>
                 <% } %>
-                <textarea id="message" name="message"></textarea>
+                <textarea id="message" name="message" required></textarea>
                 <button>Envoyer le message.</button></p>
             </form>
         </div>
@@ -21,27 +21,35 @@
             <a href=/login>Se connecter !</a>
         <% } %>
     
-    
+    <section class=section-salon>  
     <%for (const message of messages){%>
         <form method="post" action="/deleteMessage/<%=salon.id%>">
-            <div>
-                <p><%=message.login%></p>
-                <p><%=message.date%></p>
-                <p class="message"><%=message.message%></p>
-            </div>
+            
+                <div class="salon-infos-user">
+                    <img class=mini-image-profil src="/images/profil/<%=message.image%>">
+                    <p><%=message.login%></p>
+                    <p class="for-PC"><%=message.role%></p>
+                    <p class="salon-dateMessage"><%=message.date%></p>
+                </div>
+                <div class="salon-message">
+                    <p class="message"><%=message.message%></p>
+                </div>
+                
+            
             <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
                 <button type=submit>Supprimer le message</button>
                 <input type="hidden" class="display-none" name="id" value="<%= message.id %>">
             <% } %>
-        </form>
-        <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
+            <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
                 <button class="edit-button-salon" type=submit>Modifier le message</button>      
                 <button class="save-button-salon display-none" type=submit data-id='<%= message.id %>'>Valider</button>
-        <% } %>
+            <% } %>
+        </form>
+        
     <% } %>
-
+</section> 
 
 
 </main>
-<script src="/js/script/salon.js"></script>
+<script src="/jsScript/salonScript.js"></script>
 <%- include('footer') -%>

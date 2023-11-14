@@ -10,11 +10,11 @@
     <form method="post" action="/login">
         <div>
             <label for="identifiant">Pseudo ou adresse mail :</label>
-            <input type="text" name="identifiant" id="identifiant">     
+            <input type="text" name="identifiant" id="identifiant" required>     
         </div>
         <div>
             <label for="password">Mot de passe :</label>
-            <input type="password" name="password" id="password">   
+            <input type="password" name="password" id="password" required>   
         </div>
         <div>
             <button type="submit">Connexion</button>
@@ -23,21 +23,23 @@
     
     <div class=inscriptionQuestion>
         <p>Vous n'avez pas encore de compte ?</p>
-        <button class="showInscriptionForm">Inscrivez-vous !</button></p>
+        <div>
+            <button class="showInscriptionForm">Inscrivez-vous !</button></p>
+        </div>
     </div>
     
     <form method="post" class="inscriptionForm display-none" enctype="multipart/form-data" action="/register">
         <div>
             <label for="pseudo">Pseudo :</label>
-            <input type="text" name="pseudo" id="pseudo">     
+            <input type="text" name="pseudo" id="pseudo" required>     
         </div>
         <div>
             <label for="email">Email :</label>
-            <input type="email" name="email" id="email">     
+            <input type="email" name="email" id="email" required>     
         </div>
         <div>
             <label for="password">Mot de passe :</label>
-            <input type="password" name="password" id="password">   
+            <input type="password" name="password" id="password" required>   
         </div>
         <div>
             <label for="image">Image de profil (max 5 Mo) :</label>
@@ -49,6 +51,6 @@
     </form>
 </main>
 
-<script src="/js/script/login.js"></script>
+<script src="/jsScript/loginScript.js"></script>
 
 <%- include('footer') -%>

@@ -14,28 +14,30 @@
     font-style: normal;
 }
 
-iframe {
-  position: absolute;
+video {
+    position: absolute;
     z-index: -2;
-   width:100% ;
-   height:100%;
-   overflow-x: hidden;
+    width: 100%;
+    height: 92.9%;
+    overflow-x: hidden;
+    object-fit: cover;
 }
 
-.iframe {
-     width:100% ;
-   overflow-x: hidden;  
+html {
+    font-size: 20px;
+    color:white;
 }
 
 html,
 body {
     overflow-x: hidden;
     height: 100%;
-    font-size: 20px;
     cursor: url('/images/cursor/normal.cur'), auto;
 }
 
-a, button,label {
+a,
+button,
+label {
     cursor: url('/images/cursor/selector.cur'), auto;
 }
 
@@ -48,7 +50,35 @@ html body .display-block {
 }
 
 html body .image-profil {
-    width:150px;
+    width: 150px;
+}
+
+html body .mini-image-profil {
+    width: 100px;
+}
+
+.font-halo {
+    font-family: Halo2;
+}
+
+.no-decoration {
+    text-decoration: none;
+}
+
+html body button, html body main a {
+    font-size: 2.2em;
+}
+
+html body button:hover, html body main a:hover {
+    font-size: 2.7em;
+}
+
+html body label, .inscriptionQuestion p {
+    font-size: 2em;
+}
+
+html body input {
+    font-size: 1.7em;
 }
 
 /* MENU BURGER */
@@ -99,12 +129,15 @@ header input[type="checkbox"] {
 #sidebarMenu {
     position: fixed;
     left: 0;
-    width: 300px;
-    margin-top: 474px;
-    transform: translateX(-300px);
+    width: 356px;
+    margin-top: 58.9%;
+    transform: translateX(-356px);
     transition: transform 250ms ease-in-out;
-    background: rgb(101, 69, 97);
-    background: linear-gradient(180deg, rgba(101, 69, 97, 1) 0%, rgba(174, 109, 171, 1) 100%);
+    background: rgb(44, 46, 69);
+}
+
+#sidebarMenu a {
+    font-size:2.2em;
 }
 
 .sidebarMenuInner {
@@ -125,7 +158,6 @@ header input[type="checkbox"] {
 
 .sidebarMenuInner li span {
     display: block;
-    font-size: 14px;
     color: rgba(255, 255, 255, 0.50);
 }
 
@@ -213,22 +245,32 @@ header input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
 }
 
 
+header .header-imageProfil {
+  border-radius: 50%;
+}
+
 h1 {
+    font-size:6em;
     color: white;
     margin: 0;
     text-align: center;
-    font-size: 3em;
     font-family: Halo, sans-serif;
     font-weight: normal;
+    padding:25px;
 }
 
 h2,
 h3 {
-    color: rgb(7, 8, 13);
+    color: white;
+    text-align: center;
 }
 
 h2 {
-    text-align: center;
+    font-size:4.5em;
+}
+
+h3 {
+    font-size:3em;
 }
 
 header {
@@ -236,10 +278,12 @@ header {
     position: sticky;
     top: 0;
     border-bottom: 1px #CFE0F3 solid;
-    font-size: 2.3em
+    z-index: 1;
+    height: 7%;
 }
+
 header img {
-    width:100px;
+    width: 100px;
 }
 
 header li {
@@ -256,34 +300,70 @@ header a {
     color: white;
 }
 
+header a p {
+    margin: 0;
+}
+
+header .mobile-accueil-button .font-halo {
+    height: 100px
+}
+
+header .header-p-centre {
+    font-size:2.8em;
+}
+
 body {
     padding: 0;
     margin: 0;
 }
 
 .main-background {
+    min-height: 85.2%;
     background: rgb(44, 46, 69);
-    background: -webkit-gradient(linear, 100% 0, 0 0, from(rgba(44, 46, 69, 1)), color-stop(0.13, rgba(48, 50, 73, 1)), color-stop(0.35, rgba(67, 69, 93, 1)), color-stop(0.57, rgba(90, 92, 117, 1)), color-stop(0.68, rgba(109, 110, 136, 1)), to(rgba(207, 207, 237, 1)));
-    background: -webkit-linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
-    background: -moz-linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
-    background: -o-linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
-    background: linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(48, 50, 73, 1) 13%, rgba(67, 69, 93, 1) 35%, rgba(90, 92, 117, 1) 57%, rgba(109, 110, 136, 1) 68%, rgba(207, 207, 237, 1) 100%);
+    background: linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(49, 51, 74, 1) 15%, rgba(57, 59, 82, 1) 30%, rgba(67, 69, 93, 1) 45%, rgba(80, 82, 107, 1) 64%, rgba(97, 98, 125, 1) 84%, rgba(110, 110, 138, 1) 94%, rgba(147, 147, 177, 1) 100%);
 }
+
+
+/* footer */
+
+footer {
+    height: 7.5%;
+    background: rgb(195, 195, 227);
+    background: linear-gradient(0deg, rgba(195, 195, 227, 1) 0%, rgba(147, 147, 177, 1) 50%, rgba(147, 147, 177, 1) 100%);
+}
+
+
+footer .infosSupplementaire {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+footer .infosSupplementaire div {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+
+footer .infosSupplementaire div a {
+    width: 50%;
+    text-align: center;
+}
+
 
 /* Gestion bouton */
 
 .login-main button,
 .profil-main button,
-.profil-main .gestion-compte a,
 .listUsers-main button,
-.listUsers-main button, .index-main button {
+.listUsers-main button,
+.index-main section a, .forum-main .create-salon a {
     color: #ffffff;
     background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
     padding: 15px;
     border: solid #4a96d6 5px;
     border-radius: 50px;
     transition: all 830ms;
-    /* Utilisation de "all" pour gérer toutes les propriétés de transition */
     transform: translateY(0);
     display: flex;
     flex-direction: row;
@@ -292,9 +372,7 @@ body {
 }
 
 .login-main button:hover,
-.profil-main button:hover,
-.profil-main .gestion-compte a:hover {
-    font-size: 1.1em;
+.profil-main button:hover {
     padding: 20px;
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
@@ -325,7 +403,8 @@ body {
 .login-main input,
 .profil-main input,
 .listUsers-main .input,
-.listUsers-main form-addUser input {
+.listUsers-main form-addUser input,
+.forum-main input {
     border-width: 2px;
     border-color: #747570;
     background-color: #cfe0f3;
@@ -338,7 +417,8 @@ body {
 .login-main input:focus,
 .profil-main input:focus,
 .listUsers-main .input:focus,
-.listUsers-main form-addUser input:focus {
+.listUsers-main form-addUser input:focus,
+.forum-main input:focus {
     outline: none;
 }
 
@@ -347,26 +427,48 @@ body {
 /* PAGE ACCUEIL */
 
 .index-main h1 {
-    padding-top: 50%;
-    font-size: 12em;
+    font-size:11em;
+    padding-top: 60%;
     font-family: Halo, sans-serif;
-        -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #000000;
 }
 
 .index-main section {
-    background: rgb(195,195,227);
-background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(195,195,227,1)), color-stop(0.1, rgba(78,78,132,1)), color-stop(0.3, rgba(19,19,85,1)), color-stop(0.5, rgba(0,0,69,1)), color-stop(0.7, rgba(19,19,85,1)), color-stop(0.9, rgba(78,78,132,1)), to(rgba(195,195,227,1)));
-background: -webkit-linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(19,19,85,1) 30%, rgba(0,0,69,1) 50%, rgba(19,19,85,1) 70%, rgba(78,78,132,1) 90%, rgba(195,195,227,1) 100%);
-background: -moz-linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(19,19,85,1) 30%, rgba(0,0,69,1) 50%, rgba(19,19,85,1) 70%, rgba(78,78,132,1) 90%, rgba(195,195,227,1) 100%);
-background: -o-linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(19,19,85,1) 30%, rgba(0,0,69,1) 50%, rgba(19,19,85,1) 70%, rgba(78,78,132,1) 90%, rgba(195,195,227,1) 100%);
-background: linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(19,19,85,1) 30%, rgba(0,0,69,1) 50%, rgba(19,19,85,1) 70%, rgba(78,78,132,1) 90%, rgba(195,195,227,1) 100%);
+    background: rgb(147, 147, 177);
+    background: linear-gradient(rgba(147, 147, 177, 1) 0%, rgba(98, 99, 126, 1) 20%, rgba(59, 61, 85, 1) 35%, rgba(44, 46, 69, 1) 50%, rgba(59, 61, 85, 1) 65%, rgba(98, 99, 126, 1) 80%, rgba(147, 147, 177, 1) 100%);
     padding: 30px 60px;
-    margin: 100% auto;
+    margin: 120% auto;
+    position: relative
 }
 
+.index-main section::before,
+.index-main section::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 9%;
+    transform: skewY(9deg);
+}
 
-.index-main section a, .index-main section h3 {
+.index-main section::before {
+    top: -5%;
+    left: 0;
+    z-index: -1;
+    background: rgb(195, 195, 227);
+    background: linear-gradient(170deg, rgba(195, 195, 227, 1) 0%, rgba(147, 147, 177, 1) 50%, rgba(147, 147, 177, 1) 100%);
+}
+
+.index-main section::after {
+    bottom: -5%;
+    left: 0;
+    z-index: -1;
+    background: rgb(195, 195, 227);
+    background: linear-gradient(-9deg, rgba(195, 195, 227, 1) 0%, rgba(147, 147, 177, 1) 50%, rgba(147, 147, 177, 1) 100%);
+}
+
+.index-main section a,
+.index-main section h3 {
     color: white;
     text-decoration: none;
 }
@@ -376,13 +478,14 @@ background: linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(
     margin: auto;
 }
 
-.index-main button {
-    font-size:2.5em;
-    margin:50px auto;
+.index-main section a {
+    margin: 50px auto;
+    width:40%;
+    text-align:center;
 }
 
-.index-main button:hover {
-    font-size: 3em;
+.index-main section a:hover {
+    width:50%;
     padding: 20px;
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
@@ -391,25 +494,44 @@ background: linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(
     -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
 }
+
 .index-main h2 {
-    font-size:3em;
 }
 
 .index-main h3 {
-    font-size: 3.5em;
     text-align: center;
 }
 
+.index-main section div div:first-child {
+    display:flex;
+}
+
+.buttonRemonter {
+    font-size:6em;
+    position: relative;
+    left: 89%;
+    color: white;
+    background: transparent;
+    border: none;
+}
 
 /* PAGE LOGIN */
 
-.login-main form, .listUsers-main .form-addUser {
+.login-main form,
+.form-addUser {
     width: 70%;
-    margin: 50px auto;
     padding: 20px;
     border: 2px solid white;
     text-align: center;
     border-radius: 15px;
+}
+
+.login-main form {
+    margin: 50px auto;
+}
+
+.listUsers-main .form-addUser {
+    margin: 50px auto 0 auto;
 }
 
 .login-main form div,
@@ -424,30 +546,24 @@ background: linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(
 }
 
 .login-main form input,
-.listUsers-main .form-addUser input, .listUsers-main input {
+.listUsers-main .form-addUser input,
+.listUsers-main input {
     width: 80%;
     margin: 10px auto;
-    font-size: 1em;
 }
 
 .listUsers-main select,
 .listUsers-main .form-addUser select {
-    font-size: 1em;
+        font-size: 2em;
 }
 
 .login-main button,
 .btn-gestion-users,
 .listUsers-main .form-addUser button {
     margin: 25px auto 10px auto;
-    font-size: 1em;
     padding: 15px;
 }
 
-.login-main {
-    height: 100%;
-    color: white;
-    font-size: 2.2em;
-}
 
 .inscriptionQuestion {
     text-align: center;
@@ -457,12 +573,20 @@ background: linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(
     background: rgb(44, 46, 69);
 }
 
+.listUsers-formSearch {
+   margin: auto;
+    text-align: center;
+    width: 60%; 
+}
 
+.listUsers-formSearch button {
+   margin: 15px auto; 
+}
+    
 /* PAGE PROFIL */
 
 .profil-main {
     color: white;
-    font-size: 2.2em;
 }
 
 .profil-main h2 {
@@ -484,16 +608,18 @@ background: linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(
 
 .profil-info-int input {
     width: 70%;
-    font-size: 1em;
 }
 
 .profil-info-ext .edit-button,
 .profil-info-ext .save-button {
-    font-size: 1em;
     padding: 10px;
     margin: 10px auto;
     width: 25%;
     text-align: center;
+}
+
+.profil-info-ext .edit-button-div button {
+    margin:15px;
 }
 
 /* Style pour le conteneur principal */
@@ -533,7 +659,7 @@ background: linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(
     margin: 5px;
 }
 
-.choix-gestion-users a:hover {
+.choix-gestion-users a:hover, .forum-main .create-salon a:hover {
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
     border: solid 5px #4a96d6;
@@ -549,15 +675,35 @@ background: linear-gradient(rgba(195,195,227,1) 0%, rgba(78,78,132,1) 10%, rgba(
 .profil-main .gestion-compte {
     display: flex;
     justify-content: space-around;
-    padding:40px
+    padding: 40px
 }
 
 .profil-main .gestion-compte a {
     text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
+    padding: 15px;
+    border: solid #4a96d6 5px;
+    border-radius: 50px;
+    transition: all 830ms;
+    transform: translateY(0);
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profil-main .gestion-compte a:hover {
+    padding: 15px;
+    background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
+    color: #2C2E45;
+    border: solid 5px #4a96d6;
+    -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
 }
 
 .profil-main .put-bottom {
-    
+
     bottom: 15px;
     width: 100%;
 }
@@ -581,7 +727,8 @@ table.table-list-users th {
 }
 
 .table-list-users tbody td {
-    font-size: 1.9em;
+    color: black;
+    font-size: 2em;
 }
 
 .table-list-users tbody .user-role {
@@ -598,7 +745,7 @@ table.table-list-users th {
 }
 
 .table-list-users thead th {
-    font-size: 2.2em;
+    font-size:2.2em;
     font-weight: bold;
     color: #FFFFFF;
     text-align: center;
@@ -611,7 +758,7 @@ table.table-list-users th {
 
 .table-list-users button {
     padding: 10px;
-    font-size: 1em;
+    font-size:1.2em;
 }
 
 .table-list-users td input[type="checkbox"] {
@@ -620,21 +767,17 @@ table.table-list-users th {
 }
 
 .table-list-users td select {
-    font-size: 1em;
     width: 200px;
 }
 
 .table-list-users .user-login input {
-    font-size: 1em;
     width: 250px;
 }
 
 .table-list-users .user-role select option {
-    font-size: 0.5em;
 }
 
 .table-list-users .user-password input {
-    font-size: 1em;
     width: 170px;
 }
 
@@ -678,12 +821,10 @@ table.table-list-users th {
 
 .listUsers-main .deleteUsers {
     margin: 1rem;
-    font-size: 1.8em;
 }
 
 .listUsers-main .form-addUser div {
     align-items: center;
-    font-size: 2em;
 }
 
 .listUsers-main .form-addUser .buttonAddUsers,
@@ -694,14 +835,7 @@ table.table-list-users th {
 
 .listUsers-main h2 {
     align-items: center;
-    font-size: 2.4em;
 }
-
-
-
-
-
-
 
 
 /* Gestion checkbox */
@@ -757,7 +891,6 @@ table.table-list-users th {
     background-size: 12rem;
     background-position: center center;
     display: inline-block;
-    font-size: 0.5em;
     text-align: center;
     line-height: 40px;
 }
@@ -777,37 +910,366 @@ table.table-list-users th {
 
 /* Page Forum */
 
-.forum-main .list-forum, .forum-main .list-forum .list-forum-infos .list-forum-infos-detail {
-    display:flex;
-    flex-direction:row;
+.forum-main .list-forum,
+.forum-main .list-forum .list-forum-infos .list-forum-infos-detail {
+    display: flex;
+    flex-direction: row;
 }
 
-.forum-main .list-forum .list-forum-infos, .forum-main .list-forum .list-forum-nbMessages {
+.forum-main .list-forum .list-forum-infos,
+.forum-main .list-forum .list-forum-nbMessages {
+    display: flex;
+    flex-direction: column;
+}
+
+.forum-main .list-forum-infos-detail>* {
+    width: 50%;
+    text-align: center;
+    margin: 0;
+    text-decoration: none;
+    color: white;
+}
+
+.forum-main .create-salon p {
+    padding-bottom: 15px;
+    font-size:2em;
+}
+
+.forum-main .create-salon {
+    width:90%;
+    margin:auto;
+}
+
+.forum-main h3 {
+    font-size:1.5em;
+}
+
+.forum-main .list-forum-infos,
+.list-forum-infos-details {
+    width: 100%;
+}
+
+.forum-main .section-forum,
+.salon-main .section-salon {
+    width: 90%;
+    margin: 30px auto;
+
+}
+
+.forum-main .section-forum form,
+.salon-main .section-salon form {
+    background-color: rgb(44, 46, 69);
+    margin: 30px auto;
+    padding: 10px;
+    border: 3px solid #ffffff;
+    border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+}
+
+.forum-main button {
+    color: #ffffff;
+    background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
+    padding: 15px;
+    border: solid #4a96d6 5px;
+    border-radius: 50px;
+    transition: all 830ms;
+    /* Utilisation de "all" pour gérer toutes les propriétés de transition */
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.forum-main button:hover {
+    padding: 20px;
+    background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
+    color: #2C2E45;
+    border: solid 5px #4a96d6;
+    -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+}
+
+.forum-main .button-salon {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 15px;
+}
+
+.forum-main .button-salon button {
+    margin: auto 15px;
+}
+
+    
+
+.forum-main .forum-modif-input {
+    width: 100%;
+}
+
+.forum-main input {
+}
+.forum-main .create-salon a {
+    width:30%;
+}
+
+.forum-main .create-salon a:hover {
+    width:37%;
+}
+
+/* FIN FORUM */
+
+/* SALON */
+
+.salon-main .salon-infos-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.salon-main .salon-infos-user>* {
+    margin: 5px auto 20px auto;
+}
+
+.salon-main {
+    color: white;
+    padding-bottom: 15px;
+}
+
+.salon-main .salon-dateMessage {
+    text-align: right;
+}
+
+.salon-main .section-salon form {
+}
+
+.salon-main .salon-message {
+    border-top: 6px dashed #ffffff;
+}
+
+.salon-main .salon-message p {
+    margin: 15px 10px;
+}
+
+
+/* SLIDER (MOBILE) */
+
+.slider-container {
+    position: relative;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.slider {
+    display: flex;
+    position: relative;
+}
+
+.slide {
+    flex: 0 0 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.slide img {
+    max-width: 100%;
+}
+
+.slide-text {
+    margin-top: 10px;
+    margin-bottom: 45px;
+}
+
+.slider-arrows {
+    position: absolute;
+    top: 24vh;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+        cursor: pointer;
+    color: white;
+    font-size: 9em;
+}
+
+.slider-dots {
+    margin: 10px 0;
+}
+
+.dot {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #ff0000;
+}
+
+.slider-container img {
+    height: 840px;
+    width: 500px;
+
+}
+
+/* FIN SLIDER */
+
+.jeux-main a {
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
+    padding: 15px;
+    border: solid #4a96d6 5px;
+    border-radius: 50px;
+    transition: all 830ms;
+    /* Utilisation de "all" pour gérer toutes les propriétés de transition */
+    transform: translateY(0);
+    cursor: pointer;
+    margin: 15px auto;
+}
+
+.jeux-main a:hover {
+    padding: 20px;
+    background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
+    color: #2C2E45;
+    border: solid 5px #4a96d6;
+    -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+}
+
+.jeux-main .slide-text p {
+    margin-bottom: 45px;
+}
+
+
+/* JEU */
+
+/* Styles pour les images alignées à gauche */
+
+.jeux-halo-main .image {
+    float: left;
+    margin-right: 20px;
+    /* Ajoutez un espacement entre l'image et le texte */
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.jeux-halo-main .text {
+    margin: 20px;
+    color: white;
+}
+
+.jeux-halo-main h2 {
+    color: white;
+}
+
+.article-jeux-halo:before,
+.article-jeux-halo:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+/* NEWS */
+
+.news-main .section-news form {
+    background-color: rgb(44, 46, 69);
+    margin: 30px auto;
+    padding: 10px;
+    border: 3px solid #ffffff;
+    border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+}
+
+.news-main .section-news {
+    width: 90%;
+    margin: auto;
+}
+
+.news-main .section-news .news-image {
+    width: 50%;
+}
+
+.news-main .section-news .news-image img {
+    width: 100%;
+}
+
+.news-main .article-news a {
+    display: flex;
+    flex-direction: row;
+}
+
+.news-main .section-news .news-infos {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin:15px auto;
+}
+
+.news-main .section-news .news-infos-plus {
+    display: flex;
+    flex-direction: row;
+}
+
+.news-main .section-news .news-infos-plus p {
+    width: 50%;
+}
+
+
+/* article */
+
+.article-main .section-article {
+    width: 90%;
+    margin:auto;
+}
+
+.article-main .section-article img {
+    max-width:40%;
+}
+
+.article-main .section-article .article-header {
     display:flex;
     flex-direction:column;
 }
 
-.forum-main .list-forum-infos-detail > * {
-    width:30%;
-}
-.forum-main {
-    font-size:2.4em;
-}
-.forum-main h3 {
-    font-size:1em;    
+.article-main .section-article .article-header div {
+    display:flex;
+    flex-direction:row;
 }
 
-.forum-main  .list-forum-infos, .list-forum-infos-details{
-   width :100%;
+.article-main .section-article .article-sections-1 {
+    display:flex;
+    flex-direction:row;
 }
 
-/*  */
+.article-main .section-article .article-sections-2 {
+    display:flex;
+    flex-direction: row-reverse;
+}
+
+
+/* */
 
 @media (min-width: 540px) {
-    .for-mobile,#for-mobile  {
+    .for-mobile,
+    #for-mobile {
         display: block;
     }
-    .for-PC,#for-PC  {
+    .for-PC,
+    #for-PC {
         display: none
     }
 }
@@ -817,7 +1279,9 @@ table.table-list-users th {
         display: none;
     }
 
-    .for-PC,#for-PC {
+    .for-PC,
+    #for-PC {
         display: block;
     }
 }
+

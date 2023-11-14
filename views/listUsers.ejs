@@ -7,6 +7,13 @@
     <% } %>
 
     <h1>Liste des membres</h1>
+        <form class="listUsers-formSearch" method="post" action="/searchMember">
+        <div>
+            <label for="searchMember">Chercher un membre :</label>
+            <input type="searchMember" name="searchMember" id="searchMember" required>
+        </div>
+        <button type="submit">Rechercher</button>
+    </form>
 
     <h2>Il y en a <%= listUsers.length %>.</h2>
     <form action="/deleteUsersList" method="post">
@@ -79,15 +86,15 @@
     <% } %>
         <div>
             <label for="pseudo">Login : </label>
-            <input type="text" name="pseudo" id="pseudo">
+            <input type="text" name="pseudo" id="pseudo" required>
         </div>
         <div>
             <label for="email">Email : </label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" required>
         </div>
         <div>
             <label for="password">Mot de passe : </label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" required>
         </div>
         <div>
             <label for="image">Image de profil (max 5 Mo) :</label>
@@ -98,7 +105,7 @@
                         
                     
         <div class="row">            
-                <label for="role">Role :</label>
+                <label for="role">Role : </label>
                 <select name="role" id="role">
                     <option value="moderateur">Modérateur</option>
                     <option value="admin">Admin</option>
@@ -115,6 +122,6 @@
         </div>
     </form>
 
-    <script src="/js/script/listUsers.js"></script>
+    <script src="/jsScript/listUsers.js"></script>
 </main>
 <%- include('footer') -%>

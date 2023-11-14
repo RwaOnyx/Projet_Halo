@@ -1,7 +1,6 @@
 import query from '../../../database.js';
 
 export function deleteSalon(req, res) {
-    console.log("passage")
     query(
         `DELETE FROM ForumSalon WHERE id = ?;`,
         req.body.id,
