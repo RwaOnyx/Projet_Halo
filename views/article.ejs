@@ -2,68 +2,85 @@
 <%- include('header') -%>
 <main class="article-main main-background">
     
-        <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "redacteur"){ %>     
-        <form method="post" action="/news/<%=newsComplet[0].id%>/addSection" enctype="multipart/form-data">
-            <div>
+        
+    <section class="section-article">
+        <h1><%= newsComplet[0].titre %></h1>
+        <div class="article-header">
+            <div class="article-infos-creation">
+                <p>Créer par <%= newsComplet[0].createur %> le <%= newsComplet[0].date %></p>
+            </div>
+            <div class="article-sections">
+                <article class=section-article>
+                    <div class="section-image left">
+                        <img src="/images/news/<%=newsComplet[0].image%>">
+                    </div>
+                    <div class="article-infos">
+                        <p><%= newsComplet[0].intro %></p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>    
+        
+        
+        <% let i=0 %>
+        <section class=section-article>
+            <%for (const section of newsComplet[1]) { %>
+                <% i++ %>
+                
+                <form method="post" action="/deleteSection/<%=newsComplet[0].id%>">
+                    <div class="article-sections">
+                        <article class=section-article>
+                            <div class="article-infos">
+                                <h3><%= section.titre %></h3>
+                            </div>
+                            <% if (section.image) { 
+                                if (!(i%2)) { %>
+                                    <div class="section-image left">
+                                <% } else { %>
+                                    <div class="section-image right">
+                                <% } %>
+                                <img src="/images/news/<%= section.image %>">
+                            </div>
+                            <% } %>
+                            <div class="article-infos">
+                                <p><%= section.texte %></p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class=button-section-article>
+                        <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "redacteur"){ %> 
+                            <button type=submit>Supprimer la section</button>
+                            <input type="hidden" class="display-none" name="id" value="<%= section.id %>">
+                        <% } %>
+                    
+                    </div>
+                </form> 
+                
+            <% } %>
+        </section>
+    
+    <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "redacteur"){ %>     
+        <form class="article-addSection" method="post" action="/news/<%=newsComplet[0].id%>/addSection" enctype="multipart/form-data">
+            <div class="article-addSection-titre">
                 <label for="titre">Ajouter un titre pour votre section :</label>
                 <input type="text" name="titre" id="titre" required>  
             </div>
-            <div>
+            <div class="article-addSection-image">
                 <label for="image">Ajoutez une image pour votre section (max 5 Mo) :</label>
                 <input type="file" name="image" id="image" accept="image/*" maxSize="5MB">
             </div>
             
-            <div>
+            <div class="article-addSection-texte">
                 <label for="texte">Ajoutez le texte de votre section</label>
-                <textarea id="texte" name="texte" required></textarea>
+                <textarea id="texte" name="texte" rows="5" required></textarea>
             </div>
                 
-            <div>
+            <div class="article-addSection-button">
                 <button type="submit">Ajouter la section !</button>
             </div>
         </form>
         <% } %>
-    <section class="section-article">
-        <h1><%= newsComplet[0].titre %></h1>
-        <div class="article-header">
-            <div>
-                <p><%= newsComplet[0].createur %></p>
-                <p><%= newsComplet[0].date %></p>
-            </div>
-            <div>
-                <img src="/images/news/<%=newsComplet[0].image%>">
-                <p><%= newsComplet[0].intro %></p>
-            </div>
-        </div>
-        
-        
-        
-        <% let i=0 %>
-        <%for (const section of newsComplet[1]) { %>
-        <% i++ %>
-            
-            <form method="post" action="/deleteSection/<%=newsComplet[0].id%>">
-                <div class="article-sections-<%= (i % 2 === 0) ? '2' : '1' %>">
-  <% if (section.image) { %>
-    <img src="/images/news/<%= section.image %>">
-  <% } %>
-  <div>
-    <h3><%= section.titre %></h3>
-    <p>Créé par <%= section.texte %></p>
-  </div>
-</div>
-                <div class=button-section-article>
-                    <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "redacteur"){ %> 
-                        <button type=submit>Supprimer la section</button>
-                        <input type="hidden" class="display-none" name="id" value="<%= section.id %>">
-                    <% } %>
-                
-                </div>
-            </form> 
-            
-        <% } %>
-    </section>
-    
 </main>
 <script src="/jsScript/newsScript.js"></script>
 <%- include('footer') -%>

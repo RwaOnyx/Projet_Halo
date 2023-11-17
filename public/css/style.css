@@ -25,7 +25,7 @@ video {
 
 html {
     font-size: 20px;
-    color:white;
+    color: white;
 }
 
 html,
@@ -65,15 +65,18 @@ html body .mini-image-profil {
     text-decoration: none;
 }
 
-html body button, html body main a {
+html body button,
+html body main a {
     font-size: 2.2em;
 }
 
-html body button:hover, html body main a:hover {
+html body button:hover,
+html body main a:hover {
     font-size: 2.7em;
 }
 
-html body label, .inscriptionQuestion p {
+html body label,
+.inscriptionQuestion p {
     font-size: 2em;
 }
 
@@ -137,7 +140,7 @@ header input[type="checkbox"] {
 }
 
 #sidebarMenu a {
-    font-size:2.2em;
+    font-size: 2.2em;
 }
 
 .sidebarMenuInner {
@@ -246,17 +249,17 @@ header input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
 
 
 header .header-imageProfil {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 h1 {
-    font-size:6em;
+    font-size: 6em;
     color: white;
     margin: 0;
     text-align: center;
     font-family: Halo, sans-serif;
     font-weight: normal;
-    padding:25px;
+    padding: 25px;
 }
 
 h2,
@@ -266,11 +269,11 @@ h3 {
 }
 
 h2 {
-    font-size:4.5em;
+    font-size: 4.5em;
 }
 
 h3 {
-    font-size:3em;
+    font-size: 3em;
 }
 
 header {
@@ -309,7 +312,7 @@ header .mobile-accueil-button .font-halo {
 }
 
 header .header-p-centre {
-    font-size:2.8em;
+    font-size: 2.8em;
 }
 
 body {
@@ -327,7 +330,7 @@ body {
 /* footer */
 
 footer {
-    height: 7.5%;
+    height: 7.8%;
     background: rgb(195, 195, 227);
     background: linear-gradient(0deg, rgba(195, 195, 227, 1) 0%, rgba(147, 147, 177, 1) 50%, rgba(147, 147, 177, 1) 100%);
 }
@@ -357,7 +360,13 @@ footer .infosSupplementaire div a {
 .profil-main button,
 .listUsers-main button,
 .listUsers-main button,
-.index-main section a, .forum-main .create-salon a {
+.index-main section a,
+.forum-main .create-salon a,
+.news-main button,
+.article-main button,
+.section-salon-haut a,
+.salon-main button,
+.search-main button {
     color: #ffffff;
     background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
     padding: 15px;
@@ -372,7 +381,12 @@ footer .infosSupplementaire div a {
 }
 
 .login-main button:hover,
-.profil-main button:hover {
+.profil-main button:hover,
+.news-main button:hover,
+.article-main button:hover,
+.section-salon-haut a:hover,
+.salon-main button:hover,
+.search-main button:hover {
     padding: 20px;
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
@@ -404,7 +418,13 @@ footer .infosSupplementaire div a {
 .profil-main input,
 .listUsers-main .input,
 .listUsers-main form-addUser input,
-.forum-main input {
+.forum-main input,
+.news-main input,
+.news-main textarea,
+.article-main input,
+.article-main textarea,
+.section-salon-haut textarea,
+.search-main input {
     border-width: 2px;
     border-color: #747570;
     background-color: #cfe0f3;
@@ -418,7 +438,13 @@ footer .infosSupplementaire div a {
 .profil-main input:focus,
 .listUsers-main .input:focus,
 .listUsers-main form-addUser input:focus,
-.forum-main input:focus {
+.forum-main input:focus,
+.news-main input:focus,
+.news-main textarea:focus,
+.article-main input:focus,
+.article-main textarea:focus,
+.section-salon-haut textarea:focus,
+.search-main input:focus {
     outline: none;
 }
 
@@ -427,7 +453,7 @@ footer .infosSupplementaire div a {
 /* PAGE ACCUEIL */
 
 .index-main h1 {
-    font-size:11em;
+    font-size: 11em;
     padding-top: 60%;
     font-family: Halo, sans-serif;
     -webkit-text-stroke-width: 3px;
@@ -439,7 +465,8 @@ footer .infosSupplementaire div a {
     background: linear-gradient(rgba(147, 147, 177, 1) 0%, rgba(98, 99, 126, 1) 20%, rgba(59, 61, 85, 1) 35%, rgba(44, 46, 69, 1) 50%, rgba(59, 61, 85, 1) 65%, rgba(98, 99, 126, 1) 80%, rgba(147, 147, 177, 1) 100%);
     padding: 30px 60px;
     margin: 120% auto;
-    position: relative
+    position: relative;
+    min-height: 1885px;
 }
 
 .index-main section::before,
@@ -480,12 +507,12 @@ footer .infosSupplementaire div a {
 
 .index-main section a {
     margin: 50px auto;
-    width:40%;
-    text-align:center;
+    width: 40%;
+    text-align: center;
 }
 
 .index-main section a:hover {
-    width:50%;
+    width: 50%;
     padding: 20px;
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
@@ -495,24 +522,27 @@ footer .infosSupplementaire div a {
     box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
 }
 
-.index-main h2 {
-}
+.index-main h2 {}
 
 .index-main h3 {
     text-align: center;
 }
 
 .index-main section div div:first-child {
-    display:flex;
+    display: flex;
 }
 
 .buttonRemonter {
-    font-size:6em;
+    font-size: 6em;
     position: relative;
     left: 89%;
     color: white;
     background: transparent;
     border: none;
+}
+
+.buttonRemonter:hover {
+    font-size: 6em;
 }
 
 /* PAGE LOGIN */
@@ -554,7 +584,7 @@ footer .infosSupplementaire div a {
 
 .listUsers-main select,
 .listUsers-main .form-addUser select {
-        font-size: 2em;
+    font-size: 2em;
 }
 
 .login-main button,
@@ -574,15 +604,15 @@ footer .infosSupplementaire div a {
 }
 
 .listUsers-formSearch {
-   margin: auto;
+    margin: auto;
     text-align: center;
-    width: 60%; 
+    width: 60%;
 }
 
 .listUsers-formSearch button {
-   margin: 15px auto; 
+    margin: 15px auto;
 }
-    
+
 /* PAGE PROFIL */
 
 .profil-main {
@@ -604,6 +634,7 @@ footer .infosSupplementaire div a {
     padding: 5px;
     border: 2px solid white;
     margin: 10px auto;
+    font-size: 1.3em;
 }
 
 .profil-info-int input {
@@ -619,7 +650,7 @@ footer .infosSupplementaire div a {
 }
 
 .profil-info-ext .edit-button-div button {
-    margin:15px;
+    margin: 15px;
 }
 
 /* Style pour le conteneur principal */
@@ -659,7 +690,8 @@ footer .infosSupplementaire div a {
     margin: 5px;
 }
 
-.choix-gestion-users a:hover, .forum-main .create-salon a:hover {
+.choix-gestion-users a:hover,
+.forum-main .create-salon a:hover {
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
     border: solid 5px #4a96d6;
@@ -745,7 +777,7 @@ table.table-list-users th {
 }
 
 .table-list-users thead th {
-    font-size:2.2em;
+    font-size: 2.2em;
     font-weight: bold;
     color: #FFFFFF;
     text-align: center;
@@ -758,7 +790,7 @@ table.table-list-users th {
 
 .table-list-users button {
     padding: 10px;
-    font-size:1.2em;
+    font-size: 1.2em;
 }
 
 .table-list-users td input[type="checkbox"] {
@@ -774,8 +806,7 @@ table.table-list-users th {
     width: 250px;
 }
 
-.table-list-users .user-role select option {
-}
+.table-list-users .user-role select option {}
 
 .table-list-users .user-password input {
     width: 170px;
@@ -932,16 +963,16 @@ table.table-list-users th {
 
 .forum-main .create-salon p {
     padding-bottom: 15px;
-    font-size:2em;
+    font-size: 2em;
 }
 
 .forum-main .create-salon {
-    width:90%;
-    margin:auto;
+    width: 90%;
+    margin: auto;
 }
 
 .forum-main h3 {
-    font-size:1.5em;
+    font-size: 1.5em;
 }
 
 .forum-main .list-forum-infos,
@@ -950,7 +981,8 @@ table.table-list-users th {
 }
 
 .forum-main .section-forum,
-.salon-main .section-salon {
+.salon-main .section-salon,
+.section-salon-haut {
     width: 90%;
     margin: 30px auto;
 
@@ -974,7 +1006,6 @@ table.table-list-users th {
     border: solid #4a96d6 5px;
     border-radius: 50px;
     transition: all 830ms;
-    /* Utilisation de "all" pour gérer toutes les propriétés de transition */
     transform: translateY(0);
     display: flex;
     flex-direction: row;
@@ -1003,20 +1034,20 @@ table.table-list-users th {
     margin: auto 15px;
 }
 
-    
-
 .forum-main .forum-modif-input {
     width: 100%;
 }
 
-.forum-main input {
-}
 .forum-main .create-salon a {
-    width:30%;
+    width: 30%;
 }
 
 .forum-main .create-salon a:hover {
-    width:37%;
+    width: 37%;
+}
+
+.forum-main a:hover {
+    font-size: 2.2 em;
 }
 
 /* FIN FORUM */
@@ -1031,6 +1062,7 @@ table.table-list-users th {
 
 .salon-main .salon-infos-user>* {
     margin: 5px auto 20px auto;
+    font-size: 2em;
 }
 
 .salon-main {
@@ -1042,9 +1074,6 @@ table.table-list-users th {
     text-align: right;
 }
 
-.salon-main .section-salon form {
-}
-
 .salon-main .salon-message {
     border-top: 6px dashed #ffffff;
 }
@@ -1053,6 +1082,24 @@ table.table-list-users th {
     margin: 15px 10px;
 }
 
+.section-salon-haut a {
+    width: 30%;
+}
+
+.section-salon-haut a:hover {
+    width: 36%;
+}
+
+.section-salon-haut textarea {
+    height: 200px;
+    width: 100%;
+}
+
+.section-salon-haut p,
+.section-salon-haut textarea {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
 
 /* SLIDER (MOBILE) */
 
@@ -1092,7 +1139,7 @@ table.table-list-users th {
     width: 100%;
     display: flex;
     justify-content: space-between;
-        cursor: pointer;
+    cursor: pointer;
     color: white;
     font-size: 9em;
 }
@@ -1192,74 +1239,218 @@ table.table-list-users th {
     border-radius: 20px 20px 20px 20px;
     -webkit-border-radius: 20px 20px 20px 20px;
     -moz-border-radius: 20px 20px 20px 20px;
+    width: 90%;
 }
 
 .news-main .section-news {
-    width: 90%;
-    margin: auto;
+    padding-bottom: 30px;
 }
 
-.news-main .section-news .news-image {
-    width: 50%;
+
+
+.news-main .section-news a:hover {
+    font-size: 2.2em;
 }
 
-.news-main .section-news .news-image img {
+.news-main p {
+    color: white;
+}
+
+.news-main .section-news h3 {
+    margin: 0 10px;
+    font-size: 2em;
+
+}
+
+.article-news {
     width: 100%;
+    overflow: hidden;
 }
 
-.news-main .article-news a {
+.news-image {
+    float: left;
+    width: 55%;
+    /* Ajustez la largeur selon vos besoins */
+    box-sizing: border-box;
+    /* Pour inclure les bordures et les rembourrages dans la largeur */
+}
+
+.news-image img {
+    width: 96%;
+    /* Pour que l'image remplisse complètement la div */
+}
+
+.news-infos {
+    box-sizing: border-box;
+    word-wrap: break-word;
+    /* Pour inclure les bordures et les rembourrages dans la largeur */
+}
+
+.news-infos-plus {
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
 }
 
-.news-main .section-news .news-infos {
+.news-infos-plus>* {
+    margin-top: 0;
+}
+
+.news-addArticle div,
+.article-addSection div {
     display: flex;
     flex-direction: column;
+    width: 90%;
+    margin: 5px auto;
+}
+
+.news-addArticle-titre input,
+.news-addArticle-image input,
+.article-addSection-titre input,
+.article-addSection-image input {
+    width: 70%;
+    font-size: 2em;
+}
+
+.news-main textarea {
+    height: 220px;
+    font-size: 1em;
+}
+
+.news-main .news-addArticle-button button {
+    width: 38%;
+    margin: 15px auto;
+}
+
+.news-main .news-addArticle-button button:hover {
     width: 45%;
-    margin:15px auto;
 }
-
-.news-main .section-news .news-infos-plus {
-    display: flex;
-    flex-direction: row;
-}
-
-.news-main .section-news .news-infos-plus p {
-    width: 50%;
-}
-
 
 /* article */
 
 .article-main .section-article {
-    width: 90%;
-    margin:auto;
+    padding-bottom: 30px;
+    font-size: 1em;
+    width: 95%;
+    margin: auto;
+    overflow: hidden;
 }
 
-.article-main .section-article img {
-    max-width:40%;
+.article-main p {
+    color: white;
 }
 
-.article-main .section-article .article-header {
-    display:flex;
-    flex-direction:column;
+.article-main .section-article h3 {
+    margin: 10px 0 40px 0;
+    font-size: 1em;
 }
 
-.article-main .section-article .article-header div {
-    display:flex;
-    flex-direction:row;
+.article-main .section-image {
+    width: 55%;
+    box-sizing: border-box;
 }
 
-.article-main .section-article .article-sections-1 {
-    display:flex;
-    flex-direction:row;
+.article-main .left {
+    float: left;
 }
 
-.article-main .section-article .article-sections-2 {
-    display:flex;
-    flex-direction: row-reverse;
+.article-main .right {
+    float: right;
 }
 
+.article-main .section-image img {
+    width: 96%;
+}
+
+.article-main .article-infos {
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.article-main .article-infos-creation p {
+    text-align: center;
+    font-size: 0.5em;
+    margin-bottom: 60px;
+}
+
+.button-section-article {
+    margin-bottom: 60px;
+}
+
+.article-main textarea {
+    height: 275px;
+    font-size: 1em;
+}
+
+.article-main .article-addSection-button button {
+    width: 47%;
+    margin: 15px auto;
+}
+
+.article-main .article-addSection-button button:hover {
+    width: 57%;
+}
+
+.article-main .article-addSection .article-addSection-button {
+    margin: 0 auto;
+}
+
+/* Page Recherche */
+
+.search-main section {
+    width: 95%;
+    margin: auto;
+}
+
+.search-main .section-search-bar form,
+.search-main section form div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.search-main .section-search-bar form div>* {
+    width: 60%;
+    margin: auto auto 20px auto;
+}
+
+.search-main .section-search-bar form button {
+    width: 29%;
+    margin: auto auto 20px auto;
+}
+
+.search-main .section-search-bar form button:hover {
+    width: 35%;
+}
+
+.section-search {
+    font-size: 1em;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 20%;
+    border: 2px solid white;
+    margin-bottom:30px;
+}
+
+.section-search p {
+    white-space: normal;
+    margin: 0;
+}
+
+.section-search a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.search-main .section-search h2 {
+    font-size: 1em;
+}
+
+.search-main .section-search p {
+    font-size: 1em;
+}
 
 /* */
 
@@ -1284,4 +1475,3 @@ table.table-list-users th {
         display: block;
     }
 }
-

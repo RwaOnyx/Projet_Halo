@@ -1,27 +1,32 @@
 <%- include('head') -%>
 <%- include('header') -%>
 <main class="search-main main-background">
-    <h1>Recherche</h1>
-    <form method="post" action="/searchResult">
-        <div>
-            <label for="search">Que voulez vous rechercher ?</label>
-            <input type="search" name="search" id="search" required>
-        </div>
-        <button type="submit">Rechercher</button>
-    </form>
-    <% if (locals.results) {%>
-        <section>
-            <% console.log(results) %>
-            <% for (const result of results) {
-                for (const details of result) {
-            %>
-                <a href=<%=details.lien%>>
-                    <h2><%=details.titre%></h2>
-                    <p><%=details.texte%></p>
-                </a>
-            <% }
-            }%>
-        </section>
+    <section class="section-search-bar">
+        <h1>Recherche</h1>
+        <form method="post" action="/searchResult">
+            <div>
+                <label for="search">Que voulez vous rechercher ?</label>
+                <input type="search" name="search" id="search" required>
+            </div>
+            <button type="submit">Rechercher</button>
+        </form>
+    </section>
+    <% if (locals.results) { %>
+        
+        <% if (results.length) { 
+            for (const result of results) {
+                for (const details of result) { %>
+                    <section class="section-search">
+                        <a href=<%=details.lien%>>
+                            <h2><%=details.titre%></h2>
+                            <p><%=details.texte%></p>
+                        </a>
+                    </section>
+                <% }
+            }
+        } else { %>
+            <p>Aucun résultat.</p>
+        <% } %>
     <% } %>
 </main>
 <script src="/jsScript/script.js"></script>

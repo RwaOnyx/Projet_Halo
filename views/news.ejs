@@ -3,20 +3,20 @@
 <main class="news-main main-background">
     <h1>News</h1>
         <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "redacteur"){ %>     
-        <form method="post" action="/addArticle" enctype="multipart/form-data">
-            <div>
+        <form class="news-addArticle" method="post" action="/addArticle" enctype="multipart/form-data">
+            <div class="news-addArticle-titre">
                 <label for="titre">De quoi voulez vous parlez ?</label>
                 <input type="text" name="titre" id="titre" required>  
             </div>
-            <div>
+            <div class="news-addArticle-image">
                 <label for="image">Ajoutez une image pour votre article (max 5 Mo) :</label>
                 <input type="file" name="image" id="image" accept="image/*" maxSize="5MB" required>
             </div>
-            <div>
-                <label for="intro">Ajoutez une intro à votre section</label>
-                <textarea id="intro" name="intro" required></textarea>
+            <div class="news-addArticle-intro">
+                <label for="intro">Ajoutez une intro à votre article</label>
+                <textarea id="intro" name="intro" rows="5" required></textarea>
             </div>
-            <div>
+            <div class="news-addArticle-button">
                 <button type="submit">Créer l'article !</button>
             </div>
         </form>

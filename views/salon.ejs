@@ -3,23 +3,24 @@
 <main class= "salon-main main-background">
     
     <h1><%= salon.intitule %></h1>
-    
-    <%  if (locals.isLogged === true){ %>
-        <div>
-            <form method="post" action="/addMessage/<%=salon.id%>">
-                <% if (!messages.length) {%>
-                    <p>Soyez le premier à mettre un message</p>
-                <% } else { %>
-                    <p>Ajouter une réponse</p>
-                <% } %>
-                <textarea id="message" name="message" required></textarea>
-                <button>Envoyer le message.</button></p>
-            </form>
-        </div>
+    <section class=section-salon-haut>
+        <%  if (locals.isLogged === true){ %>
+            <div>
+                <form method="post" action="/addMessage/<%=salon.id%>">
+                    <% if (!messages.length) {%>
+                        <p>Soyez le premier à mettre un message</p>
+                    <% } else { %>
+                        <p>Ajouter une réponse</p>
+                    <% } %>
+                    <textarea id="message" name="message" required></textarea>
+                    <button>Envoyer le message !</button></p>
+                </form>
+            </div>
         <% } else { %>
             <p>Vous devez vous connecter pour écrire un message.</p>
-            <a href=/login>Se connecter !</a>
+            <a href=/login class=no-decoration>Se connecter !</a>
         <% } %>
+    </section>
     
     <section class=section-salon>  
     <%for (const message of messages){%>
