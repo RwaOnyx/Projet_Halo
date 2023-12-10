@@ -18,12 +18,15 @@ export function updateUser(req, res) {
             id: fields.id[0],
             login: xss(fields.login),
             email: xss(fields.email),
-            role: xss(fields.role),
         };
+        
+        if (fields.role){
+            data.role = xss(fields.role)
+        }
 
         // Handle password
-        if (fields.password && fields.password !== '') {
-            console.log(fields.password)
+        console.log(fields.password)
+        if (fields.password && fields.password[0] !== '') {
             bcrypt.hash(fields.password[0], 10, (hashErr, hash) => {
                 if (hashErr) {
                     console.error('Hashing error:', hashErr);
@@ -45,16 +48,12 @@ export function updateUser(req, res) {
 }
 
 function gestionImage(image, id, data, res) {
-    console.log('toto')
-    console.log(image, id, data)
     if (image) {
         deleteImage(id, () => {
-            console.log(data.id)
 
             const chemin = 'public/images/profil/' + data.id + '.';
 
             fs.copyFile(image[0].filepath, chemin, (error) => {
-                console.log(image[0].filepath, chemin, error)
 
                 if (error) {
                     console.error(`Erreur lors de la copie du fichier : ${error}`);
@@ -62,8 +61,6 @@ function gestionImage(image, id, data, res) {
                     return;
                 }
 
-                console.log(image[0].filepath)
-                console.log(image[0]._writeStream.path)
                 // Update data with the image file name
                 data.image = data.id + '.';
                 // Perform the SQL query

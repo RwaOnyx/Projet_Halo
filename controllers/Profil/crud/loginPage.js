@@ -45,7 +45,6 @@ export function login(req, res) {
                 req.session.idUser = resultSQL[0].id;
                 req.session.isLogged = true;
                 req.session.imageProfil = resultSQL[0].image;
-
                 switch (resultSQL[0].role) {
                     case 'superadmin':
                         req.session.role = "superadmin";
@@ -55,7 +54,7 @@ export function login(req, res) {
                         req.session.role = "admin";
                         req.session.grade = 'Bienvenue Capitaine ' + resultSQL[0].login + ' !'
                         break;
-                    case 'moderateur':
+                     case 'moderateur':
                         req.session.role = "moderateur";
                         req.session.grade = 'Bienvenue ODST ' + resultSQL[0].login + ' !'
                         break;
@@ -72,8 +71,6 @@ export function login(req, res) {
                         req.session.grade = 'Bienvenue marine ' + resultSQL[0].login + ' !'
                         break;
                 }
-
-
                 res.redirect('/')
             })
 

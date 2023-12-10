@@ -12,10 +12,10 @@
             <div class="article-sections">
                 <article class=section-article>
                     <div class="section-image left">
-                        <img src="/images/news/<%=newsComplet[0].image%>">
+                        <img src="/images/news/<%=newsComplet[0].image%>" alt="Image d'illustration pour l'article <%= newsComplet[0].titre %>">
                     </div>
                     <div class="article-infos">
-                        <p><%= newsComplet[0].intro %></p>
+                        <p class="article-intro"><%= newsComplet[0].intro %></p>
                     </div>
                 </article>
             </div>
@@ -40,7 +40,7 @@
                                 <% } else { %>
                                     <div class="section-image right">
                                 <% } %>
-                                <img src="/images/news/<%= section.image %>">
+                                <img src="/images/news/<%= section.image %>" alt="Image d'illustration pour la section <%= section.titre %>">
                             </div>
                             <% } %>
                             <div class="article-infos">

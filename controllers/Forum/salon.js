@@ -3,7 +3,8 @@ import { DateTime } from "luxon";
 
 export default (req, res) => {
     const { id } = req.params;
-    query(`SELECT fm.date AS date, fm.id AS id, fm.message AS message, u.login AS login, u.role AS role, u.image AS image
+    query(`SELECT fm.date AS date, fm.id AS id, fm.message AS message, COALESCE(u.login, 'Utilisateur supprimé') as login,
+    COALESCE(u.image, "logo_inconnu.") as image, u.role AS role
         FROM ForumMessage fm
         LEFT JOIN Users u ON u.id = fm.idUtilisateur
         WHERE fm.idSalon = ?

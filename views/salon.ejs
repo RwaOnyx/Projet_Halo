@@ -27,7 +27,7 @@
         <form method="post" action="/deleteMessage/<%=salon.id%>">
             
                 <div class="salon-infos-user">
-                    <img class=mini-image-profil src="/images/profil/<%=message.image%>">
+                    <img class=mini-image-profil src="/images/profil/<%=message.image%>" alt="Image de profil">
                     <p><%=message.login%></p>
                     <p class="for-PC"><%=message.role%></p>
                     <p class="salon-dateMessage"><%=message.date%></p>
@@ -36,15 +36,17 @@
                     <p class="message"><%=message.message%></p>
                 </div>
                 
-            
-            <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
-                <button type=submit>Supprimer le message</button>
-                <input type="hidden" class="display-none" name="id" value="<%= message.id %>">
-            <% } %>
-            <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
-                <button class="edit-button-salon" type=submit>Modifier le message</button>      
-                <button class="save-button-salon display-none" type=submit data-id='<%= message.id %>'>Valider</button>
-            <% } %>
+                <div class="message-button">
+                <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
+                
+                    <button type=submit>Supprimer le message</button>
+                    <input type="hidden" class="display-none" name="id" value="<%= message.id %>">
+                <% } %>
+                <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
+                    <button class="edit-button-salon" type=button>Modifier le message</button>      
+                    <button class="save-button-salon display-none" type=button data-id='<%= message.id %>'>Valider</button>
+                <% } %>
+                </div>
         </form>
         
     <% } %>

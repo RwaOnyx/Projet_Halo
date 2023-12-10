@@ -59,8 +59,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
             editButtonListUser.classList.add('display-none');
             editButtonListUser.classList.remove('display-block');
-            row.querySelector('.save-button').classList.add('display-block');
-            row.querySelector('.save-button').classList.remove('display-none');
+            
+            row.querySelector('.save-button-listUser').classList.add('display-block');
+            row.querySelector('.save-button-listUser').classList.remove('display-none');
+
         });
     });
 

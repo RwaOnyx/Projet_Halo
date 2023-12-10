@@ -2,8 +2,8 @@
 <%- include('header') -%>
 
 <main class="listUsers-main main-background">
-    <% if (locals.message) { %>
-        <p><%= message %></p>
+    <% if (locals.message1) { %>
+        <p class="invalid listUsers-message"><%= locals.message1 %></p>
     <% } %>
 
     <h1>Liste des membres</h1>
@@ -12,7 +12,7 @@
             <label for="searchMember">Chercher un membre :</label>
             <input type="searchMember" name="searchMember" id="searchMember" required>
         </div>
-        <button type="submit">Rechercher</button>
+        <button class=listUsers-button type="submit">Rechercher</button>
     </form>
 
     <h2>Il y en a <%= listUsers.length %>.</h2>
@@ -22,9 +22,9 @@
                 <tr>
                     <th class=table-list-checkbox></th>
                     <th class=table-list-login>Login</th>
-                    <th class='for-PC table-list-email'>Email</th>
-                    <th class='for-PC table-list-date'>Date de création</th>
-                    <th class='for-PC table-list-image'>Image de profil</th>
+                    <th class='for-PC-table table-list-email'>Email</th>
+                    <th class='for-PC-table table-list-date'>Date de création</th>
+                    <th class='for-PC-table table-list-image'>Image de profil</th>
                     <th class=table-list-role>Role</th>
                     <th class=table-list-password>Mot de passe</th>
                     <th class='for-mobile-button table-list-button'></th>
@@ -46,41 +46,38 @@
                     </td>
                     <% } %>
                         
-                        <td class="user-login"><%= user.login %></td>
-                        <td class="user-email for-PC" ><%= user.email %></td>
-                        <td class="user-date for-PC"><%= user.date %></td>
-                        <td class="user-image for-PC">
-                            <img class='user-image-update' src='images/profil/<%= user.image %>' style='width: 50px;'>
+                        <td class="user-login td-update"><%= user.login %></td>
+                        <td class="user-email for-PC-table td-update" ><%= user.email %></td>
+                        <td class="user-date for-PC-table td-update"><%= user.date %></td>
+                        <td class="user-image for-PC-table td-update">
+                            <img class='user-image-update' src='images/profil/<%= user.image %>' style='width: 50px;' alt="Image de profil">
                             <input class="input display-none" type="file" name="image" accept="image/*" maxSize="5MB">
                         </td>
-                        <td class="user-role"><%= user.role %></td>
-                        <td class="user-password">
+                        <td class="user-role td-update"><%= user.role %></td>
+                        <td class="user-password td-update">
                             <span class="password-masked">••••••••</span>
                             <input class="password-input display-none" type="password" class="password-input display-none">
                         </td>
-                        
                             <%  if (locals.role !== 'superadmin' && (user.role === 'superadmin' || user.role === 'admin')){ %>
                         <td></td>
                     <% } else { %>
-                        <td>
+                        <td class="button-td">
                             <button class="edit-button-listUser" type="button" value="<%= user.id %>">Modifier</button>
                             <button class="save-button-listUser display-none" type="button">Valider</button>
                         </td>
                     <% } %>
-                            
-                            
                     </tr>
                 <% } %>
             </tbody>
         </table>
-        <button type="submit" class=deleteUsers>Supprimer les lignes sélectionnées</button>
+        <button class="listUsers-button delete-button" type="submit" class=deleteUsers>Supprimer les lignes sélectionnées</button>
     </form>
 
     <h2>Ajouter un nouveau membre manuellement</h2>
     <form class=form-addUser method="post" enctype="multipart/form-data"
     
     <%  if (rolebool===false){ %>
-        action="/register" >
+        action="/registerUsers" >
     <% } else { %>
         action="/registerRole">
     <% } %>
@@ -118,10 +115,10 @@
             </div>
             <% } %>
         <div>
-            <button class="buttonAddUsers" type="submit">Ajouter</button>
+            <button class=listUsers-button id="test" type="submit">Ajouter</button>
         </div>
     </form>
 
-    <script src="/jsScript/listUsers.js"></script>
+    <script src="/jsScript/listUsersScript.js"></script>
 </main>
 <%- include('footer') -%>

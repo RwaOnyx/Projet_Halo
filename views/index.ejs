@@ -3,23 +3,39 @@
 <main class="index-main">
   <div class="video">
       
-  <video autoplay loop muted disablepictureinpicture>
-        <source src="/video/bg-mobile.mp4" type="video/mp4">
+    <video class="for-mobile" autoplay loop muted duration="522">
+        <source src="/video/bg-mobile.webm" type="video/webm">
         Votre navigateur ne supporte pas la lecture de vidéos.
     </video>
+    <video class="for-PC" autoplay loop muted>
+        <source  src="/video/bg-PC.webm" type="video/webm">
+        Votre navigateur ne supporte pas la lecture de vidéos.
+    </video>
+
     
     </div>
-    <% if (locals.isLogged) { %>
-        <p><%(locals.grade)%></p>
+    <% if (locals.message1) { %>
+        <p class="index-messages"><%=locals.message2%></p>
     <% } %>
-    <h1>Projet Halo</h1>
+    <% if (locals.isLogged) { %>
+        <div class="index-div-messages"> 
+            <p class="index-messages"><%=locals.grade%></p>
+        </div>
+    <% } %>
+    
+    <div class="fixed-container">
+        <div class="fixed-elements">
+            <img class=for-PC src="/images/site/HUD.png" alt="Image d'un HUD ressemblant aux jeux Halos" />
+            <h1 class="h1-animation h1-animation-hide">Projet Halo</h1>
+        </div>
+    </div>
     
     <section class=section-shop>
         
             <h2>Dernier article de la boutique</h2>
             <div>
                 <div>
-                    <img src="/images/boutique/haloBoutiqueTest.png" alt="" />
+                    <img src="/images/boutique/boutiqueProchainement.jpg" alt="Image d'un super soldat (le Masterchief) avec des marines et des warthogs en fond. Les soldats transportent des caisses" />
                 </div>
                 <div>
                     <h3>Boutique à venir</h3>
@@ -37,7 +53,7 @@
             <h2>Dernière news</h2>
             <div>
                 <div>
-                    <img src="/images/news/<%=results[1].image%>" alt="" />
+                    <img src="/images/news/<%=results[1].image%>" alt="Image d'illustration pour la news <%=results[1].titre%>" />
                 </div>
                 <div>
                     <h3><%=results[1].titre%></h3>
@@ -68,7 +84,7 @@
             <h2>Histoire</h2>
             <div>
                 <div>
-                    <img src="/images/jeux/listJeux.webp" alt="" />
+                    <img src="/images/jeux/listJeux.webp" alt="Image avec toutes les jaquettes des jeux Halos" />
                 </div>
                 <div>
                     <h3>Découvrir l'histoire</h3>
@@ -86,5 +102,5 @@
         <button class="buttonRemonter" id="scrollToTopButton">⇧</button>
     </div>
 </main>
-<script src="/jsScript/script.js"></script>
+<script src="/jsScript/indexScript.js"></script>
 <%- include('footer') -%>

@@ -89,16 +89,16 @@ export function deleteImage(id, callback) {
 }
 
 function redirection(role, id, res, req) {
-    console.log(role)
+    req.session.message2="Le compte a bien été supprimer"
     if (id === req.session.id) {
         req.session.destroy(() => {
-            res.redirect("/" /*, { message : "Votre compte a été supprimé"}*/ );
+            res.redirect("/");
         });
     }
     else if (role[0].role !== "utilisateur") {
-        res.redirect("/listUsersRole" /*, { message : "Responsable(s) supprimé(s)"} */ );
+        res.redirect("/listUsersRole");
     }
     else {
-        res.redirect("/listUsers" /*, { message : "Utilisateur(s) supprimé(s)"} */ );
+        res.redirect("/listUsers");
     }
 }

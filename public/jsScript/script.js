@@ -1,18 +1,24 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const scrollToTopButton = document.getElementById("scrollToTopButton");
-  
-  // Afficher le bouton quand l'utilisateur fait défiler vers le bas
-  window.onscroll = function() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      scrollToTopButton.style.display = "block";
-    } else {
-      scrollToTopButton.style.display = "none";
-    }
-  };
-  
-  // Faites défiler la page vers le haut lorsque le bouton est cliqué
-  scrollToTopButton.addEventListener("click", function() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  });
+
+
+  function handleCheckboxChange(checkbox, bodyId) {
+    checkbox.addEventListener('change', function() {
+      console.log("test")
+      if (this.checked) {
+        document.body.setAttribute('id', bodyId);
+      }
+      else {
+        document.body.removeAttribute('id');
+      }
+    });
+  }
+
+  const switchCheckboxPC = document.getElementById('switchPC');
+  const switchCheckboxMobile = document.getElementById('switchMobile');
+
+  // Utilisez la même ID pour les deux cases à cocher
+  const commonBodyId = 'accessibilite';
+
+  handleCheckboxChange(switchCheckboxPC, commonBodyId);
+  handleCheckboxChange(switchCheckboxMobile, commonBodyId);
 });

@@ -10,7 +10,7 @@
         <div class=profil-info-int>
             <div>
                 <div class="image">
-                    <img class="image-profil" src="images/profil/<%=profil.image%>">
+                    <img class="image-profil" src="images/profil/<%=profil.image%>" alt ="Image de profil">
                 </div>
                 <input class="inputImage display-none" type="file" name="image" accept="image/*">
                     
@@ -18,8 +18,7 @@
             <p>Pseudo : <span class="login"><%= profil.login %></span></p>
             <p>Email : <span class="email"><%= profil.email %></span></p>
             <p>Date de création : <%= profil.date %></p>
-            <p>Role : <span class="role" data-role="<%= profil.role %>"><%= profil.role %></span></p>
-            
+            <p class="role">Role : <span class="role" data-role="<%= profil.role %>"><%= profil.role %></span></p>
                 
             
         </div>

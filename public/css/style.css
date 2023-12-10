@@ -8,24 +8,37 @@
 
 @font-face {
     font-family: 'Halo2';
-    src: url('/police/Halo-Outline.woff2') format('woff2'), /* Format WOFF2 */
-    url('/police/Halo-Outline.woff') format('woff');
+    src: url('/police/Halo!Accent.woff2') format('woff2'), /* Format WOFF2 */
+    url('/police/Halo!Accent.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
-video {
+@font-face {
+    font-family: 'Halo3';
+    src: url('/police/Halo-Outline!Accent.woff2') format('woff2'), /* Format WOFF2 */
+    url('/police/Halo-Outline!Accent.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html .hidden {
+    transform: scaleY(0);
+}
+
+video.for-mobile {
     position: absolute;
     z-index: -2;
     width: 100%;
-    height: 92.9%;
+    height: 92%;
     overflow-x: hidden;
     object-fit: cover;
 }
 
 html {
-    font-size: 20px;
+    font-size: 10px;
     color: white;
+    background-color: black;
 }
 
 html,
@@ -47,18 +60,23 @@ html body .display-none {
 
 html body .display-block {
     display: block;
+    margin: auto;
 }
 
 html body .image-profil {
-    width: 150px;
+    width: 75px;
 }
 
 html body .mini-image-profil {
-    width: 100px;
+    width: 50px;
+}
+
+main {
+    padding-bottom: 1px;
 }
 
 .font-halo {
-    font-family: Halo2;
+    font-family: Halo3;
 }
 
 .no-decoration {
@@ -84,20 +102,37 @@ html body input {
     font-size: 1.7em;
 }
 
+input:required:focus:invalid,
+textarea:required:focus:invalid {
+    border-color: red;
+}
+
+.valid {
+    color: green;
+}
+
+.invalid {
+    color: red;
+}
+
+.for-mobile,
+.menu-burger {
+    height: 100%;
+}
+
 /* MENU BURGER */
 
 .menu-burger {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 10px 40px;
+    padding: 0 20px;
     justify-content: space-between;
 }
 
 .mobile-accueil-button,
 .mobile-login-button,
 .mobile-burger-button {
-    flex: 1;
     text-align: center;
 }
 
@@ -109,38 +144,43 @@ html body input {
     text-align: right;
 }
 
-header input[type="checkbox"] {
+header #openSidebarMenu {
     display: none;
 }
 
+
 .sidebarIconToggle {
     display: block;
-    cursor: pointer;
-    z-index: 10;
+    cursor: url('/images/cursor/selector.cur'), auto;
+    z-index: 4;
     top: 10px;
     left: 10px;
 }
 
 .spinner {
-    width: 33px;
-    margin: 10px auto;
     transition: 0.4s;
-    background: #fff;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: #fff;
+    margin: 0.2em auto;
+    height: 0.2em;
+    width: 1.8em;
 }
 
 
 #sidebarMenu {
     position: fixed;
     left: 0;
-    width: 356px;
-    margin-top: 58.9%;
+    width: 234px;
+    top: 8.2%;
     transform: translateX(-356px);
     transition: transform 250ms ease-in-out;
     background: rgb(44, 46, 69);
 }
 
 #sidebarMenu a {
-    font-size: 2.2em;
+    font-size: 3em;
 }
 
 .sidebarMenuInner {
@@ -154,8 +194,8 @@ header input[type="checkbox"] {
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
-    padding: 20px;
-    cursor: pointer;
+    padding: 10px;
+    cursor: url('/images/cursor/selector.cur'), auto;
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
@@ -168,40 +208,53 @@ header input[type="checkbox"] {
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
-    cursor: pointer;
+    cursor: url('/images/cursor/selector.cur'), auto;
     text-decoration: none;
 }
 
-input[type="checkbox"]:checked~#sidebarMenu {
+#openSidebarMenu:checked~#sidebarMenu {
     transform: translateX(0);
 }
 
-header input[type=checkbox] {
+
+
+
+
+header #openSidebarMenu {
     transition: all 0.3s;
     box-sizing: border-box;
     display: none;
 }
 
+.for-PC,
+.menu-burger,
+.mobile-login-button,
+.mobile-accueil-button,
+.PC-accueil-search,
+menu-burger div a,
+.mobile-accueil-button a {
+    height: 100%;
+}
+
+.menu-burger div a img {
+    height: 95%;
+    width: auto;
+}
+
 .sidebarIconToggle {
     transition: all 0.3s;
     box-sizing: border-box;
-    cursor: pointer;
-    z-index: 99;
+    cursor: url('/images/cursor/selector.cur'), auto;
+    z-index: 3;
     height: 100%;
     width: 100%;
-    top: 22px;
-    left: 15px;
-    height: 55px;
-    width: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.spinner {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: absolute;
-    height: 7px;
-    width: 100%;
-    background-color: #fff;
+.mobile-burger-button {
+    height: 100%;
 }
 
 .horizontal {
@@ -209,7 +262,6 @@ header input[type=checkbox] {
     box-sizing: border-box;
     position: relative;
     float: left;
-    margin-top: 3px;
 }
 
 .diagonal.part-1 {
@@ -224,23 +276,22 @@ header input[type=checkbox] {
     box-sizing: border-box;
     position: relative;
     float: left;
-    margin-top: 3px;
 }
 
-header input[type=checkbox]:checked~.sidebarIconToggle>.horizontal {
+header #openSidebarMenu:checked~.sidebarIconToggle>.horizontal {
     transition: all 0.3s;
     box-sizing: border-box;
     opacity: 0;
 }
 
-header input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-1 {
+header #openSidebarMenu:checked~.sidebarIconToggle>.diagonal.part-1 {
     transition: all 0.3s;
     box-sizing: border-box;
     transform: rotate(135deg);
     margin-top: 8px;
 }
 
-header input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
+header #openSidebarMenu:checked~.sidebarIconToggle>.diagonal.part-2 {
     transition: all 0.3s;
     box-sizing: border-box;
     transform: rotate(-135deg);
@@ -253,13 +304,14 @@ header .header-imageProfil {
 }
 
 h1 {
-    font-size: 6em;
+    font-size: 5em;
     color: white;
     margin: 0;
     text-align: center;
     font-family: Halo, sans-serif;
     font-weight: normal;
-    padding: 25px;
+    padding: 12px;
+    padding-top:40px;
 }
 
 h2,
@@ -269,7 +321,7 @@ h3 {
 }
 
 h2 {
-    font-size: 4.5em;
+    font-size: 4em;
 }
 
 h3 {
@@ -281,12 +333,12 @@ header {
     position: sticky;
     top: 0;
     border-bottom: 1px #CFE0F3 solid;
-    z-index: 1;
-    height: 7%;
+    z-index: 2;
+    height: 8%;
 }
 
 header img {
-    width: 100px;
+    width: 45px;
 }
 
 header li {
@@ -308,11 +360,12 @@ header a p {
 }
 
 header .mobile-accueil-button .font-halo {
-    height: 100px
+    height: 50px
 }
 
 header .header-p-centre {
-    font-size: 2.8em;
+    font-size: 2.3em;
+    padding-top: 5px;
 }
 
 body {
@@ -321,16 +374,23 @@ body {
 }
 
 .main-background {
-    min-height: 85.2%;
+    min-height: 84.2%;
     background: rgb(44, 46, 69);
     background: linear-gradient(180deg, rgba(44, 46, 69, 1) 0%, rgba(49, 51, 74, 1) 15%, rgba(57, 59, 82, 1) 30%, rgba(67, 69, 93, 1) 45%, rgba(80, 82, 107, 1) 64%, rgba(97, 98, 125, 1) 84%, rgba(110, 110, 138, 1) 94%, rgba(147, 147, 177, 1) 100%);
+}
+
+.white-background,
+.white-background h1,
+.white-background h2 {
+    min-height: 84.9%;
+    background: white;
+    color: black;
 }
 
 
 /* footer */
 
 footer {
-    height: 7.8%;
     background: rgb(195, 195, 227);
     background: linear-gradient(0deg, rgba(195, 195, 227, 1) 0%, rgba(147, 147, 177, 1) 50%, rgba(147, 147, 177, 1) 100%);
 }
@@ -339,13 +399,13 @@ footer {
 footer .infosSupplementaire {
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    padding: 5px;
 }
 
 footer .infosSupplementaire div {
     display: flex;
     justify-content: space-around;
-    padding: 15px;
+    padding: 5px;
 }
 
 footer .infosSupplementaire div a {
@@ -369,15 +429,16 @@ footer .infosSupplementaire div a {
 .search-main button {
     color: #ffffff;
     background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
-    padding: 15px;
-    border: solid #4a96d6 5px;
+    padding: 7px;
+    border: solid #4a96d6 2px;
     border-radius: 50px;
     transition: all 830ms;
     transform: translateY(0);
     display: flex;
     flex-direction: row;
     align-items: center;
-    cursor: pointer;
+    cursor: url('/images/cursor/selector.cur'), auto;
+    justify-content: center;
 }
 
 .login-main button:hover,
@@ -387,10 +448,10 @@ footer .infosSupplementaire div a {
 .section-salon-haut a:hover,
 .salon-main button:hover,
 .search-main button:hover {
-    padding: 20px;
+    padding: 10px;
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
-    border: solid 5px #4a96d6;
+    border: solid 3px #4a96d6;
     -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
@@ -399,18 +460,215 @@ footer .infosSupplementaire div a {
 .listUsers-main button:hover {
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
-    border: solid 5px #4a96d6;
+    border: solid 3px #4a96d6;
     -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    font-size: 1.2em;
+}
+
+.listUsers-main .listUsers-button:hover {
+    font-size: 2.5em;
 }
 
 .listUsers-main .buttonAddUsers:hover,
 .listUsers-main .deleteUsers:hover {
-    padding: 20px;
+    padding: 10px;
+}
+
+.delete-button {
+    margin: 7px;
 }
 
 /* Fin Gestion bouton */
+
+/* SWITCH */
+
+.PC-accueil-switch {
+    position: relative;
+    top: 1.2em;
+    width: 7.5em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.for-mobile2 {
+    position: absolute;
+    right: 0.3em;
+    top: 110%;
+}
+
+
+
+.PC-accueil-switch input[type=checkbox] {
+    display: none;
+}
+
+.PC-accueil-switch-label {
+    display: block;
+    overflow: hidden;
+    cursor: url('/images/cursor/selector.cur'), auto;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    background: white;
+}
+
+.PC-accueil-switch-inner {
+    width: 200%;
+    margin-left: -100%;
+    -webkit-transition: margin 0.3s ease-in 0s;
+    -moz-transition: margin 0.3s ease-in 0s;
+    -ms-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.PC-accueil-switch-inner:before,
+.PC-accueil-switch-inner:after {
+    float: left;
+    width: 50%;
+    height: 28px;
+    padding: 0;
+    line-height: 28px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 1.6em;
+    font-size: 1em;
+}
+
+.PC-accueil-switch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #ffffff;
+    color: #2c2e45;
+    padding-top: 0.4em;
+    padding-left: 0.2em;
+}
+
+.PC-accueil-switch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: rgb(44, 46, 69);
+    color: #ffffff;
+    text-align: right;
+    padding-top: 0.4em;
+    padding-right: 0.2em;
+}
+
+.for-mobile2 .PC-accueil-switch-inner:after,
+.for-mobile2 .PC-accueil-switch-inner:before {
+    padding-top: 0.1em;
+}
+
+.PC-accueil-switch-switch {
+    margin-top: 0.27em;
+    margin-right: 0.2em;
+    width: 1em;
+    height: 1em;
+    background: #fa2424;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 2.2em;
+    -webkit-transition: all 0.3s ease-in 0s;
+    -moz-transition: all 0.3s ease-in 0s;
+    -ms-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s;
+    transition: all 0.3s ease-in 0s;
+}
+
+.PC-accueil-switch-cb:checked+.PC-accueil-switch-label .PC-accueil-switch-inner {
+    margin-left: 0;
+}
+
+.PC-accueil-switch-cb:checked+.PC-accueil-switch-label .PC-accueil-switch-switch {
+    right: 0;
+    background-color: green;
+}
+
+#accessibilite .index-main section,
+#accessibilite .index-main section::after,
+#accessibilite .index-main section::before,
+#accessibilite footer,
+#accessibilite .main-background {
+    background: rgb(44, 46, 69);
+}
+
+#accessibilite, #accessibilite .sidebarMenuInner li {
+    cursor:default;
+}
+
+#accessibilite a,
+#accessibilite button,
+#accessibilite label  {
+    cursor:pointer;
+}
+
+#accessibilite a,
+#accessibilite button,
+#accessibilite input,
+#accessibilite textarea {
+    background: white;
+    color: rgb(44, 46, 69);
+    border: white;
+}
+
+
+#accessibilite footer a,
+#accessibilite header a,
+#accessibilite buttonRemonter a, #accessibilite #scrollToTopButton, #accessibilite .section-search a, #accessibilite .forum-main .list-forum {
+    background: transparent;
+    color: white;
+}
+
+#accessibilite,
+#accessibilite h1 {
+    font-family: helvetica;
+}
+
+#accessibilite .forum-main .create-salon a,#accessibilite .section-salon-haut a {
+    width: 6.7em;
+}
+
+#accessibilite .index-main section a {
+    width: 6.5em;
+}
+
+#accessibilite .table-list-users td input[type="checkbox"] {
+    border: 1px solid rgb(44, 46, 69);
+}
+
+#accessibilite .user-checkbox:checked, .checkbox:checked {
+    background: #4A96D6;
+}
+
+#accessibilite .table-list-users {
+    border: 1px solid rgb(44, 46, 69);
+    background-color: #ffffff;
+}
+#accessibilite .table-list-users thead, #accessibilite .table-list-users tr:nth-child(even), #accessibilite .td-update select, #accessibilite .td-update option {
+    background: #ffffff;
+}
+
+#accessibilite .table-list-users td, #accessibilite table.table-list-users th, #accessibilite .table-list-users button {
+    color: rgb(44, 46, 69);
+    border: 1px solid rgb(44, 46, 69);
+}
+
+#accessibilite .user-checkbox:checked::before, .checkbox:checked::before {
+    background:rgb(44, 46, 69);
+    width: 35px;
+    height: 36px;
+}
+
+/* FIN SLIDER */
 
 /* Gestion input */
 
@@ -423,8 +681,13 @@ footer .infosSupplementaire div a {
 .news-main textarea,
 .article-main input,
 .article-main textarea,
-.section-salon-haut textarea,
-.search-main input {
+.salon-main textarea,
+.search-main input,
+.listUsers-formSearch input,
+.td-update input,
+.form-addUser input,
+.td-update select,
+.td-update option {
     border-width: 2px;
     border-color: #747570;
     background-color: #cfe0f3;
@@ -443,8 +706,13 @@ footer .infosSupplementaire div a {
 .news-main textarea:focus,
 .article-main input:focus,
 .article-main textarea:focus,
-.section-salon-haut textarea:focus,
-.search-main input:focus {
+.salon-main textarea:focus,
+.search-main input:focus,
+.listUsers-formSearch input:focus,
+.td-update input:focus,
+.form-addUser input:focus,
+.td-update select:focus,
+.td-update option:focus {
     outline: none;
 }
 
@@ -453,20 +721,24 @@ footer .infosSupplementaire div a {
 /* PAGE ACCUEIL */
 
 .index-main h1 {
-    font-size: 11em;
-    padding-top: 60%;
+    font-size: 9em;
+    padding-top: 55%;
     font-family: Halo, sans-serif;
-    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #000000;
 }
 
 .index-main section {
     background: rgb(147, 147, 177);
     background: linear-gradient(rgba(147, 147, 177, 1) 0%, rgba(98, 99, 126, 1) 20%, rgba(59, 61, 85, 1) 35%, rgba(44, 46, 69, 1) 50%, rgba(59, 61, 85, 1) 65%, rgba(98, 99, 126, 1) 80%, rgba(147, 147, 177, 1) 100%);
-    padding: 30px 60px;
-    margin: 120% auto;
+    padding: 5px 30px;
+    margin: 160% auto;
     position: relative;
-    min-height: 1885px;
+    min-height: 560px;
+}
+
+.index-main section p {
+    font-size: 1.5em;
 }
 
 .index-main section::before,
@@ -474,24 +746,24 @@ footer .infosSupplementaire div a {
     content: '';
     position: absolute;
     width: 100%;
-    height: 9%;
+    height: 100%;
     transform: skewY(9deg);
 }
 
 .index-main section::before {
-    top: -5%;
+    top: -4em;
     left: 0;
     z-index: -1;
     background: rgb(195, 195, 227);
-    background: linear-gradient(170deg, rgba(195, 195, 227, 1) 0%, rgba(147, 147, 177, 1) 50%, rgba(147, 147, 177, 1) 100%);
+    background: linear-gradient(8deg, rgba(195, 195, 227, 1) 0%, rgba(147, 147, 177, 1) 8%);
 }
 
 .index-main section::after {
-    bottom: -5%;
+    bottom: -4em;
     left: 0;
     z-index: -1;
     background: rgb(195, 195, 227);
-    background: linear-gradient(-9deg, rgba(195, 195, 227, 1) 0%, rgba(147, 147, 177, 1) 50%, rgba(147, 147, 177, 1) 100%);
+    background: linear-gradient(351deg, rgba(195, 195, 227, 1) 0%, rgba(147, 147, 177, 1) 7%);
 }
 
 .index-main section a,
@@ -506,23 +778,20 @@ footer .infosSupplementaire div a {
 }
 
 .index-main section a {
-    margin: 50px auto;
-    width: 40%;
+    margin: 12px auto;
+    width: 5.8em;
     text-align: center;
 }
 
 .index-main section a:hover {
-    width: 50%;
-    padding: 20px;
+    padding: 10px;
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
-    border: solid 5px #4a96d6;
+    border: solid 2px #4a96d6;
     -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
 }
-
-.index-main h2 {}
 
 .index-main h3 {
     text-align: center;
@@ -532,10 +801,27 @@ footer .infosSupplementaire div a {
     display: flex;
 }
 
+.index-messages {
+    margin: 30px auto 0 auto;
+    text-align: center;
+    font-size: 3em;
+
+}
+
+.index-div-messages {
+    top: 10%;
+    width: 100%;
+    position: fixed;
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: transform 0.7s ease-in-out;
+    z-index: 1;
+}
+
 .buttonRemonter {
     font-size: 6em;
     position: relative;
-    left: 89%;
+    left: 86%;
     color: white;
     background: transparent;
     border: none;
@@ -547,21 +833,25 @@ footer .infosSupplementaire div a {
 
 /* PAGE LOGIN */
 
+.login-main {
+    padding-bottom: 25px
+}
+
 .login-main form,
 .form-addUser {
     width: 70%;
-    padding: 20px;
-    border: 2px solid white;
+    padding: 10px;
+    border: 1px solid white;
     text-align: center;
-    border-radius: 15px;
+    border-radius: 7px;
 }
 
 .login-main form {
-    margin: 50px auto;
+    margin: 25px auto;
 }
 
 .listUsers-main .form-addUser {
-    margin: 50px auto 0 auto;
+    margin: 25px auto 0 auto;
 }
 
 .login-main form div,
@@ -579,7 +869,7 @@ footer .infosSupplementaire div a {
 .listUsers-main .form-addUser input,
 .listUsers-main input {
     width: 80%;
-    margin: 10px auto;
+    margin: 5px auto;
 }
 
 .listUsers-main select,
@@ -590,8 +880,8 @@ footer .infosSupplementaire div a {
 .login-main button,
 .btn-gestion-users,
 .listUsers-main .form-addUser button {
-    margin: 25px auto 10px auto;
-    padding: 15px;
+    margin: 13px auto 5px auto;
+    padding: 7px;
 }
 
 
@@ -609,9 +899,24 @@ footer .infosSupplementaire div a {
     width: 60%;
 }
 
-.listUsers-formSearch button {
-    margin: 15px auto;
+.for-PC2 {
+    display: none;
 }
+
+.listUsers-formSearch button {
+    margin: 7px auto;
+}
+
+.login-main .erreurLogin {
+    font-size: 1.7em;
+    text-align: center;
+}
+
+.login-main .registerValid {
+    font-size: 1.7em;
+    text-align: center;
+}
+
 
 /* PAGE PROFIL */
 
@@ -624,17 +929,26 @@ footer .infosSupplementaire div a {
 }
 
 .profil-info-ext {
-    border: 2px solid white;
-    margin: 10px auto;
+    border: 1px solid white;
+    margin: 5px auto;
     width: 85%;
-    border-radius: 15px;
+    border-radius: 7px;
 }
 
 .profil-info-int {
-    padding: 5px;
-    border: 2px solid white;
-    margin: 10px auto;
-    font-size: 1.3em;
+    padding: 2px;
+    border: 1px solid white;
+    margin: 5px auto;
+    font-size: 2em;
+}
+
+.profil-info-int p {
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
+}
+
+.profil-info-int input {
+    font-size: 1em;
 }
 
 .profil-info-int input {
@@ -643,22 +957,21 @@ footer .infosSupplementaire div a {
 
 .profil-info-ext .edit-button,
 .profil-info-ext .save-button {
-    padding: 10px;
-    margin: 10px auto;
+    padding: 5px;
+    margin: 5px auto;
     width: 25%;
     text-align: center;
 }
 
 .profil-info-ext .edit-button-div button {
-    margin: 15px;
+    margin: 7px;
 }
 
 /* Style pour le conteneur principal */
 
 .gestion-users {
-    margin: 15px auto;
+    margin: 7px auto;
     text-align: center;
-    /* Ajout de cette propriété */
 }
 
 
@@ -674,27 +987,27 @@ footer .infosSupplementaire div a {
 }
 
 .choix-gestion-users a {
-    padding: 5px;
+    padding: 3.5px;
     text-decoration: none;
     text-align: center;
     color: #ffffff;
     background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
-    border: solid #4a96d6 5px;
-    border-radius: 50px;
+    border: solid #4a96d6 1px;
+    border-radius: 25px;
     transition: all 830ms;
     /* Utilisation de "all" pour gérer toutes les propriétés de transition */
     transform: translateY(0);
     display: flex;
     flex-direction: row;
-    cursor: pointer;
-    margin: 5px;
+    cursor: url('/images/cursor/selector.cur'), auto;
+    margin: 1.2px;
 }
 
 .choix-gestion-users a:hover,
 .forum-main .create-salon a:hover {
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
-    border: solid 5px #4a96d6;
+    border: solid 2.5px #4a96d6;
     -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
@@ -707,36 +1020,40 @@ footer .infosSupplementaire div a {
 .profil-main .gestion-compte {
     display: flex;
     justify-content: space-around;
-    padding: 40px
+    padding: 20px
 }
 
 .profil-main .gestion-compte a {
+    display: flex;
     text-decoration: none;
     color: #ffffff;
     background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
-    padding: 15px;
-    border: solid #4a96d6 5px;
-    border-radius: 50px;
+    padding: 3.5px;
+    border: solid #4a96d6 1px;
+    border-radius: 25px;
     transition: all 830ms;
     transform: translateY(0);
     flex-direction: row;
     align-items: center;
-    cursor: pointer;
+    cursor: url('/images/cursor/selector.cur'), auto;
+    width: 45%;
+    text-align: center;
+    justify-content: center;
 }
 
 .profil-main .gestion-compte a:hover {
-    padding: 15px;
+    padding: 7px;
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
-    border: solid 5px #4a96d6;
-    -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
-    -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
-    box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
+    border: solid 2.5px #4a96d6;
+    -webkit-box-shadow: 0px 0px 100px 7px rgba(74, 151, 214, 0.8);
+    -moz-box-shadow: 0px 0px 100px 7px rgba(74, 151, 214, 0.8);
+    box-shadow: 0px 0px 100px 7px rgba(74, 151, 214, 0.8);
 }
 
 .profil-main .put-bottom {
 
-    bottom: 15px;
+    bottom: 7px;
     width: 100%;
 }
 
@@ -744,6 +1061,11 @@ footer .infosSupplementaire div a {
 
 
 /* Tableau */
+
+.listUsers-message {
+    text-align: center;
+    margin-top: 0;
+}
 
 .table-list-users {
     border: 1px solid #FFFFFF;
@@ -755,16 +1077,21 @@ footer .infosSupplementaire div a {
 .table-list-users td,
 table.table-list-users th {
     border: 1px solid #FFFFFF;
-    padding: 3px 2px;
+    padding: 1.5px 1px;
 }
 
 .table-list-users tbody td {
     color: black;
-    font-size: 2em;
+    font-size: 1.5em;
+}
+
+.table-list-users tbody td input,
+.table-list-users tbody td select {
+    font-size: 1em;
 }
 
 .table-list-users tbody .user-role {
-    width: 35px;
+    width: 17px;
 }
 
 .table-list-users tr:nth-child(even) {
@@ -781,7 +1108,7 @@ table.table-list-users th {
     font-weight: bold;
     color: #FFFFFF;
     text-align: center;
-    border-left: 2px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
 }
 
 .table-list-users thead th:first-child {
@@ -789,27 +1116,29 @@ table.table-list-users th {
 }
 
 .table-list-users button {
-    padding: 10px;
+    padding: 5px;
     font-size: 1.2em;
 }
 
 .table-list-users td input[type="checkbox"] {
-    width: 65px;
-    height: 65px;
+    width: 37px;
+    height: 37px;
 }
 
 .table-list-users td select {
-    width: 200px;
+    width: 90%;
 }
 
 .table-list-users .user-login input {
-    width: 250px;
+    width: 90%;
 }
 
-.table-list-users .user-role select option {}
+.table-list-users .user-role select option {
+    font-size: 0.5em;
+}
 
 .table-list-users .user-password input {
-    width: 170px;
+    width: 90%;
 }
 
 .table-list-users tr .table-list-checkbox {
@@ -836,16 +1165,8 @@ table.table-list-users th {
 }
 
 .listUsers-main .table-list-users tr {
-    height: 130px;
+    height: 65px;
 }
-
-
-
-
-
-
-
-
 
 
 /* Page Gestion utilisateur */
@@ -860,7 +1181,7 @@ table.table-list-users th {
 
 .listUsers-main .form-addUser .buttonAddUsers,
 .listUsers-main .form-addUser input {
-    padding: 10px;
+    padding: 5px;
 }
 
 
@@ -868,22 +1189,41 @@ table.table-list-users th {
     align-items: center;
 }
 
+.listUsers-main {
+    padding-bottom: 25px;
+}
+
+.user-checkbox {
+    width: 10%;
+}
+
+.user-login {
+    width: 30%;
+}
+
+.user-role {
+    width: 25%;
+}
+
+.user-password {
+    width: 20%;
+}
 
 /* Gestion checkbox */
 
 @keyframes click-wave {
     0% {
-        width: 40px;
-        height: 40px;
+        width: 20px;
+        height: 20px;
         opacity: 0.35;
         position: relative;
     }
 
     100% {
-        width: 200px;
-        height: 200px;
-        margin-left: -78px;
-        margin-top: -78px;
+        width: 100px;
+        height: 100px;
+        margin-left: -39px;
+        margin-top: -39px;
         opacity: 0;
     }
 }
@@ -894,13 +1234,13 @@ table.table-list-users th {
     appearance: none;
     transition: all 0.3s ease;
     border: 1px solid #4A96D6;
-    border-radius: 7px;
+    border-radius: 3px;
     color: #fff;
-    cursor: pointer;
+    cursor: url('/images/cursor/selector.cur'), auto;
     margin-right: 0.5rem;
     outline: none;
     position: relative;
-    z-index: 1000;
+    z-index: 1;
 }
 
 .checkbox:hover {
@@ -915,15 +1255,15 @@ table.table-list-users th {
 .user-checkbox:checked::before,
 .checkbox:checked::before {
     content: '';
-    width: 63px;
-    height: 63px;
+    width: 31px;
+    height: 31px;
     position: absolute;
     background-image: url(/images/site/cross.svg);
     background-size: 12rem;
     background-position: center center;
     display: inline-block;
     text-align: center;
-    line-height: 40px;
+    line-height: 20px;
 }
 
 .user-checkbox:checked::after,
@@ -933,7 +1273,7 @@ table.table-list-users th {
     content: '';
     display: block;
     position: relative;
-    z-index: 100;
+    z-index: 5;
 }
 
 
@@ -941,10 +1281,16 @@ table.table-list-users th {
 
 /* Page Forum */
 
+.forum-main {
+    padding-bottom: 15px;
+}
+
 .forum-main .list-forum,
 .forum-main .list-forum .list-forum-infos .list-forum-infos-detail {
     display: flex;
     flex-direction: row;
+    padding-top: 3px;
+    align-items: center;
 }
 
 .forum-main .list-forum .list-forum-infos,
@@ -954,15 +1300,27 @@ table.table-list-users th {
 }
 
 .forum-main .list-forum-infos-detail>* {
-    width: 50%;
     text-align: center;
     margin: 0;
     text-decoration: none;
     color: white;
 }
 
+.forum-main .list-forum-infos-detail:nth-child(2) {
+    margin-top: 5px;
+}
+
+.forum-main .nomSalon,
+.forum-main .list-forum-infos .dateCreation {
+    width: 65%;
+}
+
+.forum-main .list-forum-infos p {
+    width: 35%;
+}
+
 .forum-main .create-salon p {
-    padding-bottom: 15px;
+    padding-bottom: 7px;
     font-size: 2em;
 }
 
@@ -984,16 +1342,16 @@ table.table-list-users th {
 .salon-main .section-salon,
 .section-salon-haut {
     width: 90%;
-    margin: 30px auto;
+    margin: 15px auto;
 
 }
 
 .forum-main .section-forum form,
 .salon-main .section-salon form {
     background-color: rgb(44, 46, 69);
-    margin: 30px auto;
-    padding: 10px;
-    border: 3px solid #ffffff;
+    margin: 15px auto;
+    padding: 5px;
+    border: 1px solid #ffffff;
     border-radius: 20px 20px 20px 20px;
     -webkit-border-radius: 20px 20px 20px 20px;
     -moz-border-radius: 20px 20px 20px 20px;
@@ -1002,36 +1360,41 @@ table.table-list-users th {
 .forum-main button {
     color: #ffffff;
     background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
-    padding: 15px;
-    border: solid #4a96d6 5px;
-    border-radius: 50px;
+    padding: 7px;
+    border: solid #4a96d6 3px;
+    border-radius: 25px;
     transition: all 830ms;
     transform: translateY(0);
     display: flex;
     flex-direction: row;
     align-items: center;
-    cursor: pointer;
+    cursor: url('/images/cursor/selector.cur'), auto;
 }
 
 .forum-main button:hover {
-    padding: 20px;
+    padding: 10px;
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
-    border: solid 5px #4a96d6;
+    border: solid 3px #4a96d6;
     -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
 }
 
 .forum-main .button-salon {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 15px;
+    margin-bottom: 7px;
 }
 
 .forum-main .button-salon button {
-    margin: auto 15px;
+    margin: auto 7px;
+    font-size: 2em;
+}
+
+.forum-main .button-salon button:hover {
+    font-size: 2.7em;
 }
 
 .forum-main .forum-modif-input {
@@ -1039,15 +1402,22 @@ table.table-list-users th {
 }
 
 .forum-main .create-salon a {
-    width: 30%;
+    width: 6em;
 }
 
-.forum-main .create-salon a:hover {
-    width: 37%;
+.forum-main .section-forum a:hover {
+    font-size: 2.2em;
 }
 
-.forum-main a:hover {
-    font-size: 2.2 em;
+.forum-main .section-forum form:hover {
+    background: white;
+    border-color: rgb(44, 46, 69);
+}
+
+.forum-main .section-forum form:hover h3,
+.forum-main .section-forum form:hover div p {
+    color: rgb(44, 46, 69);
+    border-color: rgb(44, 46, 69);
 }
 
 /* FIN FORUM */
@@ -1061,13 +1431,13 @@ table.table-list-users th {
 }
 
 .salon-main .salon-infos-user>* {
-    margin: 5px auto 20px auto;
+    margin: 3px auto 20px auto;
     font-size: 2em;
 }
 
 .salon-main {
     color: white;
-    padding-bottom: 15px;
+    padding-bottom: 7px;
 }
 
 .salon-main .salon-dateMessage {
@@ -1075,37 +1445,44 @@ table.table-list-users th {
 }
 
 .salon-main .salon-message {
-    border-top: 6px dashed #ffffff;
+    border-top: 3px dashed #ffffff;
 }
 
 .salon-main .salon-message p {
-    margin: 15px 10px;
+    margin: 7px 5px;
+    font-size: 1.5em;
 }
 
 .section-salon-haut a {
-    width: 30%;
+    width: 5.9em;
 }
 
-.section-salon-haut a:hover {
-    width: 36%;
-}
-
-.section-salon-haut textarea {
-    height: 200px;
+.salon-main textarea {
+    height: 100px;
     width: 100%;
 }
 
 .section-salon-haut p,
-.section-salon-haut textarea {
+.salon-main textarea {
     font-size: 2em;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.message-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.message-button button {
+    width: 7.2em;
+    font-size: 1.5em;
 }
 
 /* SLIDER (MOBILE) */
 
 .slider-container {
     position: relative;
-    max-width: 90%;
     margin: 0 auto;
     text-align: center;
 }
@@ -1128,34 +1505,34 @@ table.table-list-users th {
 }
 
 .slide-text {
-    margin-top: 10px;
-    margin-bottom: 45px;
+    margin-top: 5px;
+    margin-bottom: 22px;
 }
 
 .slider-arrows {
     position: absolute;
-    top: 24vh;
+    top: 31vh;
     transform: translateY(-50%);
     width: 100%;
     display: flex;
     justify-content: space-between;
-    cursor: pointer;
+    cursor: url('/images/cursor/selector.cur'), auto;
     color: white;
-    font-size: 9em;
+    font-size: 7em;
 }
 
 .slider-dots {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 .dot {
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: white;
-    margin: 0 10px;
-    cursor: pointer;
+    margin: 0 5px;
+    cursor: url('/images/cursor/selector.cur'), auto;
 }
 
 .active {
@@ -1163,8 +1540,8 @@ table.table-list-users th {
 }
 
 .slider-container img {
-    height: 840px;
-    width: 500px;
+    height: 420px;
+    width: 250px;
 
 }
 
@@ -1174,28 +1551,30 @@ table.table-list-users th {
     text-decoration: none;
     color: #ffffff;
     background: linear-gradient(123deg, #4a96d6 50%, #CFE0F3 100%);
-    padding: 15px;
-    border: solid #4a96d6 5px;
-    border-radius: 50px;
+    padding: 7px;
+    border: solid #4a96d6 1px;
+    border-radius: 25px;
     transition: all 830ms;
     /* Utilisation de "all" pour gérer toutes les propriétés de transition */
     transform: translateY(0);
     cursor: pointer;
-    margin: 15px auto;
+    margin: 3px auto;
 }
 
 .jeux-main a:hover {
-    padding: 20px;
+    padding: 10px;
     background: linear-gradient(123deg, #CFE0F3 50%, #4a96d6 80%);
     color: #2C2E45;
-    border: solid 5px #4a96d6;
+    border: solid 3px #4a96d6;
     -webkit-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     -moz-box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
     box-shadow: 0px 0px 100px 15px rgba(74, 151, 214, 0.8);
 }
 
 .jeux-main .slide-text p {
-    margin-bottom: 45px;
+    font-size: 1.5em;
+    width: 90%;
+    margin: auto auto 22px auto;
 }
 
 
@@ -1205,19 +1584,21 @@ table.table-list-users th {
 
 .jeux-halo-main .image {
     float: left;
-    margin-right: 20px;
-    /* Ajoutez un espacement entre l'image et le texte */
-    margin-left: 15px;
-    margin-bottom: 15px;
+    margin-right: 10px;
+    width: 50%;
+    margin-left: 7px;
+    margin-bottom: 7px;
 }
 
 .jeux-halo-main .text {
-    margin: 20px;
+    margin: 10px;
     color: white;
+    font-size: 1.5em;
 }
 
 .jeux-halo-main h2 {
     color: white;
+    font-size: 2em;
 }
 
 .article-jeux-halo:before,
@@ -1233,9 +1614,9 @@ table.table-list-users th {
 
 .news-main .section-news form {
     background-color: rgb(44, 46, 69);
-    margin: 30px auto;
-    padding: 10px;
-    border: 3px solid #ffffff;
+    margin: 15px auto;
+    padding: 5px;
+    border: 2px solid #ffffff;
     border-radius: 20px 20px 20px 20px;
     -webkit-border-radius: 20px 20px 20px 20px;
     -moz-border-radius: 20px 20px 20px 20px;
@@ -1243,7 +1624,7 @@ table.table-list-users th {
 }
 
 .news-main .section-news {
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 
 
@@ -1257,7 +1638,7 @@ table.table-list-users th {
 }
 
 .news-main .section-news h3 {
-    margin: 0 10px;
+    margin: 0 5px;
     font-size: 2em;
 
 }
@@ -1300,7 +1681,7 @@ table.table-list-users th {
     display: flex;
     flex-direction: column;
     width: 90%;
-    margin: 5px auto;
+    margin: 2px auto;
 }
 
 .news-addArticle-titre input,
@@ -1312,27 +1693,27 @@ table.table-list-users th {
 }
 
 .news-main textarea {
-    height: 220px;
+    height: 110px;
     font-size: 1em;
 }
 
 .news-main .news-addArticle-button button {
-    width: 38%;
-    margin: 15px auto;
-}
-
-.news-main .news-addArticle-button button:hover {
-    width: 45%;
+    width: 7.3em;
+    margin: 7px auto;
 }
 
 /* article */
 
 .article-main .section-article {
-    padding-bottom: 30px;
-    font-size: 1em;
+    padding-bottom: 15px;
+    font-size: 1.5em;
     width: 95%;
     margin: auto;
     overflow: hidden;
+}
+
+.article-main h1 {
+    font-size: 3em;
 }
 
 .article-main p {
@@ -1340,8 +1721,12 @@ table.table-list-users th {
 }
 
 .article-main .section-article h3 {
-    margin: 10px 0 40px 0;
-    font-size: 1em;
+    margin: 5px 0 20px 0;
+    font-size: 1.5em;
+}
+
+.article-main .article-intro {
+    margin-top: 0;
 }
 
 .article-main .section-image {
@@ -1357,6 +1742,10 @@ table.table-list-users th {
     float: right;
 }
 
+.article-main .right img {
+    float: right;
+}
+
 .article-main .section-image img {
     width: 96%;
 }
@@ -1369,25 +1758,30 @@ table.table-list-users th {
 .article-main .article-infos-creation p {
     text-align: center;
     font-size: 0.5em;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .button-section-article {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
+}
+
+.button-section-article button {
+    font-size: 1.7em;
+    margin-left: 4.5em;
+}
+
+.button-section-article button:hover {
+    font-size: 2em;
 }
 
 .article-main textarea {
-    height: 275px;
+    height: 137px;
     font-size: 1em;
 }
 
 .article-main .article-addSection-button button {
-    width: 47%;
-    margin: 15px auto;
-}
-
-.article-main .article-addSection-button button:hover {
-    width: 57%;
+    width: 9.2em;
+    margin: 7px auto;
 }
 
 .article-main .article-addSection .article-addSection-button {
@@ -1396,9 +1790,33 @@ table.table-list-users th {
 
 /* Page Recherche */
 
+.search-main {
+    padding-bottom: 20px;
+}
+
 .search-main section {
     width: 95%;
     margin: auto;
+}
+
+.search-main .section-search {
+    margin: 17px auto;
+}
+
+.search-main .section-search a {
+    margin: 3px;
+}
+
+.search-main .section-search:hover {
+    background-color: white;
+}
+
+.search-main .section-search:hover a>* {
+    color: rgb(44, 46, 69);
+}
+
+.search-main .section-search:hover a {
+    font-size: 2.2em;
 }
 
 .search-main .section-search-bar form,
@@ -1410,16 +1828,12 @@ table.table-list-users th {
 
 .search-main .section-search-bar form div>* {
     width: 60%;
-    margin: auto auto 20px auto;
+    margin: auto auto 10px auto;
 }
 
 .search-main .section-search-bar form button {
-    width: 29%;
-    margin: auto auto 20px auto;
-}
-
-.search-main .section-search-bar form button:hover {
-    width: 35%;
+    width: 5.6em;
+    margin: auto auto 10px auto;
 }
 
 .section-search {
@@ -1430,7 +1844,7 @@ table.table-list-users th {
     overflow: hidden;
     max-height: 20%;
     border: 2px solid white;
-    margin-bottom:30px;
+    margin-bottom: 15px;
 }
 
 .section-search p {
@@ -1446,6 +1860,7 @@ table.table-list-users th {
 
 .search-main .section-search h2 {
     font-size: 1em;
+    margin-top: 5px;
 }
 
 .search-main .section-search p {
@@ -1454,24 +1869,510 @@ table.table-list-users th {
 
 /* */
 
-@media (min-width: 540px) {
+/* SHOP */
+
+.shop-main {
+    height: 83.8%;
+}
+
+/* */
+
+@media (min-width: 0px) {
     .for-mobile,
     #for-mobile {
         display: block;
     }
     .for-PC,
-    #for-PC {
+    #for-PC,
+    .for-PC-table {
         display: none
     }
 }
 
-@media (min-width: 1001px) {
+
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+    /* X 1.7 */
+    html {
+        font-size: 17px;
+    }
+    header img {
+        width: 76.5px
+    }
+
+    .for-mobile2 .PC-accueil-switch-inner:after,
+    .for-mobile2 .PC-accueil-switch-inner:before {
+        padding-top: 0.4em;
+    }
+
+
+
+    .menu-burger {
+        align-items: flex-start;
+    }
+    #sidebarMenu {
+        width: 397.8px;
+        transform: translateX(-397.8px);
+        top: 8%;
+    }
+    .profil-main .gestion-compte a {
+        border-radius: 50px;
+    }
+    .index-main section::before,
+    .index-main section::after {
+        transform: skewY(7deg);
+    }
+    .index-main section {
+        min-height: 910px;
+    }
+    .index-main h1 {
+        padding-top: 40%;
+    }
+    .profil-main .gestion-compte a {
+        border-radius: 50px;
+    }
+    .user-checkbox:checked::before,
+    .checkbox:checked::before {
+        width: 34px;
+        height: 35px;
+    }
+    .dot {
+        width: 30px;
+        height: 30px;
+    }
+    .slider-dots {
+        margin: 20px 0;
+    }
+    .slider-arrows {
+        top: 22vh;
+        justify-content: space-around;
+        font-size: 9em;
+        gap: 20%;
+    }
+    .slide-text {
+        margin-bottom: 40px;
+    }
+    .article-main .article-addSection .article-addSection-button {
+        margin: 20px auto;
+    }
+    .shop-main {
+        height: 85%;
+    }
+    .forum-main button {
+        border-radius: 50px;
+    }
+    .forum-main #intitule {
+        margin: 15px auto;
+    }
+}
+
+
+
+@media (min-width: 992px) {
+    /* X 2.4 */
+    html {
+        font-size: 24px;
+    }
+    .main-background {
+        min-height: 84.9%;
+    }
+    header img {
+        width: 108px
+    }
+
+    #sidebarMenu {
+        width: 561.6px;
+        transform: translateX(-561.6px);
+    }
+    .index-main section {
+        min-height: 1240px;
+    }
+    .profil-main .gestion-compte a {
+        border-radius: 90px;
+        width: 7.5em;
+    }
+    .dot {
+        width: 40px;
+        height: 40px;
+    }
+    .slider-arrows {
+        top: 16vh;
+        font-size: 8em;
+    }
+    .jeux-main a {
+        border-radius: 75px;
+    }
+    .article-main {
+        padding-bottom: 21px;
+    }
+    .shop-main {
+        height: 86%;
+    }
+    .forum-main button {
+        border-radius: 75px;
+    }
+}
+
+@media (min-width: 1024px) and (orientation: portrait) {}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+
+    .for-mobile2 {
+        display: none;
+    }
+    .for-PC2 {
+        display: block;
+    }
+
+    .PC-accueil-switch {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .index-main section::before {
+        top: -5em;
+    }
+    .index-main section::after {
+        bottom: -5em;
+    }
+    .jeux-halo-main .image {
+        max-height: 75vh;
+        width: auto;
+    }
+    /* X 1.3 */
+    html {
+        font-size: 17px;
+    }
+    .for-mobile,
+    #for-mobile,
     .for-mobile-table {
         display: none;
     }
-
+    .for-PC-table {
+        display: table-cell;
+        vertical-align: inherit;
+    }
     .for-PC,
     #for-PC {
         display: block;
     }
+    .mobile-accueil-button,
+    .mobile-login-button,
+    .mobile-burger-button {
+        flex: 0;
+    }
+    header {
+        height: 10%;
+    }
+    header img {
+        width: 58.5px
+    }
+
+    header .header-p-centre {
+        padding-top: 1px;
+        font-size: 2em;
+    }
+
+    header .header-p-centre {
+        padding-top: 0px;
+    }
+
+
+    #sidebarMenu {
+        width: 298px;
+        transform: translateX(-298px);
+        top: 10.1%;
+    }
+
+    .index-main section::before,
+    .index-main section::after {
+        transform: skewY(6deg);
+    }
+    .index-main section {
+        min-height: 910px;
+    }
+    .user-checkbox:checked::before,
+    .checkbox:checked::before {
+        width: 34px;
+        height: 35px;
+    }
+    .dot {
+        width: 30px;
+        height: 30px;
+    }
+    .slider-dots {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    .slider-arrows {
+        top: 30vh;
+        justify-content: space-evenly;
+        font-size: 6em;
+        gap: 0;
+    }
+    .slide-text {
+        margin-bottom: 40px;
+    }
+    .article-main .article-addSection .article-addSection-button {
+        margin: 20px auto;
+    }
+    .shop-main {
+        height: 78%;
+    }
+    .forum-main button {
+        border-radius: 50px;
+    }
+    .forum-main #intitule {
+        margin: 15px auto;
+    }
+    video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .fixed-elements {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        z-index: 1;
+
+    }
+
+    .fixed-elements img {
+        width: 100%;
+        height: 89.9vh;
+        display: block;
+    }
+
+    .fixed-elements h1 {
+        position: absolute;
+        color: white;
+        margin: 0;
+        padding: 0;
+        top: 21vh;
+        width: 100%;
+    }
+    .index-main .section-shop {
+        margin-top: 0;
+        padding-top: 0.83em;
+    }
+
+    .index-main section {
+        margin: 55% auto;
+    }
+
+    .index-main .section-shop::before {
+        display: none;
+    }
+    .index-main .section-shop::after {
+        bottom: -10%;
+    }
+    .h1-animation-hide {
+        transform: translateY(-100vh);
+    }
+    .h1-animation {
+        transition: transform 0.5s ease-out;
+    }
+    .profil-info-ext {
+        width: 75%;
+    }
+    .profil-info-int {
+        padding: 10px;
+    }
+    .table-list-users .user-role select option {
+        font-size: 1em;
+    }
+    .user-login input,
+    .user-email input,
+    .user-image input,
+    .user-role input,
+    .user-password input {
+        width: 90%;
+    }
+    .user-checkbox,
+    .table-list-users tr .table-list-checkbox {
+        width: 5%;
+    }
+    .user-login,
+    .table-list-users tr .table-list-login {
+        width: 15%;
+    }
+    .user-email,
+    .table-list-email {
+        width: 20%;
+    }
+    .user-date,
+    .table-list-date {
+        width: 10%;
+    }
+    .user-image,
+    .table-list-image {
+        width: 10%;
+    }
+    .user-role,
+    .table-list-users tr .table-list-role {
+        width: 10%;
+    }
+    .user-password,
+    .table-list-users tr .table-list-role {
+        width: 15%;
+    }
+    .button-td,
+    .table-list-users tr .table-list-button {
+        width: 15%;
+    }
+    .table-list-users {
+        margin: auto;
+        width: 95%;
+    }
+    .table-list-users tbody td {
+        font-size: 1em;
+    }
+
+    .slider-container img {
+        height: 375px;
+    }
+    .news-main .section-news h3 {
+        font-size: 1em;
+    }
+    .news-main p {
+        font-size: 0.5em;
+    }
+    .news-image img {
+        max-height: 50vh;
+    }
+    .news-image {
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+    .article-main .section-article {
+        font-size: 1em;
+    }
+    .article-main .article-intro,
+    .article-main p {
+        font-size: 1.5em;
+    }
+    .article-main .section-article h3 {
+        font-size: 2em;
+    }
+    .news-addArticle,
+    .article-addSection {
+        font-size: 0.7em;
+    }
+    .news-main textarea,
+    .article-main textarea {
+        font-size: 2em;
+    }
+    .forum-main .list-forum-image {
+        width: 20%;
+    }
+    .forum-main .list-forum-infos {
+        width: 65%;
+    }
+    .forum-main .list-forum-nbMessages {
+        width: 15%;
+        color: white;
+    }
+    html body .forum-main .image-profil {
+        margin: 5px;
+        width: 100%;
+    }
+    .forum-main .list-forum .list-forum-infos,
+    .forum-main .list-forum .list-forum-nbMessages {
+        font-size: 0.7em;
+        text-align: center;
+    }
+    .dernierMessage,
+    .nomCreateur {
+        font-size: 0.6em;
+        width: 30%;
+    }
+    .list-forum-nbMessages p {
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+    .salon-main textarea {
+        height: 156px;
+    }
+    .message-button button {
+        text-align: center;
+        width: 11.2em;
+    }
+    .table-list-users .user-password input {
+        width: 90%;
+    }
+    .table-list-users td select {
+        width: 90%;
+    }
+}
+
+@media (min-width: 1200px) {
+    header .header-p-centre {
+        font-size: 2.5em;
+    }
+    .search-main .section-search-bar form div>* {
+        width: 40%;
+    }
+    .search-main section {
+        width: 80%;
+    }
+    header img {
+        width: 81.5px;
+    }
+
+    .table-list-users tbody td {
+        font-size: 1.5em;
+    }
+
+    .fixed-elements h1 {
+        top: 34vh;
+    }
+    .index-main section {
+        min-height: 1102px;
+    }
+    header img {
+        margin-top: 2px;
+        width: 75px;
+    }
+    .slider-arrows {
+        top: 24vh;
+    }
+    .shop-main {
+        height: 81%;
+    }
+    .news-addArticle-titre input,
+    .news-addArticle-image input,
+    .article-addSection-titre input,
+    .article-addSection-image input {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .index-main section p {
+        margin: auto;
+        width: 75%;
+    }
+    .login-main form,
+    .form-addUser {
+        width: 60%;
+    }
+    .profil-info-ext {
+        width: 60%;
+    }
+    .news-addArticle-titre input,
+    .news-addArticle-image input,
+    .article-addSection-titre input,
+    .article-addSection-image input {
+        width: 35%;
+    }
+
 }

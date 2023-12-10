@@ -31,16 +31,16 @@
         <form method="post" action=/deleteSalon>
             <div>
                 <a class='list-forum salonForum no-decoration' href=forum/<%= salon.id %>>
-                    <div class="list-forum-image for-PC"><img class=image-profil src="images/profil/<%=salon.image%>"></div>
+                    <div class="list-forum-image for-PC"><img class=image-profil src="images/profil/<%=salon.image%>" alt="Image de profil de l'utilisateur ayant créer le salon"></div>
                     <div class="list-forum-infos">
                         <div class="list-forum-infos-detail">
                             <h3 class=nomSalon><%=salon.intitule%></h3>
-                            <p>Créer par <%= salon.login %></p>
+                            <p class=nomCreateur>Créer par <%= salon.login %></p>
                         </div>
                         <div class="list-forum-infos-detail">
-                            <p>Créer le <%= salon.date %></p>
-                            <p class="for-PC">Dernier message le <%= salon.derniereUpdate %></p>
-                            <p class="for-mobile"><%= salon.nbMessages %> messages</p>
+                            <p class=dateCreation>Créer le <%= salon.date %></p>
+                            <p class="dernierMessage for-PC">Dernier message le <%= salon.derniereUpdate %></p>
+                            <p class="nbMessage for-mobile"><%= salon.nbMessages %> messages</p>
                         </div>
                     </div>
                     <div class="list-forum-nbMessages" id="for-PC">
@@ -52,15 +52,17 @@
                     
                    
                 </a>
-                <div class=button-salon>
+                
                 <%  if (locals.role === "admin" || locals.role === "superadmin" || locals.role === "moderateur"){ %> 
-                    <button class="edit-button-forum">Modifier le nom du salon</button>
-                    <button class="save-button-forum display-none" data-id="<%= salon.id %>">Valider</button>
-                    <button type=submit>Supprimer le salon</button>
-                    <input type="hidden" class="display-none" name="id" value="<%= salon.id %>">
+                    <div class=button-salon>
+                        <button class="edit-button-forum">Modifier le nom du salon</button>
+                        <button class="save-button-forum display-none" data-id="<%= salon.id %>">Valider</button>
+                        <button type=submit>Supprimer le salon</button>
+                        <input type="hidden" class="display-none" name="id" value="<%= salon.id %>">
+                    </div>
                 <% } %>
             
-            </div>
+            
     
             </div>
         </form> 

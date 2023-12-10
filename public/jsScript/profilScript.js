@@ -2,7 +2,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const editButtonProfil = document.querySelector('.edit-button-profil');
     const saveButtonProfil = document.querySelector('.save-button-profil');
+    const modificationAfterReload = localStorage.getItem('modificationAfterReload');
 
+    if (modificationAfterReload === 'true') {
+        const roleElement = document.querySelector('.role');
+        const newParagraph = document.createElement('p');
+        newParagraph.textContent = "Votre compte a été modifié";
+        newParagraph.classList.add('valid');
+        // Ajoutez le nouvel élément en tant qu'enfant à l'élément parent
+        roleElement.parentNode.appendChild(newParagraph); 
+        localStorage.removeItem('modificationAfterReload');
+    }
+    
     editButtonProfil.addEventListener('click', () => {
         const email = document.querySelector('.email');
         const image = document.querySelector('.image');
@@ -37,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
     saveButtonProfil.addEventListener('click', () => {
         const loginInput = document.querySelector('.login input');
         const emailInput = document.querySelector('.email input');
-        const role = document.querySelector('.role');
         const imageInput = document.querySelector('.inputImage');
 
         // Créer un objet FormData pour envoyer les données
@@ -46,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append('id', saveButtonProfil.dataset.id);
         formData.append('email', emailInput.value);
         formData.append('login', loginInput.value);
-        formData.append('role', role.dataset.role);
         formData.append('image', imageInput.files[0]);
 
         // Effectuer une requête fetch pour envoyer les données
@@ -62,9 +71,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 else {
                     return response.json()
                         .then((data) => {
-                            // Traitez la réponse du serveur (par exemple, affichez un message de succès)
+                            localStorage.setItem('modificationAfterReload', 'true');
                             console.log("Récupération réussie");
                             window.location.reload()
+                            
                         })
                 }
             })
@@ -73,8 +83,5 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Gérez les erreurs (par exemple, affichez un message d'erreur)
                 console.error('Erreur lors de la mise à jour :', error);
             });
-
     });
-
-
 })

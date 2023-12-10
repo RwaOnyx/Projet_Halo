@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function() {
     
     editButtonSalon.addEventListener('click', () => {
         const contenuMessage = document.querySelector('.message');
-        const contenuMessageInput = document.createElement('input');
-        contenuMessageInput.type = 'text';
-        contenuMessageInput.value = contenuMessage.textContent;
+        const contenuMessageTextarea = document.createElement('textarea');
+        contenuMessageTextarea.type = 'text';
+        contenuMessageTextarea.value = contenuMessage.textContent;
         contenuMessage.textContent = '';
-        contenuMessage.appendChild(contenuMessageInput);
+        contenuMessage.appendChild(contenuMessageTextarea);
 
         // Afficher le bouton "Valider" et masquer le bouton "Modifier"
         editButtonSalon.classList.add('display-none');
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     saveButtonSalon.addEventListener('click', () => {
 
-        const contenuMessageResult = document.querySelector('.message input');
+        const contenuMessageResult = document.querySelector('.message textarea');
         // Créer un objet FormData pour envoyer les données
         console.log(contenuMessageResult)
         const formData = new FormData();

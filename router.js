@@ -3,7 +3,7 @@ import express from "express";
 const router = express.Router();
 
 //CRUD
-import { register, registerRole } from "./controllers/crud/add/addUser.js";
+import { register,registerUsers, registerRole } from "./controllers/crud/add/addUser.js";
 import { deleteUsersList, deleteUser } from "./controllers/crud/delete/deleteUser.js";
 import { updateUser } from "./controllers/crud/update/updateUser.js";
 import { addSalon } from "./controllers/crud/add/addSalon.js";
@@ -44,17 +44,11 @@ import Shop from "./controllers/Shop/shop.js";
 //Recherche
 import { search, searchResult }  from "./controllers/Search/search.js";
 
+//Infos légales
+import { infos, mentionsLegales, conditionsUtilisation, politiqueConfidentialite, FAQ }  from "./controllers/infosLegales.js";
+
 const checkIsLogged = (req, res, next) => {
     if (req.session.isLogged === true) {
-        next();
-        return;
-    }
-    res.redirect("/login");
-    return;
-};
-
-const checkSuperAdmin = (req, res, next) => {
-    if (req.session.role === 'superadmin') {
         next();
         return;
     }
@@ -71,11 +65,32 @@ const checkAdmin = (req, res, next) => {
     return;
 };
 
+const checkModerateur = (req, res, next) => {
+    if (req.session.role === 'superadmin' || req.session.role === 'admin' || req.session.role === 'moderateur') {
+        next();
+        return;
+    }
+    res.redirect("/forum");
+    return;
+};
+
+const checkRedacteur = (req, res, next) => {
+    if (req.session.role === 'superadmin' || req.session.role === 'admin' || req.session.role === 'redacteur') {
+        next();
+        return;
+    }
+    res.redirect("/news");
+    return;
+};
+
 router.use((req, res, next) => {
     res.locals.isLogged = req.session.isLogged;
     res.locals.role = req.session.role;
     res.locals.idUser = req.session.idUser;
     res.locals.imageProfil = req.session.imageProfil;
+    res.locals.grade = req.session.grade
+    res.locals.message1 = req.session.message1
+    res.locals.message2 = req.session.message2
     next();
 });
 
@@ -83,11 +98,12 @@ router.use((req, res, next) => {
 //CRUD
 // Ajout
 router.post('/registerRole', checkAdmin, registerRole);
+router.post('/registerUsers', checkAdmin, registerUsers);
 router.post('/register', register);
-router.post('/addSalon', addSalon);
-router.post('/addMessage/:id', addMessage);
-router.post('/addArticle', addArticle);
-router.post('/news/:id/addSection', addSection);
+router.post('/addSalon', checkIsLogged, addSalon);
+router.post('/addMessage/:id', checkIsLogged, addMessage);
+router.post('/addArticle', checkRedacteur, addArticle);
+router.post('/news/:id/addSection', checkRedacteur, addSection);
 
 
 // Connexion
@@ -96,15 +112,15 @@ router.post('/login', login);
 // Delete
 router.post('/deleteUsersList',checkAdmin, deleteUsersList);
 router.get('/deleteUser', deleteUser);
-router.post('/deleteSalon', deleteSalon);
-router.post('/deleteMessage/:id', deleteMessage);
-router.post('/deleteArticle', deleteArticle);
-router.post('/deleteSection/:id', deleteSection);
+router.post('/deleteSalon',checkModerateur, deleteSalon);
+router.post('/deleteMessage/:id',checkModerateur, deleteMessage);
+router.post('/deleteArticle',checkRedacteur, deleteArticle);
+router.post('/deleteSection/:id',checkRedacteur, deleteSection);
 
 // Update
 router.post('/updateUser', checkIsLogged,updateUser);
-router.post('/updateSalon', updateSalon);
-router.post('/updateMessage', updateMessage);
+router.post('/updateSalon',checkModerateur, updateSalon);
+router.post('/updateMessage',checkModerateur, updateMessage);
 
 //PAGES
 // Accueil
@@ -118,7 +134,7 @@ router.get('/logout', checkIsLogged, Deconnexion);
 router.get('/profil', checkIsLogged, Profil);
 router.get('/listUsersRole', listUsersRole);
 router.get('/listUsers', checkAdmin, listUsers);
-router.post('/searchMember', searchMember);
+router.post('/searchMember',checkAdmin, searchMember);
 
 
 // Jeux
@@ -149,5 +165,12 @@ router.get('/shop', Shop);
 // Recherche
 router.get('/search', search);
 router.post('/searchResult', searchResult);
+
+// Infos Légales
+router.get('/infos', infos);
+router.get('/infos/mentionsLegales', mentionsLegales);
+router.get('/infos/conditionsUtilisation', conditionsUtilisation);
+router.get('/infos/politiqueConfidentialite', politiqueConfidentialite);
+router.get('/infos/FAQ', FAQ);
 
 export default router;

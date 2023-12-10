@@ -3,8 +3,11 @@
 <main class="login-main main-background">
     <h1>Connexion</h1>
     
+    <% if (locals.message1) { %>
+        <p class="registerValid valid"><%= locals.message1 %></p>
+    <% } %>
     <% if (locals.message) { %>
-        <p><%= message %></p>
+        <p class="erreurLogin invalid"><%= message %></p>
     <% } %>
     
     <form method="post" action="/login">

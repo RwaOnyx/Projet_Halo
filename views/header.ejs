@@ -1,56 +1,71 @@
 <header>
-    <div class="for-PC">
-        <nav>
-            <ul>
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/jeux">Histoire</a></li>
-                <li><a href="/news">News</a></li>
-                <li><a href="/forum">Forum</a></li>
-                <li><a href="/shop">Boutique</a></li>
-                <%  if (locals.isLogged !== true){ %>
-                       <li><a href="/login">Connexion</a></li>
-                <% } %>
-                <%  if (locals.isLogged === true){ %>
-                    <li><a href="/profil">Mon Profil</a></li>
-                <% } %>
-            </ul>
-        </nav>
-    </div>
-    <div class="for-mobile">
-        <div class=menu-burger>
-            <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-            <div class=mobile-burger-button>
+    <div class=menu-burger>
+        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+        <div class=mobile-burger-button>
             <label for="openSidebarMenu" class="sidebarIconToggle">
                 <div class="spinner diagonal part-1"></div>
                 <div class="spinner horizontal"></div>
                 <div class="spinner diagonal part-2"></div>
-            </label></div>
-            <div class=mobile-accueil-button><a class=no-decoration href="/">
-                <p class="font-halo header-p-centre">Projet Halo</p>
-            </div>
-            <div class=mobile-login-button>
-                <%  if (locals.isLogged !== true){ %>
-                    <a class=no-decoration href="/login">
-                        <img src="/images/site/halo_logo_blanc.png" alt="" >
-                    </a>
-                       
-                <% } %>
-                <%  if (locals.isLogged === true){ %>
-                    <a href="/profil"><img src="/images/profil/<%=locals.imageProfil%>" alt="" class="header-imageProfil"></a>
-                <% } %></div>
-            <div id="sidebarMenu">
-                <ul class="sidebarMenuInner">
-                    <li><a href="/jeux">Histoire</a></li>
-                    <li><a href="/news">News</a></li>
-                    <li><a href="/forum">Forum</a></li>
-                    <li><a href="/shop">Boutique</a></li>
-                    <li><a href="/search">Rechercher</a></li>
-                </ul>
-            </div>
+            </label>
+        </div>
+    
+        <div class="for-PC mobile-login-button">
+            <%  if (locals.isLogged !== true){ %>
+                <a class=no-decoration href="/login">
+                    <img src="/images/site/halo_logo_blanc.png" alt="Image d'un casque de spartan blanc" >
+                </a>
+            <% } %>
+            <%  if (locals.isLogged === true){ %>
+                <a href="/profil"><img src="/images/profil/<%=locals.imageProfil%>" alt="Image de profil" class="header-imageProfil"></a>
+            <% } %>
+        </div>
+        <div class=mobile-accueil-button>
+            <a class=no-decoration href="/">
+                <img src="/images/site/logo.png" alt='Logo avec écrit "Projet Halo" dans une police de type "Halo"' >
+            </a>
+        </div>
+        <div class="for-mobile mobile-login-button">
+            <%  if (locals.isLogged !== true){ %>
+                <a class=no-decoration href="/login">
+                    <img src="/images/site/halo_logo_blanc.png" alt="Image d'un casque de spartan blanc" >
+                </a>
+            <% } %>
+            <%  if (locals.isLogged === true){ %>
+                <a href="/profil"><img src="/images/profil/<%=locals.imageProfil%>" alt="Image de profil" class="header-imageProfil"></a>
+            <% } %>
         </div>
         
+        <div class="for-PC PC-accueil-search">
+            <a href="/search"><img src="/images/site/loupe.png" alt="Image d'une loupe"></a>
+        </div>
+        
+        <div class="for-PC2 PC-accueil-switch">
+        	<input type="checkbox" name="PC-accueil-switch" class="PC-accueil-switch-cb" id="switchPC">
+        	<label class="PC-accueil-switch-label" for="switchPC">
+        		<div class="PC-accueil-switch-inner"></div>
+        		<div class="PC-accueil-switch-switch"></div>
+        	</label>
+        </div>
             
+        <div id="sidebarMenu">
+            <ul class="sidebarMenuInner">
+                <li><a href="/jeux">Histoire</a></li>
+                <li><a href="/news">News</a></li>
+                <li><a href="/forum">Forum</a></li>
+                <li><a href="/shop">Boutique</a></li>
+                <li class="for-mobile"><a href="/search">Rechercher</a></li>
+            </ul>
+                    
+        </div>
     </div>
+    <div class="for-mobile2 PC-accueil-switch">
+        	<input type="checkbox" name="PC-accueil-switch" class="PC-accueil-switch-cb" id="switchMobile">
+        	<label class="PC-accueil-switch-label" for="switchMobile">
+        		<div class="PC-accueil-switch-inner"></div>
+        		<div class="PC-accueil-switch-switch"></div>
+        	</label>
+        </div>
+    
     
 </header>
 
